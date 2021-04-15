@@ -2,7 +2,7 @@ package stepDefinitions;
 
 public class StepDefinitions {
 	
-	//Hejj
+	//Hejjs
 
 	
 }
