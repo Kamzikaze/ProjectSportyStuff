@@ -20,12 +20,17 @@
 Feature: Title of your feature
   I want to use this template for my feature file
 
-  @tag1
-  Scenario: Title of your scenario
-    Given I want to write a step with precondition
-    And some other precondition
-    When I complete action
-    And some other action
-    And yet another action
-    Then I validate the outcomes
-    And check more outcomes
+Background: Choosing sport type
+Given the user enters the program
+
+Scenario: Choosing one of the options
+Given the two alternatives is displayed(Decathlon or heptathlon)
+When User chooses one of the programs
+Then the program displays the different sports depending on the option
+
+Scenario: The user inputs values
+Given User has a value to enter
+When User inputs values
+Then The values is saved
+
+
