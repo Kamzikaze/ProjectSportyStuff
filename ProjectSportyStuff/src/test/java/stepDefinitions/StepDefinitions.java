@@ -9,6 +9,7 @@ import io.cucumber.java.en.When;
 
 public class StepDefinitions {
 
+<<<<<<< HEAD
 	Scanner scan;
 	String s;
 	
@@ -55,5 +56,16 @@ public class StepDefinitions {
 		// Write code here that turns the phrase above into concrete actions
 		throw new io.cucumber.java.PendingException();
 	}
+=======
+	
+	//Hejj
+    // test natalija
+>>>>>>> branch 'master' of https://github.com/Kamzikaze/ProjectSportyStuff.git
 
 }
+<<<<<<< HEAD
+=======
+//test
+//test2
+//stefan Susnjar
+>>>>>>> branch 'master' of https://github.com/Kamzikaze/ProjectSportyStuff.git
