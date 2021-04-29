@@ -1,11 +1,13 @@
 package stepDefinitions;
 
+import java.util.Random;
 import java.util.Scanner;
 
 import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+import ourCode.Athlete;
 
 public class StepDefinitions {
 
@@ -40,19 +42,49 @@ public class StepDefinitions {
 
 	@Given("User has a value to enter")
 	public void user_has_a_value_to_enter() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+
 	}
 
 	@When("User inputs values")
 	public void user_inputs_values() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+
 	}
 
 	@Then("The values is saved")
 	public void the_values_is_saved() {
-		// Write code here that turns the phrase above into concrete actions
-		throw new io.cucumber.java.PendingException();
+
 	}
+
+	@Given("user enters first name and lastname")
+	public void user_enters_first_name_and_lastname() {
+		scan = new Scanner(System.in);
+		String firstName;
+		String lastName;
+		
+		System.out.println("What is your first name?");
+		firstName = scan.next();
+		
+		System.out.println("What is your last name?");
+		lastName = scan.next();
+		
+		
+		
+	}
+
+	@When("the user gets a unique id")
+	public void the_user_gets_a_unique_id() {
+		
+		System.out.println("Your unique ID is: " + Math.random());
+		
+		
+		
+	}
+
+	@Then("the user is registered")
+	public void the_user_is_registered() {
+		
+		System.out.println("Your user has been registered.");
+		
+	}
+
 }

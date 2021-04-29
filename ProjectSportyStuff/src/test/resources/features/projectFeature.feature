@@ -34,3 +34,17 @@ When User inputs values
 Then The values is saved
 
 
+@idtest
+Scenario: Register user
+Given user enters first name and lastname
+When the user gets a unique id
+Then the user is registered
+
+@registertest
+Scenario: full registration
+Given User is an athlete and wants to register
+When User enters name 
+And selects decathlon or heptathlon
+And presses register
+Then all the information is saved to the respective object
+
