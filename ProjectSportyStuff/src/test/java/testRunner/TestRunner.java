@@ -7,6 +7,6 @@ import io.cucumber.junit.Cucumber;
 
 @RunWith(Cucumber.class)
 																
-@CucumberOptions(features="src/test/resources/features", glue="stepDefinitions", tags= "@idtest") 
+@CucumberOptions(features="src/test/resources/features", glue="stepDefinitions", tags= "@windowtest") //, tags= "@idtest"
 public class TestRunner {
 }
