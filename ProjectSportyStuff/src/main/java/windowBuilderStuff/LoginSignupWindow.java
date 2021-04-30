@@ -8,6 +8,9 @@ import java.awt.FlowLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
+
+import windowBuilderStuff.DirtyGlobalVariables.Status;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -23,7 +26,7 @@ public class LoginSignupWindow {
 	/**
 	 * Launch the application.
 	 */
-	public void main(String[] args) {
+	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -81,6 +84,7 @@ public class LoginSignupWindow {
 		loginBtn = new JButton("Log in");
 		loginBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				DirtyGlobalVariables.currStatus = Status.LOGINSIGNUPlogin;
 				System.out.println("pressed login from lsw class");
 				wh.runEnterResultWindow();
 			}
@@ -90,6 +94,7 @@ public class LoginSignupWindow {
 		signupBtn = new JButton("Sign Up");
 		signupBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				DirtyGlobalVariables.currStatus = Status.LOGINSIGNUPsignup;
 				System.out.println("pressed sign up from lsw class");
 				frmSportyStuff.setVisible(false);
 				wh.runSignupWindow();

@@ -5,7 +5,7 @@ public class Athlete {
 	public String firstName;
 	public String lastName;
 	
-	int ID;
+	public int ID;
 	
 	public Athlete() {
 		

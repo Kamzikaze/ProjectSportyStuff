@@ -15,6 +15,7 @@ import javax.swing.JTextField;
 
 import ourCode.Man;
 import ourCode.Woman;
+import windowBuilderStuff.DirtyGlobalVariables.Status;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -103,21 +104,21 @@ public class SignupWindow {
 		namePanel.setLayout(null);
 		
 		JLabel lblNewLabel_1 = new JLabel("First name: ");
-		lblNewLabel_1.setBounds(10, 8, 57, 14);
+		lblNewLabel_1.setBounds(10, 8, 70, 14);
 		namePanel.add(lblNewLabel_1);
 		
 		firstNameTextField = new JTextField();
-		firstNameTextField.setBounds(77, 5, 123, 20);
+		firstNameTextField.setBounds(90, 5, 110, 20);
 		firstNameTextField.setMaximumSize(new Dimension(100, 100));
 		namePanel.add(firstNameTextField);
 		firstNameTextField.setColumns(10);
 		
 		JLabel lblNewLabel_2 = new JLabel("Last name: ");
-		lblNewLabel_2.setBounds(210, 8, 56, 14);
+		lblNewLabel_2.setBounds(210, 8, 74, 14);
 		namePanel.add(lblNewLabel_2);
 		
 		lastNameTextField = new JTextField();
-		lastNameTextField.setBounds(276, 5, 128, 20);
+		lastNameTextField.setBounds(294, 5, 110, 20);
 		lastNameTextField.setMaximumSize(new Dimension(100, 100));
 		namePanel.add(lastNameTextField);
 		lastNameTextField.setColumns(10);
@@ -130,30 +131,33 @@ public class SignupWindow {
 		nextBtn = new JButton("Next");
 		nextBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				DirtyGlobalVariables.currStatus = Status.SIGNUPnext;
+				DirtyGlobalVariables.currID++;
 				if(decathlonRadioBtn.isSelected())
 				{
-					wh.addAthlete(new Man(firstNameTextField.getText(), lastNameTextField.getText()));
+					wh.addAthlete(new Man(firstNameTextField.getText(), lastNameTextField.getText(), DirtyGlobalVariables.currID));
 				}
 				
 				if(heptathlonRadioBtn.isSelected())
 				{
-					wh.addAthlete(new Woman(firstNameTextField.getText(), lastNameTextField.getText()));
+					wh.addAthlete(new Woman(firstNameTextField.getText(), lastNameTextField.getText(), DirtyGlobalVariables.currID));
 				}
 				
 				wh.runEnterResultWindow();
 			}
 		});
-		nextBtn.setPreferredSize(new Dimension(70, 23));
+		nextBtn.setPreferredSize(new Dimension(90, 23));
 		btnPanel.add(nextBtn);
 		
 		CancelBtn = new JButton("Cancel");
 		CancelBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				DirtyGlobalVariables.currStatus = Status.SIGNUPcancel;
 				wh.printParticipants();
+				System.exit(69);
 			}
 		});
-		CancelBtn.setPreferredSize(new Dimension(70, 23));
+		CancelBtn.setPreferredSize(new Dimension(90, 23));
 		btnPanel.add(CancelBtn);
 		
 		ButtonGroup group = new ButtonGroup();
