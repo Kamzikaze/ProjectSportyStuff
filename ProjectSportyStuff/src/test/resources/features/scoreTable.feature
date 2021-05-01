@@ -37,3 +37,21 @@ Examples:
     | "100"      | "Results were successfully updated!"               |
     | "1.5"      | "Results were successfully updated!"               |
     | "15.8"     | "Results were successfully updated!"               |
+    
+@scoreTable
+Scenario: The user tries to fetch the score of an athlete in IAAF format
+Given I am on the athletes page
+When I press the fetch results button
+Then I should receive the result in IAAF format
+
+@scoreTable
+Scenario: The user tries to fetch the score of an event in IAAF format
+Given I am on the events page
+When I press the fetch results button
+Then I should receive the result in IAAF format
+
+@scoreTable
+Scenario: The user tries to fetch the score of the competition in IAAF format
+Given I am on the home page
+When I press the fetch results button
+Then I should receive the result in IAAF format

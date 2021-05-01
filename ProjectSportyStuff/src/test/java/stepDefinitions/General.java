@@ -25,4 +25,19 @@ public class General {
 	public void i_am_on_the_edit_results_page() {
 	    // TODO
 	}
+	
+	@Given("I am on the athletes page")
+	public void i_am_on_the_athletes_page() {
+	    // TODO
+	}
+	
+	@Given("I am on the events page")
+	public void i_am_on_the_events_page() {
+	    // TODO
+	}
+	
+	@Given("I am on the home page")
+	public void i_am_on_the_home_page() {
+	    // TODO
+	}
 }
