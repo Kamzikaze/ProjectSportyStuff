@@ -16,8 +16,13 @@ public class General {
 		// TODO
 	}
 	
-	@Given("I am on the result page")
-	public void i_am_on_the_result_page() {
+	@Given("I am on the add results page")
+	public void i_am_on_the_add_results_page() {
+	    // TODO
+	}
+	
+	@Given("I am on the edit results page")
+	public void i_am_on_the_edit_results_page() {
 	    // TODO
 	}
 }
