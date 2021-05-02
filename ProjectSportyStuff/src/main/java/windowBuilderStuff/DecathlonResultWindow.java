@@ -15,6 +15,8 @@ import com.jgoodies.forms.layout.FormSpecs;
 import javax.swing.SwingConstants;
 import java.awt.Font;
 import javax.swing.JTextField;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class DecathlonResultWindow {
 
@@ -232,10 +234,19 @@ public class DecathlonResultWindow {
 		panel_2.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
 		JButton saveBtn = new JButton("Save");
+		saveBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		saveBtn.setPreferredSize(new Dimension(85, 23));
 		panel_2.add(saveBtn);
 		
 		JButton exitBtn = new JButton("Exit");
+		exitBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.exit(69);
+			}
+		});
 		exitBtn.setPreferredSize(new Dimension(85, 23));
 		panel_2.add(exitBtn);
 		

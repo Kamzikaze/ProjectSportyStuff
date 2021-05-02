@@ -18,6 +18,7 @@ public class DirtyGlobalVariables {
 
 	public static int currID = 0;
 	public static Status currStatus = Status.LOGINSIGNUPlogin;
+	public static WindowHandler _windowHandler = new WindowHandler();
 	
 	
 	public DirtyGlobalVariables() {

@@ -1,0 +1,112 @@
+package windowBuilderStuff;
+
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import java.awt.FlowLayout;
+import javax.swing.JButton;
+import java.awt.Dimension;
+import com.jgoodies.forms.layout.FormLayout;
+import com.jgoodies.forms.layout.ColumnSpec;
+import com.jgoodies.forms.layout.RowSpec;
+import com.jgoodies.forms.layout.FormSpecs;
+import javax.swing.JLabel;
+import java.awt.Font;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+public class UserAddedWindow {
+
+	private JFrame frmSportyStuff;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					UserAddedWindow window = new UserAddedWindow();
+					window.frmSportyStuff.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the application.
+	 */
+	public UserAddedWindow() {
+		initialize();
+	}
+
+	/**
+	 * Initialize the contents of the frame.
+	 */
+	private void initialize() {
+		frmSportyStuff = new JFrame();
+		frmSportyStuff.setTitle("Sporty Stuff");
+		frmSportyStuff.setBounds(100, 100, 350, 250);
+		frmSportyStuff.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frmSportyStuff.getContentPane().setLayout(null);
+		
+		JPanel panel = new JPanel();
+		panel.setBounds(10, 11, 314, 143);
+		frmSportyStuff.getContentPane().add(panel);
+		panel.setLayout(new FormLayout(new ColumnSpec[] {
+				FormSpecs.RELATED_GAP_COLSPEC,
+				FormSpecs.DEFAULT_COLSPEC,
+				FormSpecs.RELATED_GAP_COLSPEC,
+				FormSpecs.DEFAULT_COLSPEC,},
+			new RowSpec[] {
+				FormSpecs.RELATED_GAP_ROWSPEC,
+				FormSpecs.DEFAULT_ROWSPEC,
+				FormSpecs.RELATED_GAP_ROWSPEC,
+				FormSpecs.DEFAULT_ROWSPEC,
+				FormSpecs.RELATED_GAP_ROWSPEC,
+				FormSpecs.DEFAULT_ROWSPEC,
+				FormSpecs.RELATED_GAP_ROWSPEC,
+				FormSpecs.DEFAULT_ROWSPEC,}));
+		
+		JLabel newUserAddedLbl = new JLabel("New user registered!");
+		newUserAddedLbl.setFont(new Font("Tahoma", Font.BOLD, 12));
+		panel.add(newUserAddedLbl, "2, 2");
+		
+		JLabel yourInfoLbl = new JLabel("Your information: ");
+		panel.add(yourInfoLbl, "2, 4");
+		
+		JLabel firstNameLbl = new JLabel("First name");
+		panel.add(firstNameLbl, "4, 4");
+		
+		JLabel lastNameLbl = new JLabel("Last name");
+		panel.add(lastNameLbl, "4, 6");
+		
+		JLabel uniqueIdLbl = new JLabel("Unique ID");
+		panel.add(uniqueIdLbl, "4, 8");
+		
+		JPanel panel_1 = new JPanel();
+		panel_1.setBounds(10, 165, 314, 35);
+		frmSportyStuff.getContentPane().add(panel_1);
+		panel_1.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		
+		JButton registerResultBtn = new JButton("Register results");
+		registerResultBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		registerResultBtn.setPreferredSize(new Dimension(125, 23));
+		panel_1.add(registerResultBtn);
+		
+		JButton exitBtn = new JButton("Exit");
+		exitBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.exit(69);
+			}
+		});
+		exitBtn.setPreferredSize(new Dimension(125, 23));
+		panel_1.add(exitBtn);
+	}
+}
