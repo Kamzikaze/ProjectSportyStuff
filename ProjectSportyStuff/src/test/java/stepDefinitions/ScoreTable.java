@@ -20,11 +20,6 @@ public class ScoreTable {
 	    // TODO
 	}
 	
-	@When("I press the fetch results button")
-	public void i_press_the_fetch_results_button() {
-	    // TODO
-	}
-	
 	@Then("I should receive the result in IAAF format")
 	public void i_should_receive_the_result_in_iaaf_format() {
 	    // TODO
