@@ -1,13 +1,6 @@
 package stepDefinitions;
 
-import java.util.Random;
-import java.util.Scanner;
-
-import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
-import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
-import ourCode.Athlete;
 
 public class General {
 
