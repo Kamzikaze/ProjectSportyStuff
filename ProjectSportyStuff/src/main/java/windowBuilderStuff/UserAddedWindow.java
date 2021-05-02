@@ -10,6 +10,10 @@ import java.awt.Dimension;
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.RowSpec;
+
+import ourCode.Athlete;
+import ourCode.Woman;
+
 import com.jgoodies.forms.layout.FormSpecs;
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -19,14 +23,42 @@ import java.awt.event.ActionEvent;
 public class UserAddedWindow {
 
 	private JFrame frmSportyStuff;
+	
+	WindowHandler windowHandler;
+	Athlete lastAthlete;
 
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+//	public static void main(String[] args) {
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					UserAddedWindow window = new UserAddedWindow();
+//					window.frmSportyStuff.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//	}
+
+	/**
+	 * Create the application.
+	 */
+	public UserAddedWindow() {
+		windowHandler = new WindowHandler();
+		initialize();
+		
+	}
+
+	
+	public void startWindow() 
+	{
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
+					
 					UserAddedWindow window = new UserAddedWindow();
 					window.frmSportyStuff.setVisible(true);
 				} catch (Exception e) {
@@ -34,15 +66,13 @@ public class UserAddedWindow {
 				}
 			}
 		});
+		//windowHandler = new WindowHandler();
 	}
-
-	/**
-	 * Create the application.
-	 */
-	public UserAddedWindow() {
-		initialize();
+	
+	public void closeWindow() {
+		frmSportyStuff.setVisible(false);
 	}
-
+	
 	/**
 	 * Initialize the contents of the frame.
 	 */
@@ -75,16 +105,19 @@ public class UserAddedWindow {
 		newUserAddedLbl.setFont(new Font("Tahoma", Font.BOLD, 12));
 		panel.add(newUserAddedLbl, "2, 2");
 		
+
 		JLabel yourInfoLbl = new JLabel("Your information: ");
 		panel.add(yourInfoLbl, "2, 4");
 		
-		JLabel firstNameLbl = new JLabel("First name");
+		lastAthlete = new Woman("anna", "svensson", 5);
+		
+		JLabel firstNameLbl = new JLabel(lastAthlete.firstName);
 		panel.add(firstNameLbl, "4, 4");
 		
-		JLabel lastNameLbl = new JLabel("Last name");
+		JLabel lastNameLbl = new JLabel(lastAthlete.lastName);
 		panel.add(lastNameLbl, "4, 6");
 		
-		JLabel uniqueIdLbl = new JLabel("Unique ID");
+		JLabel uniqueIdLbl = new JLabel(String.valueOf(lastAthlete.ID));
 		panel.add(uniqueIdLbl, "4, 8");
 		
 		JPanel panel_1 = new JPanel();
@@ -95,6 +128,12 @@ public class UserAddedWindow {
 		JButton registerResultBtn = new JButton("Register results");
 		registerResultBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				windowHandler = new WindowHandler();
+				frmSportyStuff.setVisible(false);
+				
+				windowHandler.runDecathlonWindow();
+				windowHandler.runHeptathlonWindow();
+				
 			}
 		});
 		registerResultBtn.setPreferredSize(new Dimension(125, 23));

@@ -30,7 +30,7 @@ public class StepDefinitions {
 	@Given("I run the program")
 	public void i_run_the_program() {
 		windowHandler = new WindowHandler();
-		windowHandler.runLoginSignupWindow();
+		//windowHandler.runLoginSignupWindow();
 		System.out.println("Before...");
 	}
 
@@ -100,7 +100,7 @@ public class StepDefinitions {
 
 	@Given("I press login")
 	public void i_press_login() throws InterruptedException {
-		windowHandler.pressLoginButton();
+		//windowHandler.pressLoginButton();
 		pressedButton = "login";
 	}
 
@@ -115,7 +115,7 @@ public class StepDefinitions {
 
 	@Given("I press sign up")
 	public void i_press_sign_up() throws InterruptedException {
-		windowHandler.pressSignupButton();
+		//windowHandler.pressSignupButton();
 		pressedButton = "signup";
 	}
 

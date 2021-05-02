@@ -31,14 +31,40 @@ public class DecathlonResultWindow {
 	private JTextField poleVaultTextField;
 	private JTextField javelinThrowTextField;
 	private JTextField thousandfivehundredMTextField;
+	
+	WindowHandler windowHandler;
 
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+//	public static void main(String[] args) {
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					DecathlonResultWindow window = new DecathlonResultWindow();
+//					window.frmSportyStuff.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//	}
+
+	/**
+	 * Create the application.
+	 * @param wh 
+	 */
+	public DecathlonResultWindow() {
+		windowHandler = new WindowHandler();
+		initialize();
+	}
+	
+	public void startWindow() 
+	{
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
+					//windowHandler = wh;
 					DecathlonResultWindow window = new DecathlonResultWindow();
 					window.frmSportyStuff.setVisible(true);
 				} catch (Exception e) {
@@ -46,14 +72,13 @@ public class DecathlonResultWindow {
 				}
 			}
 		});
+		//windowHandler = new WindowHandler();
 	}
-
-	/**
-	 * Create the application.
-	 */
-	public DecathlonResultWindow() {
-		initialize();
+	
+	public void closeWindow() {
+		frmSportyStuff.setVisible(false);
 	}
+	
 
 	/**
 	 * Initialize the contents of the frame.

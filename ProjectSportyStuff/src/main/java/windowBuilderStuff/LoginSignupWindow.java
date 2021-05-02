@@ -9,48 +9,53 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
-import windowBuilderStuff.DirtyGlobalVariables.Status;
-
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class LoginSignupWindow {
 
-	static WindowHandler wh = new WindowHandler();
-	
 	public JFrame frmSportyStuff;
 	public JButton signupBtn;
 	public JButton loginBtn;
 	
-
+	WindowHandler windowHandler;
+	
+	
+	
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					LoginSignupWindow window = new LoginSignupWindow();
-					window.frmSportyStuff.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+//	public static void main(String[] args) {
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					LoginSignupWindow window = new LoginSignupWindow();
+//					window.frmSportyStuff.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//		
+//	}
 	
 	public void startWindow()
 	{
+		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
 					LoginSignupWindow window = new LoginSignupWindow();
 					window.frmSportyStuff.setVisible(true);
+					//windowHandler = wh;
+					//windowHandler.initialize();
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 			}
 		});
+		//windowHandler = new WindowHandler();
+		
 	}
 
 	public void closeWindow() {
@@ -61,7 +66,7 @@ public class LoginSignupWindow {
 	 * Create the application.
 	 */
 	public LoginSignupWindow() {
-		//wh = new WindowHandler();
+		
 		initialize();
 	}
 
@@ -69,6 +74,7 @@ public class LoginSignupWindow {
 	 * Initialize the contents of the frame.
 	 */
 	public void initialize() {
+		
 		frmSportyStuff = new JFrame();
 		frmSportyStuff.setTitle("Sporty Stuff");
 		frmSportyStuff.setResizable(false);
@@ -84,9 +90,11 @@ public class LoginSignupWindow {
 		loginBtn = new JButton("Log in");
 		loginBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				DirtyGlobalVariables.currStatus = Status.LOGINSIGNUPlogin;
+				//DirtyGlobalVariables.currStatus = Status.LOGINSIGNUPlogin;
 				System.out.println("pressed login from lsw class");
-				wh.runEnterResultWindow();
+				frmSportyStuff.setVisible(false);
+				windowHandler = new WindowHandler();
+				windowHandler.runLoginWindow();
 			}
 		});
 		panel.add(loginBtn);
@@ -94,10 +102,11 @@ public class LoginSignupWindow {
 		signupBtn = new JButton("Sign Up");
 		signupBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				DirtyGlobalVariables.currStatus = Status.LOGINSIGNUPsignup;
+				//DirtyGlobalVariables.currStatus = Status.LOGINSIGNUPsignup;
 				System.out.println("pressed sign up from lsw class");
 				frmSportyStuff.setVisible(false);
-				wh.runSignupWindow();
+				windowHandler = new WindowHandler();
+				windowHandler.runSignupWindow();
 			}
 		});
 		panel.add(signupBtn);

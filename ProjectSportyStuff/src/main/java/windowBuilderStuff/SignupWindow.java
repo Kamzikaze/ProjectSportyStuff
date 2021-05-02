@@ -6,6 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import java.awt.FlowLayout;
 
+import javax.naming.directory.AttributeModificationException;
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import java.awt.Dimension;
@@ -13,9 +14,9 @@ import javax.swing.JLabel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
+import ourCode.Athlete;
 import ourCode.Man;
 import ourCode.Woman;
-import windowBuilderStuff.DirtyGlobalVariables.Status;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -27,30 +28,32 @@ public class SignupWindow {
 	public JTextField lastNameTextField;
 	public JButton nextBtn;
 	public JButton CancelBtn;
-	static WindowHandler wh = new WindowHandler();
+	WindowHandler windowHandler;
 	
 
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					SignupWindow window = new SignupWindow();
-					window.frmSportyStuff.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+//	public static void main(String[] args) {
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					SignupWindow window = new SignupWindow(windowHandler);
+//					window.frmSportyStuff.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//	}
 
 	/**
 	 * Create the application.
 	 */
 	public SignupWindow() {
+		windowHandler = new WindowHandler();
 		initialize();
+		
 	}
 	
 	
@@ -59,6 +62,7 @@ public class SignupWindow {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
+					//windowHandler = wh;
 					SignupWindow window = new SignupWindow();
 					window.frmSportyStuff.setVisible(true);
 				} catch (Exception e) {
@@ -66,7 +70,7 @@ public class SignupWindow {
 				}
 			}
 		});
-		
+		//windowHandler = new WindowHandler();
 	}
 	
 	public void closeWindow() {
@@ -128,22 +132,32 @@ public class SignupWindow {
 		frmSportyStuff.getContentPane().add(btnPanel);
 		btnPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
+		
+		
 		nextBtn = new JButton("Next");
 		nextBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				DirtyGlobalVariables.currStatus = Status.SIGNUPnext;
-				DirtyGlobalVariables.currID++;
+				windowHandler = new WindowHandler();
+				windowHandler.initialize();
+				
+				Athlete athlete = new Athlete();
+
 				if(decathlonRadioBtn.isSelected())
 				{
-					wh.addAthlete(new Man(firstNameTextField.getText(), lastNameTextField.getText(), DirtyGlobalVariables.currID));
+					athlete = new Man(firstNameTextField.getText(), lastNameTextField.getText(), windowHandler.currID);
+					//windowHandler.addAthlete(new Man(firstNameTextField.getText(), lastNameTextField.getText(), windowHandler.currID));
+					System.out.println("added man...");
 				}
 				
 				if(heptathlonRadioBtn.isSelected())
 				{
-					wh.addAthlete(new Woman(firstNameTextField.getText(), lastNameTextField.getText(), DirtyGlobalVariables.currID));
+					athlete = new Woman(firstNameTextField.getText(), lastNameTextField.getText(), windowHandler.currID);
+					//windowHandler.addAthlete(new Woman(firstNameTextField.getText(), lastNameTextField.getText(), windowHandler.currID));
+					System.out.println("added woman...");
 				}
-				
-				wh.runEnterResultWindow();
+				windowHandler.addAthlete(athlete);
+				frmSportyStuff.setVisible(false);
+				windowHandler.runUserAddedWindow();
 			}
 		});
 		nextBtn.setPreferredSize(new Dimension(90, 23));
@@ -152,8 +166,7 @@ public class SignupWindow {
 		CancelBtn = new JButton("Cancel");
 		CancelBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				DirtyGlobalVariables.currStatus = Status.SIGNUPcancel;
-				wh.printParticipants();
+				//windowHandler.printParticipants();
 				System.exit(69);
 			}
 		});

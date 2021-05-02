@@ -20,7 +20,7 @@ import java.awt.event.ActionEvent;
 
 public class HeptathlonResultWindow {
 
-	private JFrame frmSportyStuff;
+	public JFrame frmSportyStuff;
 	private JTextField onehundredMHurdlesTextField;
 	private JTextField highJumpTextField;
 	private JTextField shotPutTextField;
@@ -28,14 +28,39 @@ public class HeptathlonResultWindow {
 	private JTextField longJumpTextField;
 	private JTextField javelinThrowTextField;
 	private JTextField eighthundredMTextField;
+	
+	WindowHandler windowHandler;
 
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+//	public static void main(String[] args) {
+//		EventQueue.invokeLater(new Runnable() {
+//			public void run() {
+//				try {
+//					HeptathlonResultWindow window = new HeptathlonResultWindow();
+//					window.frmSportyStuff.setVisible(true);
+//				} catch (Exception e) {
+//					e.printStackTrace();
+//				}
+//			}
+//		});
+//	}
+
+	/**
+	 * Create the application. 
+	 */
+	public HeptathlonResultWindow() {
+		windowHandler = new WindowHandler();
+		initialize();
+	}
+	
+	public void startWindow() 
+	{
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
+					//windowHandler = wh;
 					HeptathlonResultWindow window = new HeptathlonResultWindow();
 					window.frmSportyStuff.setVisible(true);
 				} catch (Exception e) {
@@ -43,14 +68,14 @@ public class HeptathlonResultWindow {
 				}
 			}
 		});
+		//windowHandler = new WindowHandler();
 	}
-
-	/**
-	 * Create the application.
-	 */
-	public HeptathlonResultWindow() {
-		initialize();
+	
+	public void closeWindow() {
+		frmSportyStuff.setVisible(false);
 	}
+	
+	
 
 	/**
 	 * Initialize the contents of the frame.
