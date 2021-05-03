@@ -12,7 +12,7 @@ Examples:
     | unique_id | value      | message                                            |
     | 1         | ""         | "A value is required. Please try again."           |
     | 1         | "asdf"     | "A numerical value is required. Please try again." |
-    | 1         | "!%#€"     | "A numerical value is required. Please try again." |
+    | 1         | "!%#€"   | "A numerical value is required. Please try again." |
     | 1         | "-1"       | "A positive value is required. Please try again."  |
     | 1         | "-100"     | "A positive value is required. Please try again."  |
     | 1         | "0"        | "Results were successfully added!"                 |
