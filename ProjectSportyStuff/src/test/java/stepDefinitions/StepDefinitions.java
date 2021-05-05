@@ -68,7 +68,7 @@ public class StepDefinitions {
 
 	@When("the user gets a unique id")
 	public void the_user_gets_a_unique_id() {
-		
+				
 		System.out.println("Your unique ID is: " + Math.random());
 		
 		
