@@ -2,10 +2,10 @@ package ourCode;
 
 public class Athlete {
 
-	String firstName;
-	String lastName;
+	public String firstName;
+	public String lastName;
 	
-	int ID;
+	public int ID;
 	
 	public Athlete() {
 		
