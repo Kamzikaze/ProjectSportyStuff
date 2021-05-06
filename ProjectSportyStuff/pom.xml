@@ -6,6 +6,14 @@
 	<artifactId>ProjectSportyStuff</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 
+<<<<<<< HEAD
+=======
+	<properties>
+		<maven.compiler.source>7</maven.compiler.source>
+		<maven.compiler.target>7</maven.compiler.target>
+	</properties>
+
+>>>>>>> branch 'master' of https://github.com/Kamzikaze/ProjectSportyStuff.git
 	<dependencies>
 		<dependency>
 			<groupId>io.cucumber</groupId>
@@ -17,6 +25,13 @@
 			<groupId>io.cucumber</groupId>
 			<artifactId>cucumber-junit</artifactId>
 			<version>6.9.1</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-api</artifactId>
+			<version>5.7.0</version>
 			<scope>test</scope>
 		</dependency>
 
