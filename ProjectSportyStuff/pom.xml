@@ -6,14 +6,13 @@
 	<artifactId>ProjectSportyStuff</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 
-<<<<<<< HEAD
-=======
+
 	<properties>
 		<maven.compiler.source>7</maven.compiler.source>
 		<maven.compiler.target>7</maven.compiler.target>
 	</properties>
 
->>>>>>> branch 'master' of https://github.com/Kamzikaze/ProjectSportyStuff.git
+
 	<dependencies>
 		<dependency>
 			<groupId>io.cucumber</groupId>

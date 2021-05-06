@@ -22,7 +22,7 @@ public class StepDefinitions {
 	Scanner scan;
 	String s;
 
-<<<<<<< HEAD
+
 	@Given("the user enters the program")
 	public void the_user_enters_the_program() {
 		// this is where gui loads
@@ -35,8 +35,8 @@ public class StepDefinitions {
 		System.out.println("Before...");
 	}
 
-=======
->>>>>>> branch 'master' of https://github.com/Kamzikaze/ProjectSportyStuff.git
+
+
 	@Given("the two alternatives is displayed\\(Decathlon or heptathlon)")
 	public void the_two_alternatives_is_displayed_decathlon_or_heptathlon() {
 		System.out.println("type d for decathlon or h for heptathlon");
