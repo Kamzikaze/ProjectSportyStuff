@@ -1,11 +1,14 @@
 package ourCode;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 
 import org.apache.poi.EncryptedDocumentException;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
 
@@ -45,12 +48,41 @@ public class ExcelService {
 		// TODO:
 	}
 
-	public void addWomanAthlete(Woman woman) {
+	public void addWomanAthlete(Athlete woman) {
 		// TODO:
 	}
 
-	public void addManAthlete(Man man) {
-		// TODO:
+	public void addManAthlete(Athlete man) {
+		Sheet sheet = workbook.getSheetAt(1);
+		
+		Row row = sheet.createRow(0);
+		
+		Cell firstNameCell = row.createCell(0);
+		Cell lastNameCell = row.createCell(1);
+		
+		firstNameCell.setCellValue(man.firstName);
+		lastNameCell.setCellValue(man.lastName);
+		
+		this.save();
+	}
+	
+	private void save() {
+		try {
+			String path = this.file.getAbsolutePath();
+			
+			this.file.delete();
+			
+		    FileOutputStream out = new FileOutputStream(path);
+		    
+		    workbook.write(out);
+		    workbook.close();
+		    out.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	private void checkExistence() {
