@@ -107,6 +107,7 @@ public class LoginWindow {
 					System.out.println("Invalid. Login with your unique ID");
 					
 				}
+				
 				frmSportystuff.setVisible(false);
 				windowHandler = new WindowHandler();
 				if (windowHandler.isParticipantMale(Integer.parseInt(idTextField.getText()))) {

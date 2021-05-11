@@ -135,25 +135,52 @@ public class SignupWindow {
 				windowHandler.initialize();
 
 				Athlete athlete = new Athlete();
+				
+			
+					
+					if (decathlonRadioBtn.isSelected()) {
+						if  (((lastNameTextField.getText() instanceof String) && (firstNameTextField.getText() instanceof String)))
+						{
+						athlete = new Man(firstNameTextField.getText(), lastNameTextField.getText(), windowHandler.currID);
+// windowHandler.addAthlete(new Man(firstNameTextField.getText(),
+						// lastNameTextField.getText(), windowHandler.currID));
+						System.out.println("added man...");
+						}
+						else {
+							System.out.println("no numberic values");
+						}
+						}
+						
+					 else if (heptathlonRadioBtn.isSelected()) {
 
-				if (decathlonRadioBtn.isSelected()) {
-					athlete = new Man(firstNameTextField.getText(), lastNameTextField.getText(), windowHandler.currID);
-					// windowHandler.addAthlete(new Man(firstNameTextField.getText(),
-					// lastNameTextField.getText(), windowHandler.currID));
-					System.out.println("added man...");
-				}
-
-				if (heptathlonRadioBtn.isSelected()) {
-					athlete = new Woman(firstNameTextField.getText(), lastNameTextField.getText(),
-							windowHandler.currID);
-					// windowHandler.addAthlete(new Woman(firstNameTextField.getText(),
-					// lastNameTextField.getText(), windowHandler.currID));
-					System.out.println("added woman...");
-				}
-				windowHandler.addAthlete(athlete);
-				frmSportyStuff.setVisible(false);
-				windowHandler.runUserAddedWindow();
+			
+						athlete = new Woman(firstNameTextField.getText(), lastNameTextField.getText(),
+								windowHandler.currID);
+						athlete.firstName = firstNameTextField.getText();
+						athlete.lastName = lastNameTextField.getText();
+						if  (((athlete.firstName instanceof String) && (athlete.lastName instanceof String)))
+						{
+							// windowHandler.addAthlete(new Woman(firstNameTextField.getText(),
+						// lastNameTextField.getText(), windowHandler.currID));
+							System.out.println("added woman...");
+							
+							
+						}
+						else {
+							System.out.println("no numberic values");
+						}
+					
+					}
+			else
+			{
+				System.out.println("Select an event...");
 			}
+					windowHandler.addAthlete(athlete);
+					frmSportyStuff.setVisible(false);
+					windowHandler.runUserAddedWindow();
+						
+			}
+					
 		});
 		nextBtn.setPreferredSize(new Dimension(90, 23));
 		btnPanel.add(nextBtn);
