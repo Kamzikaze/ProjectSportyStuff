@@ -3,63 +3,49 @@ package windowBuilderStuff;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class ActionListenerClass implements ActionListener{
+public class ActionListenerClass implements ActionListener {
 
-	
 	public ActionListenerClass() {
-		
-	}
-	
-	public void actionPerformed(ActionEvent e)
-	{
 
-		
+	}
+
+	public void actionPerformed(ActionEvent e) {
+
 		switch (DirtyGlobalVariables.currStatus) {
-		case LOGINSIGNUPlogin:
-		{
-			
+		case LOGINSIGNUPlogin: {
+
 		}
-		case LOGINSIGNUPsignup: 
-		{
-			
+		case LOGINSIGNUPsignup: {
+
 		}
-		case SIGNUPnext: 
-		{
-			
+		case SIGNUPnext: {
+
 		}
-		case SIGNUPcancel: 
-		{
-			
+		case SIGNUPcancel: {
+
 		}
-		case USERADDEDregisterresult: 
-		{
-			
+		case USERADDEDregisterresult: {
+
 		}
-		case USERADDEDexit:
-		{
-			
+		case USERADDEDexit: {
+
 		}
-		case LOGINlogin: 
-		{
-			
+		case LOGINlogin: {
+
 		}
-		case LOGINcancel: 
-		{
-			
+		case LOGINcancel: {
+
 		}
-		case RESULTsave: 
-		{
-			
+		case RESULTsave: {
+
 		}
-		case RESULTcancel: 
-		{
-			
+		case RESULTcancel: {
+
 		}
-		
+
 		default:
 			break;
 		}
-		
-		
+
 	}
 }

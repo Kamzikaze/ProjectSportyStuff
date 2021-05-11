@@ -1,6 +1,5 @@
 package windowBuilderStuff;
 
-
 public class windowTestRunnerButNotReally {
 
 	public windowTestRunnerButNotReally() {
@@ -8,7 +7,7 @@ public class windowTestRunnerButNotReally {
 	}
 
 	public static void main(String[] args) {
-		
+
 		WindowHandler wh = new WindowHandler();
 		wh.initialize();
 		wh.runLoginSignupWindow();

@@ -16,12 +16,11 @@ import windowBuilderStuff.*;
 public class StepDefinitions {
 
 	String pressedButton;
-	
+
 	WindowHandler windowHandler;
-	//LoginSignupWindow lsw;
+	// LoginSignupWindow lsw;
 	Scanner scan;
 	String s;
-
 
 	@Given("the user enters the program")
 	public void the_user_enters_the_program() {
@@ -31,11 +30,9 @@ public class StepDefinitions {
 	@Given("I run the program")
 	public void i_run_the_program() {
 		windowHandler = new WindowHandler();
-		//windowHandler.runLoginSignupWindow();
+		// windowHandler.runLoginSignupWindow();
 		System.out.println("Before...");
 	}
-
-
 
 	@Given("the two alternatives is displayed\\(Decathlon or heptathlon)")
 	public void the_two_alternatives_is_displayed_decathlon_or_heptathlon() {
@@ -103,22 +100,22 @@ public class StepDefinitions {
 
 	@Given("I press login")
 	public void i_press_login() throws InterruptedException {
-		//windowHandler.pressLoginButton();
+		// windowHandler.pressLoginButton();
 		pressedButton = "login";
 	}
 
 	@Then("A new window opens")
 	public void a_new_window_opens() {
-		
-		if(pressedButton.equalsIgnoreCase("login"))
+
+		if (pressedButton.equalsIgnoreCase("login"))
 			System.out.println("Logging in...");
-		if(pressedButton.equalsIgnoreCase("signup"))
+		if (pressedButton.equalsIgnoreCase("signup"))
 			System.out.println("Signing up...");
 	}
 
 	@Given("I press sign up")
 	public void i_press_sign_up() throws InterruptedException {
-		//windowHandler.pressSignupButton();
+		// windowHandler.pressSignupButton();
 		pressedButton = "signup";
 	}
 
