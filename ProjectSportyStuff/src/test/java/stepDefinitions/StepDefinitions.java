@@ -88,19 +88,28 @@ public class StepDefinitions {
 	@Given("user enters first name and lastname")
 	public void user_enters_first_name_and_lastname() {
 		scan = new Scanner(System.in);
-		//String firstName;
-		//String lastName;
-		String [][] names = new String [40][40];
-
-		System.out.println("What is your first and last name?");
+		String firstName;
+		String lastName;
 		
+		int participants = scan.nextInt();
+		while (participants <= 40) { //felhantering?
+			for (int i = 0; i < 0; i++) {
+		System.out.println("What is your first name?");
+		firstName = scan.next();
+
+		System.out.println("What is your last name?");
+		lastName = scan.next();
+		}
+		}
+
+		
+		//---------------OR--------------------- 
+		String[][] names = new String[40][40];
 		for (int row = 0; row < 41; row++) {
 			for(int col = 0; col < 41; col++) {
 				names [row][col] = scan.next();
-			}
+			} //Kanske kan använda matris istället som innehåller 40 dubbla strings
 		}
-
-
 	}
 
 	@When("the user gets a unique id")
