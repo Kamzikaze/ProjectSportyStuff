@@ -21,6 +21,8 @@ public class StepDefinitions {
 	//LoginSignupWindow lsw;
 	Scanner scan;
 	String s;
+	//String d = "d";
+	//String h = "h";
 
 
 	@Given("the user enters the program")
@@ -46,6 +48,12 @@ public class StepDefinitions {
 	public void user_chooses_one_of_the_programs() {
 		scan = new Scanner(System.in);
 		s = scan.next();
+		/*if (!(s.equalsIgnoreCase(d))){ //felhantering
+			//System.out.println("You must choose an option");
+		}
+		if (!(s.equalsIgnoreCase(h))){ //felhantering
+			//System.out.println("You must choose an option");
+		}*/
 	}
 
 	@Then("the program displays the different sports depending on the option")
@@ -55,6 +63,10 @@ public class StepDefinitions {
 		}
 		if (s.equalsIgnoreCase("h")) {
 			System.out.println("you have chosen heptathlon");
+		}
+		else { //felhantering
+			//Ska man inte ha radio button här??
+			System.out.println("You must choose correct option.");
 		}
 	}
 

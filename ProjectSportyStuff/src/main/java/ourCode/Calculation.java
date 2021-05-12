@@ -13,8 +13,8 @@ public class Calculation {
 		
 	}
 	
-	//•Points =INT(A(B—P)^C)for track events 
-	//•Points =INT(A(P—B)^C)for field events 
+	//ï¿½Points =INT(A(Bï¿½P)^C)for track events 
+	//ï¿½Points =INT(A(Pï¿½B)^C)for field events 
 	
 	public int CalculateDecathlonResult(double P, String event)
 	{
@@ -194,7 +194,8 @@ public class Calculation {
 			System.out.println(rest);
 		}
 		else {
-			//do something
+			System.out.println("You have to select one of the shown options");
+			//???
 		}
 
 		
@@ -330,7 +331,8 @@ public class Calculation {
 			result = Integer.parseInt(rest);
 		}
 		else {
-			//do something
+			System.out.println("You have to select one of the shown options");
+			///???
 		}
 		
 		
