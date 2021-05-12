@@ -12,6 +12,7 @@ import ourCode.Athlete;
 
 import com.jgoodies.forms.layout.FormSpecs;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.Dimension;
@@ -98,13 +99,13 @@ public class LoginWindow {
 					
 					}
 					else {
-						System.out.println("Invalid. Number out of range");
+						JOptionPane.showMessageDialog(null, "Number out of range, 1-40", "Invalid", JOptionPane.ERROR_MESSAGE);
 					}
 					
 						
 				}catch (NumberFormatException n) {
 					
-					System.out.println("Invalid. Login with your unique ID");
+					JOptionPane.showMessageDialog(null, "Login with your unique ID", "Invalid", JOptionPane.ERROR_MESSAGE);
 					
 				}
 				

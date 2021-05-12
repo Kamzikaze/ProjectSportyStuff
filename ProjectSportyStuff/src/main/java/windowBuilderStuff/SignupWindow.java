@@ -11,6 +11,7 @@ import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import java.awt.Dimension;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 
@@ -135,53 +136,118 @@ public class SignupWindow {
 				windowHandler.initialize();
 
 				Athlete athlete = new Athlete();
-				
-			
+				boolean athleteMan = true;
+				if (decathlonRadioBtn.isSelected()) {
 					
-					if (decathlonRadioBtn.isSelected()) {
-						if  (((lastNameTextField.getText() instanceof String) && (firstNameTextField.getText() instanceof String)))
-						{
-						athlete = new Man(firstNameTextField.getText(), lastNameTextField.getText(), windowHandler.currID);
-// windowHandler.addAthlete(new Man(firstNameTextField.getText(),
-						// lastNameTextField.getText(), windowHandler.currID));
-						System.out.println("added man...");
-						}
-						else {
-							System.out.println("no numberic values");
-						}
-						}
-						
-					 else if (heptathlonRadioBtn.isSelected()) {
+					String inputFirstNameMan = firstNameTextField.getText();
+					String inputLastNameMan = lastNameTextField.getText();
 
-			
-						athlete = new Woman(firstNameTextField.getText(), lastNameTextField.getText(),
-								windowHandler.currID);
-						athlete.firstName = firstNameTextField.getText();
-						athlete.lastName = lastNameTextField.getText();
-						if  (((athlete.firstName instanceof String) && (athlete.lastName instanceof String)))
-						{
-							// windowHandler.addAthlete(new Woman(firstNameTextField.getText(),
-						// lastNameTextField.getText(), windowHandler.currID));
-							System.out.println("added woman...");
-							
-							
-						}
-						else {
-							System.out.println("no numberic values");
-						}
-					
+					if (inputFirstNameMan.isEmpty() || inputLastNameMan.isEmpty()) {
+						athleteMan=false;
+						JOptionPane.showMessageDialog(null, "Enter Values In TextField", "Invalid TextFields",
+								JOptionPane.ERROR_MESSAGE);
 					}
-			else
-			{
-				System.out.println("Select an event...");
-			}
-					windowHandler.addAthlete(athlete);
-					frmSportyStuff.setVisible(false);
-					windowHandler.runUserAddedWindow();
+
+					else {
 						
-			}
+						
+						
+						char[] ch = inputFirstNameMan.toCharArray();
+						outerloop:
+						for (char c : ch) {
+							
+							
+							
+							if (!Character.isLetter(c)) {
+								athleteMan=false;
+								JOptionPane.showMessageDialog(null, "No numbers in firstname", "Invalid",JOptionPane.ERROR_MESSAGE);
+							}
+
+							char[] ln = inputLastNameMan.toCharArray();
+							for (char b : ln) {
+								if (!Character.isLetter(b)) {
+									athleteMan= false;
+
+									JOptionPane.showMessageDialog(null, "No numbers in lastname", "Invalid",JOptionPane.ERROR_MESSAGE);
+									break outerloop;
+								}
+							}
+							
+						}
+					}
+
+					if(athleteMan==true) {
+						athlete = new Man(inputFirstNameMan , inputLastNameMan,
+							windowHandler.currID);
+
+					// windowHandler.addAthlete(new Man(firstNameTextField.getText(),
+					// lastNameTextField.getText(), windowHandler.currID));
+					System.out.println("added man...");
+					}
+
+				}
+
+				else if (heptathlonRadioBtn.isSelected()) {
+					String inputFirstNameWoman = firstNameTextField.getText();
+					String inputLastNameWoman = lastNameTextField.getText();
+
+					if (inputFirstNameWoman.isEmpty() || inputLastNameWoman.isEmpty()) {
+						JOptionPane.showMessageDialog(null, "Enter Values In TextField", "Invalid TextFields",
+								JOptionPane.ERROR_MESSAGE);
+					}
 					
+					else {
+
+						char[] ch = inputFirstNameWoman.toCharArray();
+						outerloop:
+						for (char c : ch) {
+							if (!Character.isLetter(c)) {
+
+								JOptionPane.showMessageDialog(null, "No numbers in firstname", "Invalid",JOptionPane.ERROR_MESSAGE);
+							}
+
+							char[] ln = inputLastNameWoman.toCharArray();
+							for (char b : ln) {
+								if (!Character.isLetter(b)) {
+
+									JOptionPane.showMessageDialog(null, "No numbers in lastname", "Invalid",JOptionPane.ERROR_MESSAGE);
+									break outerloop;
+								}
+							}
+						}
+					}
+
+					athlete = new Woman(firstNameTextField.getText(), lastNameTextField.getText(),
+							windowHandler.currID);
+
+					 {
+						// windowHandler.addAthlete(new Woman(firstNameTextField.getText(),
+						// lastNameTextField.getText(), windowHandler.currID));
+						System.out.println("added woman...");
+
+					}
+					
+					
+					
+					
+
+				} else {
+					athleteMan=false;
+					JOptionPane.showMessageDialog(null, "Select an event", "Choose option", JOptionPane.ERROR_MESSAGE);
+				}
+				
+				if(athleteMan ==true) {
+					
+				windowHandler.addAthlete(athlete);
+				frmSportyStuff.setVisible(false);
+				windowHandler.runUserAddedWindow();
+				}
+				
+
+			}
+
 		});
+
 		nextBtn.setPreferredSize(new Dimension(90, 23));
 		btnPanel.add(nextBtn);
 
