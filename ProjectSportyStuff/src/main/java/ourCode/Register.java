@@ -16,4 +16,12 @@ public class Register {
 		return id;
 	}
 	
+	Athlete[] contestant = new Athlete[40]; {
+	contestant[0] = new Athlete();
+	}
+	 Athlete[] constestant = new Athlete[40]; {
+	for (int i = 0; i < 40; i++) {
+	contestant[i] = new Athlete();
+	}
+}
 }

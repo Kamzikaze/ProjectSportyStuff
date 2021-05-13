@@ -13,8 +13,8 @@ public class Calculation {
 		
 	}
 	
-	//•Points =INT(A(B—P)^C)for track events 
-	//•Points =INT(A(P—B)^C)for field events 
+	//ï¿½Points =INT(A(Bï¿½P)^C)for track events 
+	//ï¿½Points =INT(A(Pï¿½B)^C)for field events 
 	
 	public int CalculateDecathlonResult(double P, String event)
 	{
