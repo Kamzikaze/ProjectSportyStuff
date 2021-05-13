@@ -99,17 +99,17 @@ public class DecathlonResultWindow {
 		panel.add(infoLbl);
 		
 		JPanel panel_1 = new JPanel();
-		panel_1.setBounds(67, 83, 310, 334);
+		panel_1.setBounds(10, 53, 414, 334);
 		frmSportyStuff.getContentPane().add(panel_1);
 		panel_1.setLayout(new FormLayout(new ColumnSpec[] {
 				FormSpecs.RELATED_GAP_COLSPEC,
-				ColumnSpec.decode("right:140px"),
+				ColumnSpec.decode("right:149px"),
+				FormSpecs.UNRELATED_GAP_COLSPEC,
+				ColumnSpec.decode("86px"),
 				FormSpecs.RELATED_GAP_COLSPEC,
-				ColumnSpec.decode("74px"),
+				ColumnSpec.decode("max(30dlu;default)"),
 				FormSpecs.RELATED_GAP_COLSPEC,
-				FormSpecs.DEFAULT_COLSPEC,
-				FormSpecs.RELATED_GAP_COLSPEC,
-				FormSpecs.DEFAULT_COLSPEC,
+				ColumnSpec.decode("max(77dlu;default)"),
 				FormSpecs.RELATED_GAP_COLSPEC,
 				FormSpecs.DEFAULT_COLSPEC,},
 			new RowSpec[] {
@@ -160,7 +160,7 @@ public class DecathlonResultWindow {
 		onehundredMTextField.setColumns(10);
 		
 		JLabel onehundredMResultLbl = new JLabel("Result");
-		panel_1.add(onehundredMResultLbl, "8, 6");
+		panel_1.add(onehundredMResultLbl, "8, 6, 3, 1");
 		
 		JLabel longJumpLbl = new JLabel("Long jump");
 		panel_1.add(longJumpLbl, "2, 8, left, center");
