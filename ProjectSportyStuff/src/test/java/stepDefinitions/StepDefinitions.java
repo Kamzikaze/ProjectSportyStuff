@@ -84,22 +84,13 @@ public class StepDefinitions {
 
 		System.out.println("What is your last name?");
 		lastName = scan.next();
-<<<<<<< HEAD
-		
-=======
-
->>>>>>> refs/heads/master
 	}
 
 	@When("the user gets a unique id")
 	public void the_user_gets_a_unique_id() {
 
 		System.out.println("Your unique ID is: " + Math.random());
-<<<<<<< HEAD
-		
-=======
 
->>>>>>> refs/heads/master
 	}
 
 	@Then("the user is registered")

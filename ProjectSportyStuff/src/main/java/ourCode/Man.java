@@ -2,8 +2,6 @@ package ourCode;
 
 public class Man extends Athlete{
 
-<<<<<<< HEAD
-=======
 	int onehundredM;
 	int longJump;
 	int shotPut;
@@ -16,7 +14,6 @@ public class Man extends Athlete{
 	int onethousandfivehundredM;
 	
 	
->>>>>>> refs/heads/master
 	public Man(String firstName, String lastName, int id) {
 		this.firstName = firstName;
 		this.lastName = lastName;
