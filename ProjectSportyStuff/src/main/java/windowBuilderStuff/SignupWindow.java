@@ -20,6 +20,8 @@ import ourCode.Woman;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.GridLayout;
+import javax.swing.SwingConstants;
 
 public class SignupWindow {
 
@@ -29,7 +31,6 @@ public class SignupWindow {
 	public JButton nextBtn;
 	public JButton CancelBtn;
 	WindowHandler windowHandler;
-	private JTextField textField;
 	
 
 	/**
@@ -85,12 +86,12 @@ public class SignupWindow {
 	private void initialize() {
 		frmSportyStuff = new JFrame();
 		frmSportyStuff.setTitle("Sporty Stuff");
-		frmSportyStuff.setBounds(100, 100, 587, 204);
+		frmSportyStuff.setBounds(100, 100, 543, 195);
 		frmSportyStuff.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmSportyStuff.getContentPane().setLayout(null);
 		
 		JPanel choicePanel = new JPanel();
-		choicePanel.setBounds(10, 11, 571, 35);
+		choicePanel.setBounds(10, 11, 495, 35);
 		frmSportyStuff.getContentPane().add(choicePanel);
 		choicePanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
@@ -104,32 +105,30 @@ public class SignupWindow {
 		choicePanel.add(heptathlonRadioBtn);
 		
 		JPanel namePanel = new JPanel();
-		namePanel.setBounds(10, 57, 571, 35);
+		namePanel.setBounds(10, 57, 495, 35);
 		frmSportyStuff.getContentPane().add(namePanel);
-		namePanel.setLayout(null);
+		namePanel.setLayout(new GridLayout(0, 4, 0, 0));
 		
 		JLabel lblNewLabel_1 = new JLabel("First name: ");
-		lblNewLabel_1.setBounds(56, 8, 160, 14);
+		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
 		namePanel.add(lblNewLabel_1);
 		
 		firstNameTextField = new JTextField();
-		firstNameTextField.setBounds(138, 5, 136, 20);
 		firstNameTextField.setMaximumSize(new Dimension(100, 100));
 		namePanel.add(firstNameTextField);
 		firstNameTextField.setColumns(10);
 		
 		JLabel lblNewLabel_2 = new JLabel("Last name: ");
-		lblNewLabel_2.setBounds(286, 8, 74, 14);
+		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
 		namePanel.add(lblNewLabel_2);
 		
-		textField = new JTextField();
-		textField.setMaximumSize(new Dimension(100, 100));
-		textField.setColumns(10);
-		textField.setBounds(372, 5, 136, 20);
-		namePanel.add(textField);
+		lastNameTextField = new JTextField();
+		lastNameTextField.setMaximumSize(new Dimension(100, 100));
+		namePanel.add(lastNameTextField);
+		lastNameTextField.setColumns(10);
 		
 		JPanel btnPanel = new JPanel();
-		btnPanel.setBounds(88, 121, 420, 35);
+		btnPanel.setBounds(10, 103, 495, 35);
 		frmSportyStuff.getContentPane().add(btnPanel);
 		btnPanel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
