@@ -104,7 +104,7 @@ public class StepDefinitions {
 
 		
 		//---------------OR--------------------- 
-		String[][] names = new String[40][40];
+		String[][] names = new String[40][2];
 		for (int row = 0; row < 41; row++) {
 			for(int col = 0; col < 41; col++) {
 				names [row][col] = scan.next();
