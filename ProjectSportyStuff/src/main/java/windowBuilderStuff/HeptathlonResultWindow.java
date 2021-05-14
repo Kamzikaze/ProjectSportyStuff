@@ -123,6 +123,7 @@ public class HeptathlonResultWindow {
 		panel_1.add(onehundredMHurdlesLbl, "2, 6, right, center");
 
 		onehundredMHurdlesTextField = new JTextField();
+		onehundredMHurdlesTextField.setText("0.0");
 		panel_1.add(onehundredMHurdlesTextField, "4, 6, left, top");
 		onehundredMHurdlesTextField.setColumns(10);
 
@@ -133,6 +134,7 @@ public class HeptathlonResultWindow {
 		panel_1.add(highJumpLbl, "2, 8, right, center");
 
 		highJumpTextField = new JTextField();
+		highJumpTextField.setText("0.0");
 		panel_1.add(highJumpTextField, "4, 8, left, top");
 		highJumpTextField.setColumns(10);
 
@@ -143,6 +145,7 @@ public class HeptathlonResultWindow {
 		panel_1.add(shotPutLbl, "2, 10, right, center");
 
 		shotPutTextField = new JTextField();
+		shotPutTextField.setText("0.0");
 		panel_1.add(shotPutTextField, "4, 10, left, top");
 		shotPutTextField.setColumns(10);
 
@@ -153,6 +156,7 @@ public class HeptathlonResultWindow {
 		panel_1.add(twohundredMLbl, "2, 12, right, center");
 
 		twohundredMTextField = new JTextField();
+		twohundredMTextField.setText("0.0");
 		panel_1.add(twohundredMTextField, "4, 12, left, top");
 		twohundredMTextField.setColumns(10);
 
@@ -166,6 +170,7 @@ public class HeptathlonResultWindow {
 		panel_1.add(longJumpLbl, "2, 16, right, center");
 
 		longJumpTextField = new JTextField();
+		longJumpTextField.setText("0.0");
 		panel_1.add(longJumpTextField, "4, 16, left, top");
 		longJumpTextField.setColumns(10);
 
@@ -176,6 +181,7 @@ public class HeptathlonResultWindow {
 		panel_1.add(javelinThrowLbl, "2, 18, right, center");
 
 		javelinThrowTextField = new JTextField();
+		javelinThrowTextField.setText("0.0");
 		panel_1.add(javelinThrowTextField, "4, 18, left, top");
 		javelinThrowTextField.setColumns(10);
 
@@ -186,6 +192,7 @@ public class HeptathlonResultWindow {
 		panel_1.add(eighthundredMLbl, "2, 20, right, center");
 
 		eighthundredMTextField = new JTextField();
+		eighthundredMTextField.setText("0.0");
 		panel_1.add(eighthundredMTextField, "4, 20, left, top");
 		eighthundredMTextField.setColumns(10);
 
@@ -196,10 +203,36 @@ public class HeptathlonResultWindow {
 		panel_2.setBounds(222, 448, 202, 36);
 		frmSportyStuff.getContentPane().add(panel_2);
 		panel_2.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		
+		JPanel panel_3 = new JPanel();
+		panel_3.setBounds(10, 448, 202, 36);
+		frmSportyStuff.getContentPane().add(panel_3);
+		panel_3.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+
+		final JLabel saveConfirmLbl = new JLabel("saveConfirm");
+		panel_3.add(saveConfirmLbl);
+
+		JPanel panel_4 = new JPanel();
+		panel_4.setBounds(222, 413, 202, 24);
+		frmSportyStuff.getContentPane().add(panel_4);
+		panel_4.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+
+		JLabel totalResultLbl = new JLabel("totalResult");
+		panel_4.add(totalResultLbl);
+		
 
 		JButton saveBtn = new JButton("Save");
 		saveBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				if(checkNumbers()) {
+					// save it all to excel file here
+					saveConfirmLbl.setText("Saved to excel file");
+				}
+				else {
+					saveConfirmLbl.setText("Error, check text fields");
+				}
+				
 			}
 		});
 		saveBtn.setPreferredSize(new Dimension(85, 23));
@@ -214,20 +247,56 @@ public class HeptathlonResultWindow {
 		exitBtn.setPreferredSize(new Dimension(85, 23));
 		panel_2.add(exitBtn);
 
-		JPanel panel_3 = new JPanel();
-		panel_3.setBounds(10, 448, 202, 36);
-		frmSportyStuff.getContentPane().add(panel_3);
-		panel_3.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 
-		JLabel saveConfirmLbl = new JLabel("saveConfirm");
-		panel_3.add(saveConfirmLbl);
-
-		JPanel panel_4 = new JPanel();
-		panel_4.setBounds(222, 413, 202, 24);
-		frmSportyStuff.getContentPane().add(panel_4);
-		panel_4.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
-
-		JLabel totalResultLbl = new JLabel("totalResult");
-		panel_4.add(totalResultLbl);
 	}
+
+	
+	boolean checkNumbers()
+	{
+		boolean areTheyAllOkay = false;
+		int i = 0;
+		
+		if(DirtyGlobalVariables.isThisANumber(onehundredMHurdlesTextField.getText()))
+		{
+			areTheyAllOkay = true;
+			i++;
+		}
+		if(DirtyGlobalVariables.isThisANumber(highJumpTextField.getText()))
+		{
+			areTheyAllOkay = true;
+			i++;
+		}
+		if(DirtyGlobalVariables.isThisANumber(shotPutTextField.getText()))
+		{
+			areTheyAllOkay = true;
+			i++;
+		}
+		if(DirtyGlobalVariables.isThisANumber(twohundredMTextField.getText()))
+		{
+			areTheyAllOkay = true;
+			i++;
+		}
+		if(DirtyGlobalVariables.isThisANumber(longJumpTextField.getText()))
+		{
+			areTheyAllOkay = true;
+			i++;
+		}
+		if(DirtyGlobalVariables.isThisANumber(javelinThrowTextField.getText()))
+		{
+			areTheyAllOkay = true;
+			i++;
+		}
+		if(DirtyGlobalVariables.isThisANumber(eighthundredMTextField.getText()))
+		{
+			areTheyAllOkay = true;
+			i++;
+		}
+
+		if(i != 7)
+			areTheyAllOkay = false;
+		
+		return areTheyAllOkay;
+			
+	}
+	
 }

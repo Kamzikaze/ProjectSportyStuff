@@ -39,4 +39,19 @@ public class DirtyGlobalVariables {
 			}
 		}
 	}
+	
+	public static boolean isThisANumber(String str)
+	{
+		double d;
+		try {
+			d = Double.parseDouble(str);
+		}
+		catch (Exception e) {
+			System.out.println(e.getMessage());
+			return false;
+		}
+
+		return true;
+	}
+	
 }

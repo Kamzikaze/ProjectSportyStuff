@@ -8,6 +8,8 @@ import java.awt.FlowLayout;
 import javax.swing.JButton;
 import java.awt.Dimension;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.RowSpec;
@@ -130,6 +132,7 @@ public class DecathlonResultWindow {
 		panel_1.add(onehundredMLbl, "2, 6, right, center");
 
 		onehundredMTextField = new JTextField();
+		onehundredMTextField.setText("0.0");
 		panel_1.add(onehundredMTextField, "4, 6, left, top");
 		onehundredMTextField.setColumns(10);
 
@@ -140,6 +143,7 @@ public class DecathlonResultWindow {
 		panel_1.add(longJumpLbl, "2, 8, right, center");
 
 		longJumpTextField = new JTextField();
+		longJumpTextField.setText("0.0");
 		panel_1.add(longJumpTextField, "4, 8, left, top");
 		longJumpTextField.setColumns(10);
 
@@ -150,6 +154,7 @@ public class DecathlonResultWindow {
 		panel_1.add(shotPutLbl, "2, 10, right, center");
 
 		shotPutTextField = new JTextField();
+		shotPutTextField.setText("0.0");
 		panel_1.add(shotPutTextField, "4, 10, left, top");
 		shotPutTextField.setColumns(10);
 
@@ -160,6 +165,7 @@ public class DecathlonResultWindow {
 		panel_1.add(highJumpLbl, "2, 12, right, center");
 
 		highJumpTextField = new JTextField();
+		highJumpTextField.setText("0.0");
 		panel_1.add(highJumpTextField, "4, 12, left, top");
 		highJumpTextField.setColumns(10);
 
@@ -170,6 +176,7 @@ public class DecathlonResultWindow {
 		panel_1.add(fourhundredMLbl, "2, 14, right, center");
 
 		fourhundredMTextField = new JTextField();
+		fourhundredMTextField.setText("0.0");
 		panel_1.add(fourhundredMTextField, "4, 14, left, top");
 		fourhundredMTextField.setColumns(10);
 
@@ -183,6 +190,7 @@ public class DecathlonResultWindow {
 		panel_1.add(onehundredtenMHurdlesLbl, "2, 18, right, center");
 
 		onehundredtenMHurdlesTextField = new JTextField();
+		onehundredtenMHurdlesTextField.setText("0.0");
 		panel_1.add(onehundredtenMHurdlesTextField, "4, 18, left, top");
 		onehundredtenMHurdlesTextField.setColumns(10);
 
@@ -193,6 +201,7 @@ public class DecathlonResultWindow {
 		panel_1.add(discusThrowLbl, "2, 20, right, center");
 
 		discusThrowTextField = new JTextField();
+		discusThrowTextField.setText("0.0");
 		panel_1.add(discusThrowTextField, "4, 20, left, top");
 		discusThrowTextField.setColumns(10);
 
@@ -203,6 +212,7 @@ public class DecathlonResultWindow {
 		panel_1.add(poleVaultLbl, "2, 22, right, center");
 
 		poleVaultTextField = new JTextField();
+		poleVaultTextField.setText("0.0");
 		panel_1.add(poleVaultTextField, "4, 22, left, top");
 		poleVaultTextField.setColumns(10);
 
@@ -213,6 +223,7 @@ public class DecathlonResultWindow {
 		panel_1.add(javelinThrowLbl, "2, 24, right, center");
 
 		javelinThrowTextField = new JTextField();
+		javelinThrowTextField.setText("0.0");
 		panel_1.add(javelinThrowTextField, "4, 24, left, top");
 		javelinThrowTextField.setColumns(10);
 
@@ -223,6 +234,7 @@ public class DecathlonResultWindow {
 		panel_1.add(thousandfivehundredMLbl, "2, 26, right, center");
 
 		thousandfivehundredMTextField = new JTextField();
+		thousandfivehundredMTextField.setText("0.0");
 		panel_1.add(thousandfivehundredMTextField, "4, 26, left, top");
 		thousandfivehundredMTextField.setColumns(10);
 
@@ -233,10 +245,35 @@ public class DecathlonResultWindow {
 		panel_2.setBounds(220, 513, 204, 37);
 		frmSportyStuff.getContentPane().add(panel_2);
 		panel_2.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
+		
+		JPanel panel_3 = new JPanel();
+		panel_3.setBounds(10, 513, 204, 37);
+		frmSportyStuff.getContentPane().add(panel_3);
+
+		final JLabel saveConfirmLbl = new JLabel("saveConfirm");
+		panel_3.add(saveConfirmLbl);
+
+		JPanel panel_5 = new JPanel();
+		panel_5.setBounds(220, 472, 204, 30);
+		frmSportyStuff.getContentPane().add(panel_5);
+
+		JLabel totalResultLbl = new JLabel("totalResult");
+		panel_5.add(totalResultLbl);
+		
 
 		JButton saveBtn = new JButton("Save");
 		saveBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				if(checkNumbers()) {
+					// save it all to excel file here
+					saveConfirmLbl.setText("Saved to excel file");
+				}
+				else {
+					saveConfirmLbl.setText("Error, check text fields");
+				}
+				
+				
 			}
 		});
 		saveBtn.setPreferredSize(new Dimension(85, 23));
@@ -251,18 +288,69 @@ public class DecathlonResultWindow {
 		exitBtn.setPreferredSize(new Dimension(85, 23));
 		panel_2.add(exitBtn);
 
-		JPanel panel_3 = new JPanel();
-		panel_3.setBounds(10, 513, 204, 37);
-		frmSportyStuff.getContentPane().add(panel_3);
 
-		JLabel saveConfirmLbl = new JLabel("saveConfirm");
-		panel_3.add(saveConfirmLbl);
-
-		JPanel panel_5 = new JPanel();
-		panel_5.setBounds(220, 472, 204, 30);
-		frmSportyStuff.getContentPane().add(panel_5);
-
-		JLabel totalResultLbl = new JLabel("totalResult");
-		panel_5.add(totalResultLbl);
+	}
+	
+	
+	boolean checkNumbers()
+	{
+		boolean areTheyAllOkay = false;
+		int i = 0;
+		
+		if(DirtyGlobalVariables.isThisANumber(onehundredMTextField.getText()))
+		{
+			areTheyAllOkay = true;
+			i++;
+		}
+		if(DirtyGlobalVariables.isThisANumber(longJumpTextField.getText()))
+		{
+			areTheyAllOkay = true;
+			i++;
+		}
+		if(DirtyGlobalVariables.isThisANumber(shotPutTextField.getText()))
+		{
+			areTheyAllOkay = true;
+			i++;
+		}
+		if(DirtyGlobalVariables.isThisANumber(highJumpTextField.getText()))
+		{
+			areTheyAllOkay = true;
+			i++;
+		}
+		if(DirtyGlobalVariables.isThisANumber(fourhundredMTextField.getText()))
+		{
+			areTheyAllOkay = true;
+			i++;
+		}
+		if(DirtyGlobalVariables.isThisANumber(onehundredtenMHurdlesTextField.getText()))
+		{
+			areTheyAllOkay = true;
+			i++;
+		}
+		if(DirtyGlobalVariables.isThisANumber(discusThrowTextField.getText()))
+		{
+			areTheyAllOkay = true;
+			i++;
+		}
+		if(DirtyGlobalVariables.isThisANumber(poleVaultTextField.getText()))
+		{
+			areTheyAllOkay = true;
+			i++;
+		}
+		if(DirtyGlobalVariables.isThisANumber(javelinThrowTextField.getText()))
+		{
+			areTheyAllOkay = true;
+			i++;
+		}
+		if(DirtyGlobalVariables.isThisANumber(thousandfivehundredMTextField.getText()))
+		{
+			areTheyAllOkay = true;
+			i++;
+		}
+		if(i != 10)
+			areTheyAllOkay = false;
+		
+		return areTheyAllOkay;
+			
 	}
 }
