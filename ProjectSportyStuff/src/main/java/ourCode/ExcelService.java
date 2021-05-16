@@ -17,7 +17,7 @@ public class ExcelService {
 	private File file;
 	private Workbook workbook;
 
-	public ExcelService(String filePath) {
+	public ExcelService(String filePath) throws FileNotFoundException, IOException {
 		this.file = new File(filePath);
 
 		this.checkExistence();
@@ -35,24 +35,67 @@ public class ExcelService {
 		this.checkDefaultSheets();
 		this.checkDefaultRows();
 	}
+	
 
-	public void addWomanResults(int athleteID, int eventID, double result) {
-		// TODO:
+	public void addWomanResults(int athleteID, int eventID, int result) {
+		Sheet sheet = workbook.getSheet("Women Result");
+		
+		Row row = sheet.createRow(sheet.getLastRowNum()+1);
+		
+		Cell idCell = row.createCell(0);
+		Cell eventCell = row.createCell(1);
+		Cell resultCell = row.createCell(2);
+
+		idCell.setCellValue(athleteID);
+		eventCell.setCellValue(eventID);
+		resultCell.setCellValue(result);
+
+		this.save();
+	}
+
+	public void addManResults(int athleteID, int eventID, int result) {
+		Sheet sheet = workbook.getSheet("Men Result");
+		
+		Row row = sheet.createRow(sheet.getLastRowNum()+1);
+		
+		Cell idCell = row.createCell(0);
+		Cell eventCell = row.createCell(1);
+		Cell resultCell = row.createCell(2);
+
+		idCell.setCellValue(athleteID);
+		eventCell.setCellValue(eventID);
+		resultCell.setCellValue(result);
+		
+		this.save();
+	}
+
+	/*
+	public void getIndividualWomanResults(int athleteID) {
+		Sheet sheet = workbook.getSheet("Individual Woman Result");
+		
+		Row row = sheet.createRow(sheet.getLastRowNum()+1);
+		
+		Cell idCell = row.createCell(0);
+
+		idCell.setCellValue(athleteID);
+		
+		this.save();
 		
 	}
 
-	public void addManResults(int athleteID, int eventID, double result) {
-		// TODO:
-	}
-
-	public void getIndividualWomanResults(int athleteID) {
-		// TODO:
-	}
-
 	public void getIndividualManResults(int athleteID) {
-		// TODO:
-	}
+		Sheet sheet = workbook.getSheet("Individual Man Result");
+		
+		Row row = sheet.createRow(sheet.getLastRowNum()+1);
+		
+		Cell idCell = row.createCell(0);
 
+		idCell.setCellValue(athleteID);
+		
+		this.save();
+		
+	}
+	 */
 	public void addWomanAthlete(Athlete woman) {
 		Sheet sheet = workbook.getSheet("Women");
 		
@@ -104,6 +147,7 @@ public class ExcelService {
 	 * Checks if default rows are present in excel file.
 	 */
 	private void checkDefaultRows() {
+		
 		// Women default rows
 		Sheet womenSheet = this.workbook.getSheet("Women");
 		Row womenFirstRow = (womenSheet.getRow(0) != null) ? womenSheet.getRow(0) : womenSheet.createRow(0);
@@ -203,11 +247,53 @@ public class ExcelService {
 		
 		if (men1500mCell.getStringCellValue() != "1500m")
 			men1500mCell.setCellValue("1500m");
-
+		
+		// Women result row
+		Sheet womenRSheet = this.workbook.getSheet("Women Result");
+		Row womenRFirstRow = (womenRSheet.getRow(0) != null) ? womenRSheet.getRow(0) : womenRSheet.createRow(0);
+		Cell womenRIDCell = (womenRFirstRow.getCell(0) != null) ? womenRFirstRow.getCell(0) : womenRFirstRow.createCell(0);
+		Cell womenRFirstNameCell = (womenRFirstRow.getCell(1) != null) ? womenRFirstRow.getCell(1) : womenRFirstRow.createCell(1);
+		Cell womenRLastNameCell = (womenRFirstRow.getCell(2) != null) ? womenRFirstRow.getCell(2) : womenRFirstRow.createCell(2);
+		Cell womenResultCell = (womenRFirstRow.getCell(3) != null) ? womenRFirstRow.getCell(3) : womenRFirstRow.createCell(3);
+		
+		if (womenRIDCell.getStringCellValue() != "ID")
+			womenRIDCell.setCellValue("ID");
+		
+		if (womenRFirstNameCell.getStringCellValue() != "Firstname")
+			womenRFirstNameCell.setCellValue("Firstname");
+		
+		if (womenRLastNameCell.getStringCellValue() != "Lastname")
+			womenRLastNameCell.setCellValue("Lastname");
+		
+		if (womenResultCell.getStringCellValue() != "Result")
+			womenResultCell.setCellValue("Result");
+		
+		// Men result row
+		Sheet menRSheet = this.workbook.getSheet("Men Result");
+		Row menRFirstRow = (menRSheet.getRow(0) != null) ? menRSheet.getRow(0) : menRSheet.createRow(0);
+		Cell menRIDCell = (menRFirstRow.getCell(0) != null) ? menRFirstRow.getCell(0) : menRFirstRow.createCell(0);
+		Cell menRFirstNameCell = (menRFirstRow.getCell(1) != null) ? menRFirstRow.getCell(1) : menRFirstRow.createCell(1);
+		Cell menRLastNameCell = (menRFirstRow.getCell(2) != null) ? menRFirstRow.getCell(2) : menRFirstRow.createCell(2);
+		Cell menResultCell = (menRFirstRow.getCell(3) != null) ? menRFirstRow.getCell(3) : menRFirstRow.createCell(3);
+		
+		if (menRIDCell.getStringCellValue() != "ID")
+			womenRIDCell.setCellValue("ID");
+		
+		if (menRFirstNameCell.getStringCellValue() != "Firstname")
+			menRFirstNameCell.setCellValue("Firstname");
+		
+		if (menRLastNameCell.getStringCellValue() != "Lastname")
+			menRLastNameCell.setCellValue("Lastname");
+		
+		if (menResultCell.getStringCellValue() != "Result")
+			menResultCell.setCellValue("Result");
+		
 		this.save();
 	}
 
-	private void checkExistence() {
+	
+	
+	private void checkExistence() throws IOException {
 		if (!this.file.exists()) {
 			XSSFWorkbook create = new XSSFWorkbook();
 
@@ -222,10 +308,11 @@ public class ExcelService {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-		}
+			create.close();
+		} 
 	}
 
-	private void checkAccess() {
+	private void checkAccess() throws FileNotFoundException {
 		if (!this.file.canRead()) {
 			// throw new Exception("File is not readable");
 		}
