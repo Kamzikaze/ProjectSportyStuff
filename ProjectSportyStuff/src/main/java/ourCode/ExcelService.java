@@ -71,7 +71,9 @@ public class ExcelService {
 
 	/*
 	public void getIndividualWomanResults(int athleteID) {
-		Sheet sheet = workbook.getSheet("Individual Woman Result");
+		// TODO:
+		 
+		Sheet sheet = workbook.getSheet("Individual Women Result");
 		
 		Row row = sheet.createRow(sheet.getLastRowNum()+1);
 		
@@ -84,7 +86,9 @@ public class ExcelService {
 	}
 
 	public void getIndividualManResults(int athleteID) {
-		Sheet sheet = workbook.getSheet("Individual Man Result");
+		// TODO:
+	
+		Sheet sheet = workbook.getSheet("Individual Men Result");
 		
 		Row row = sheet.createRow(sheet.getLastRowNum()+1);
 		
