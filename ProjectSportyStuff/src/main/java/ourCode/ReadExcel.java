@@ -55,7 +55,6 @@ public class ReadExcel {
                   }
               }
               ex.close();
-              System.out.println(athletes);
         } catch (Exception e) {
             e.printStackTrace();
         }
