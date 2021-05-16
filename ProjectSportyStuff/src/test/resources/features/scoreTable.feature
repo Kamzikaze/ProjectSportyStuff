@@ -8,7 +8,6 @@ Feature: As a user, I want the score to be prepared with the IAAF score table, s
     And I press the save button
     Then I should receive a <message> message
 
-<<<<<<< HEAD
 Examples:
     | unique_id | value      | message                                            |
     | 1         | ""         | "A value is required. Please try again."           |
@@ -26,7 +25,7 @@ Scenario Outline: The user tries to fetch the score in IAAF format
 Given That I am logged in with <unique_id> as unique ID
 When I am on the results page
 Then I should receive the result in IAAF format
-=======
+
     Examples: 
       | unique_id | value  | message                                            |
       |         1 | ""     | "A value is required. Please try again."           |
@@ -38,7 +37,6 @@ Then I should receive the result in IAAF format
       |         1 | "100"  | "Results were successfully added!"                 |
       |         1 | "1.5"  | "Results were successfully added!"                 |
       |         1 | "15.8" | "Results were successfully added!"                 |
->>>>>>> branch 'master' of https://github.com/Kamzikaze/ProjectSportyStuff.git
 
   @scoreTable
   Scenario Outline: The user tries to fetch the score in IAAF format

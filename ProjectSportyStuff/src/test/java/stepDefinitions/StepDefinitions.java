@@ -84,7 +84,6 @@ public class StepDefinitions {
 
 		System.out.println("What is your last name?");
 		lastName = scan.next();
-
 	}
 
 	@When("the user gets a unique id")
