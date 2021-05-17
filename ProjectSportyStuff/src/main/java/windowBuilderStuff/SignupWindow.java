@@ -138,52 +138,50 @@ public class SignupWindow {
 
 				Athlete athlete = new Athlete();
 				boolean athleteMan = true;
+				boolean athleteWoman = true;
 				if (decathlonRadioBtn.isSelected()) {
-					
+
 					String inputFirstNameMan = firstNameTextField.getText();
 					String inputLastNameMan = lastNameTextField.getText();
 
 					if (inputFirstNameMan.isEmpty() || inputLastNameMan.isEmpty()) {
-						athleteMan=false;
+						athleteMan = false;
 						JOptionPane.showMessageDialog(null, "Enter Values In TextField", "Invalid TextFields",
 								JOptionPane.ERROR_MESSAGE);
 					}
 
 					else {
-						
-						
-						
+
 						char[] ch = inputFirstNameMan.toCharArray();
-						outerloop:
-						for (char c : ch) {
-							
-							
-							
+						outerloop: for (char c : ch) {
+
 							if (!Character.isLetter(c)) {
-								athleteMan=false;
-								JOptionPane.showMessageDialog(null, "No numbers in firstname", "Invalid",JOptionPane.ERROR_MESSAGE);
+								athleteMan = false;
+								JOptionPane.showMessageDialog(null, "Invalid tokens in firstname", "Invalid",
+										JOptionPane.ERROR_MESSAGE);
 							}
 
 							char[] ln = inputLastNameMan.toCharArray();
 							for (char b : ln) {
 								if (!Character.isLetter(b)) {
-									athleteMan= false;
+									athleteMan = false;
 
-									JOptionPane.showMessageDialog(null, "No numbers in lastname", "Invalid",JOptionPane.ERROR_MESSAGE);
+									JOptionPane.showMessageDialog(null, "Invalid tokens in lastname", "Invalid",
+											JOptionPane.ERROR_MESSAGE);
 									break outerloop;
 								}
 							}
-							
+
 						}
 					}
 
-					if(athleteMan==true) {
-						athlete = new Man(inputFirstNameMan , inputLastNameMan,
-							windowHandler.currID);
+					if (athleteMan == true) {
+						athlete = new Man(inputFirstNameMan, inputLastNameMan, windowHandler.currID);
 
-					// windowHandler.addAthlete(new Man(firstNameTextField.getText(),
-					// lastNameTextField.getText(), windowHandler.currID));
-					System.out.println("added man...");
+						// windowHandler.addAthlete(new Man(firstNameTextField.getText(),
+						// lastNameTextField.getText(), windowHandler.currID));
+						JOptionPane.showMessageDialog(null, "You are now registered!\nEvent: Decathlon ", "Success!",
+								JOptionPane.INFORMATION_MESSAGE);
 					}
 
 				}
@@ -193,57 +191,60 @@ public class SignupWindow {
 					String inputLastNameWoman = lastNameTextField.getText();
 
 					if (inputFirstNameWoman.isEmpty() || inputLastNameWoman.isEmpty()) {
+						athleteWoman = false;
 						JOptionPane.showMessageDialog(null, "Enter Values In TextField", "Invalid TextFields",
 								JOptionPane.ERROR_MESSAGE);
 					}
-					
+
 					else {
 
 						char[] ch = inputFirstNameWoman.toCharArray();
-						outerloop:
-						for (char c : ch) {
+						outerloop: for (char c : ch) {
 							if (!Character.isLetter(c)) {
+								athleteWoman = false;
 
-								JOptionPane.showMessageDialog(null, "No numbers in firstname", "Invalid",JOptionPane.ERROR_MESSAGE);
+								JOptionPane.showMessageDialog(null, "Invalid tokens in firstname", "Invalid",
+										JOptionPane.ERROR_MESSAGE);
 							}
 
 							char[] ln = inputLastNameWoman.toCharArray();
 							for (char b : ln) {
 								if (!Character.isLetter(b)) {
+									athleteWoman = false;
 
-									JOptionPane.showMessageDialog(null, "No numbers in lastname", "Invalid",JOptionPane.ERROR_MESSAGE);
+									JOptionPane.showMessageDialog(null, "Invalid tokens in lastname", "Invalid",
+											JOptionPane.ERROR_MESSAGE);
 									break outerloop;
 								}
 							}
 						}
 					}
+					if (athleteWoman == true) {
+					athlete = new Woman(inputFirstNameWoman, inputLastNameWoman, windowHandler.currID);
 
-					athlete = new Woman(firstNameTextField.getText(), lastNameTextField.getText(),
-							windowHandler.currID);
-
-					 {
+					{
 						// windowHandler.addAthlete(new Woman(firstNameTextField.getText(),
 						// lastNameTextField.getText(), windowHandler.currID));
-						System.out.println("added woman...");
+						JOptionPane.showMessageDialog(null, "You are now registered!\nEvent: Heptathlon", "Success!",
+								JOptionPane.INFORMATION_MESSAGE);
+						
 
 					}
-					
-					
-					
-					
+					}
 
 				} else {
-					athleteMan=false;
+					athleteMan = false;
+					athleteWoman = false;
 					JOptionPane.showMessageDialog(null, "Select an event", "Choose option", JOptionPane.ERROR_MESSAGE);
 				}
-				
-				if(athleteMan ==true) {
-					
-				windowHandler.addAthlete(athlete);
-				frmSportyStuff.setVisible(false);
-				windowHandler.runUserAddedWindow();
+
+				if (athleteMan == true && athleteWoman == true) {
+
+					windowHandler.addAthlete(athlete);
+					frmSportyStuff.setVisible(false);
+					windowHandler.runUserAddedWindow();
 				}
-				
+			
 
 			}
 
