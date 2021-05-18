@@ -7,6 +7,11 @@ import io.cucumber.junit.Cucumber;
 
 @RunWith(Cucumber.class)
 																
-@CucumberOptions(features="src/test/resources/features", glue="stepDefinitions") 
+
+@CucumberOptions(features="src/test/resources/features", glue="stepDefinitions", tags= "@windowtest") //, tags= "@idtest"
+
+//@CucumberOptions(features="src/test/resources/features", glue="stepDefinitions", tags= "@scoreTable") 
+
 public class TestRunner {
+	
 }
