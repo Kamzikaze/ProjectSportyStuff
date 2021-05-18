@@ -23,7 +23,7 @@ import java.awt.event.ActionEvent;
 public class UserAddedWindow {
 
 	private JFrame frmSportyStuff;
-	
+
 	WindowHandler windowHandler;
 	Athlete lastAthlete;
 
@@ -49,16 +49,14 @@ public class UserAddedWindow {
 	public UserAddedWindow() {
 		windowHandler = new WindowHandler();
 		initialize();
-		
+
 	}
 
-	
-	public void startWindow() 
-	{
+	public void startWindow() {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					
+
 					UserAddedWindow window = new UserAddedWindow();
 					window.frmSportyStuff.setVisible(true);
 				} catch (Exception e) {
@@ -66,13 +64,13 @@ public class UserAddedWindow {
 				}
 			}
 		});
-		//windowHandler = new WindowHandler();
+		// windowHandler = new WindowHandler();
 	}
-	
+
 	public void closeWindow() {
 		frmSportyStuff.setVisible(false);
 	}
-	
+
 	/**
 	 * Initialize the contents of the frame.
 	 */
@@ -82,63 +80,54 @@ public class UserAddedWindow {
 		frmSportyStuff.setBounds(100, 100, 350, 250);
 		frmSportyStuff.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmSportyStuff.getContentPane().setLayout(null);
-		
+
 		JPanel panel = new JPanel();
 		panel.setBounds(10, 11, 314, 143);
 		frmSportyStuff.getContentPane().add(panel);
-		panel.setLayout(new FormLayout(new ColumnSpec[] {
-				FormSpecs.RELATED_GAP_COLSPEC,
-				FormSpecs.DEFAULT_COLSPEC,
-				FormSpecs.RELATED_GAP_COLSPEC,
-				FormSpecs.DEFAULT_COLSPEC,},
-			new RowSpec[] {
-				FormSpecs.RELATED_GAP_ROWSPEC,
-				FormSpecs.DEFAULT_ROWSPEC,
-				FormSpecs.RELATED_GAP_ROWSPEC,
-				FormSpecs.DEFAULT_ROWSPEC,
-				FormSpecs.RELATED_GAP_ROWSPEC,
-				FormSpecs.DEFAULT_ROWSPEC,
-				FormSpecs.RELATED_GAP_ROWSPEC,
-				FormSpecs.DEFAULT_ROWSPEC,}));
-		
+		panel.setLayout(new FormLayout(
+				new ColumnSpec[] { FormSpecs.RELATED_GAP_COLSPEC, FormSpecs.DEFAULT_COLSPEC,
+						FormSpecs.RELATED_GAP_COLSPEC, FormSpecs.DEFAULT_COLSPEC, },
+				new RowSpec[] { FormSpecs.RELATED_GAP_ROWSPEC, FormSpecs.DEFAULT_ROWSPEC, FormSpecs.RELATED_GAP_ROWSPEC,
+						FormSpecs.DEFAULT_ROWSPEC, FormSpecs.RELATED_GAP_ROWSPEC, FormSpecs.DEFAULT_ROWSPEC,
+						FormSpecs.RELATED_GAP_ROWSPEC, FormSpecs.DEFAULT_ROWSPEC, }));
+
 		JLabel newUserAddedLbl = new JLabel("New user registered!");
 		newUserAddedLbl.setFont(new Font("Tahoma", Font.BOLD, 12));
 		panel.add(newUserAddedLbl, "2, 2");
-		
 
 		JLabel yourInfoLbl = new JLabel("Your information: ");
 		panel.add(yourInfoLbl, "2, 4");
-		
+
 		lastAthlete = new Woman("anna", "svensson", 5);
-		
+
 		JLabel firstNameLbl = new JLabel(lastAthlete.firstName);
 		panel.add(firstNameLbl, "4, 4");
-		
+
 		JLabel lastNameLbl = new JLabel(lastAthlete.lastName);
 		panel.add(lastNameLbl, "4, 6");
-		
+
 		JLabel uniqueIdLbl = new JLabel(String.valueOf(lastAthlete.ID));
 		panel.add(uniqueIdLbl, "4, 8");
-		
+
 		JPanel panel_1 = new JPanel();
 		panel_1.setBounds(10, 165, 314, 35);
 		frmSportyStuff.getContentPane().add(panel_1);
 		panel_1.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
-		
+
 		JButton registerResultBtn = new JButton("Register results");
 		registerResultBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				windowHandler = new WindowHandler();
 				frmSportyStuff.setVisible(false);
-				
+
 				windowHandler.runDecathlonWindow();
 				windowHandler.runHeptathlonWindow();
-				
+
 			}
 		});
 		registerResultBtn.setPreferredSize(new Dimension(125, 23));
 		panel_1.add(registerResultBtn);
-		
+
 		JButton exitBtn = new JButton("Exit");
 		exitBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
