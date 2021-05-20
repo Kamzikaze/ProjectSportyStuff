@@ -1,5 +1,7 @@
 package windowBuilderStuff;
 
+import java.io.File;
+
 public class DirtyGlobalVariables {
 
 	public static enum Status {

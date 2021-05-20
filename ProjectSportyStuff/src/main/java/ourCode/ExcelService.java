@@ -4,9 +4,11 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.Iterator;
 
 import org.apache.poi.EncryptedDocumentException;
 import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
@@ -16,6 +18,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 public class ExcelService {
 	private File file;
 	private Workbook workbook;
+	private int recentAthlete;
 
 	public ExcelService(String filePath) throws FileNotFoundException, IOException {
 		this.file = new File(filePath);
@@ -112,13 +115,15 @@ public class ExcelService {
 		idCell.setCellValue(woman.ID);
 		firstNameCell.setCellValue(woman.firstName);
 		lastNameCell.setCellValue(woman.lastName);
+		
+		//recentAthlete = woman;
 
 		this.save();
 	}
 
 	public void addManAthlete(Athlete man) {
 		Sheet sheet = workbook.getSheet("Men");
-
+		
 		Row row = sheet.createRow(sheet.getLastRowNum()+1);
 
 		Cell idCell = row.createCell(0);
@@ -128,9 +133,80 @@ public class ExcelService {
 		idCell.setCellValue(man.ID);
 		firstNameCell.setCellValue(man.firstName);
 		lastNameCell.setCellValue(man.lastName);
-
+		
+		//recentAthlete = man;
+		
 		this.save();
 	}
+	
+	public int getRecentAthleteID()
+	{
+		Sheet sheet = workbook.getSheet("Men");
+		Sheet sheet2 = workbook.getSheet("Women");
+		
+		int temp1 = 0;
+		int temp2 = 0;
+	
+		int i = sheet.getLastRowNum();
+		int j = sheet2.getLastRowNum();
+		
+		Row row = sheet.getRow(i);
+		if(row.getCell(0).getCellType() != CellType.STRING)
+			temp1 = (int) row.getCell(0).getNumericCellValue();
+		
+		row = sheet2.getRow(j);
+		if(row.getCell(0).getCellType() != CellType.STRING)
+			temp2 = (int) row.getCell(0).getNumericCellValue();
+		
+		
+		if(temp1 > temp2)
+			return temp1;
+		
+		return temp2;
+	}
+	
+	public Athlete getRecentAthlete()
+	{
+		Athlete temp = new Athlete();
+		
+		Sheet manSheet = workbook.getSheet("Men");
+		Sheet womanSheet = workbook.getSheet("Women");
+		
+		int manID = 1;
+		int womanID = 1;
+		
+		int i = manSheet.getLastRowNum();
+		int j = womanSheet.getLastRowNum();
+		
+		Row row = manSheet.getRow(i);
+		if(row.getCell(0).getCellType() != CellType.STRING)
+			manID = (int) row.getCell(0).getNumericCellValue();
+		
+		row = womanSheet.getRow(j);
+		if(row.getCell(0).getCellType() != CellType.STRING)
+			womanID = (int) row.getCell(0).getNumericCellValue();
+		
+		if(manID > womanID)
+		{
+			row = manSheet.getRow(i);
+			temp = new Man(row.getCell(1).getStringCellValue(), 
+					row.getCell(2).getStringCellValue(), (int) 
+					row.getCell(0).getNumericCellValue());
+		}
+		else 
+		{
+			row = womanSheet.getRow(j);
+			temp = new Woman(row.getCell(1).getStringCellValue(), 
+					row.getCell(2).getStringCellValue(), (int) 
+					row.getCell(0).getNumericCellValue());
+			
+			
+		}
+		
+		return temp;
+	}
+	
+	
 
 	/**
 	 * Checks if default sheets are present in excel file.
@@ -253,44 +329,44 @@ public class ExcelService {
 			men1500mCell.setCellValue("1500m");
 		
 		// Women result row
-		Sheet womenRSheet = this.workbook.getSheet("Women Result");
-		Row womenRFirstRow = (womenRSheet.getRow(0) != null) ? womenRSheet.getRow(0) : womenRSheet.createRow(0);
-		Cell womenRIDCell = (womenRFirstRow.getCell(0) != null) ? womenRFirstRow.getCell(0) : womenRFirstRow.createCell(0);
-		Cell womenRFirstNameCell = (womenRFirstRow.getCell(1) != null) ? womenRFirstRow.getCell(1) : womenRFirstRow.createCell(1);
-		Cell womenRLastNameCell = (womenRFirstRow.getCell(2) != null) ? womenRFirstRow.getCell(2) : womenRFirstRow.createCell(2);
-		Cell womenResultCell = (womenRFirstRow.getCell(3) != null) ? womenRFirstRow.getCell(3) : womenRFirstRow.createCell(3);
-		
-		if (womenRIDCell.getStringCellValue() != "ID")
-			womenRIDCell.setCellValue("ID");
-		
-		if (womenRFirstNameCell.getStringCellValue() != "Firstname")
-			womenRFirstNameCell.setCellValue("Firstname");
-		
-		if (womenRLastNameCell.getStringCellValue() != "Lastname")
-			womenRLastNameCell.setCellValue("Lastname");
-		
-		if (womenResultCell.getStringCellValue() != "Result")
-			womenResultCell.setCellValue("Result");
-		
-		// Men result row
-		Sheet menRSheet = this.workbook.getSheet("Men Result");
-		Row menRFirstRow = (menRSheet.getRow(0) != null) ? menRSheet.getRow(0) : menRSheet.createRow(0);
-		Cell menRIDCell = (menRFirstRow.getCell(0) != null) ? menRFirstRow.getCell(0) : menRFirstRow.createCell(0);
-		Cell menRFirstNameCell = (menRFirstRow.getCell(1) != null) ? menRFirstRow.getCell(1) : menRFirstRow.createCell(1);
-		Cell menRLastNameCell = (menRFirstRow.getCell(2) != null) ? menRFirstRow.getCell(2) : menRFirstRow.createCell(2);
-		Cell menResultCell = (menRFirstRow.getCell(3) != null) ? menRFirstRow.getCell(3) : menRFirstRow.createCell(3);
-		
-		if (menRIDCell.getStringCellValue() != "ID")
-			womenRIDCell.setCellValue("ID");
-		
-		if (menRFirstNameCell.getStringCellValue() != "Firstname")
-			menRFirstNameCell.setCellValue("Firstname");
-		
-		if (menRLastNameCell.getStringCellValue() != "Lastname")
-			menRLastNameCell.setCellValue("Lastname");
-		
-		if (menResultCell.getStringCellValue() != "Result")
-			menResultCell.setCellValue("Result");
+//		Sheet womenRSheet = this.workbook.getSheet("Women Result");
+//		Row womenRFirstRow = (womenRSheet.getRow(0) != null) ? womenRSheet.getRow(0) : womenRSheet.createRow(0);
+//		Cell womenRIDCell = (womenRFirstRow.getCell(0) != null) ? womenRFirstRow.getCell(0) : womenRFirstRow.createCell(0);
+//		Cell womenRFirstNameCell = (womenRFirstRow.getCell(1) != null) ? womenRFirstRow.getCell(1) : womenRFirstRow.createCell(1);
+//		Cell womenRLastNameCell = (womenRFirstRow.getCell(2) != null) ? womenRFirstRow.getCell(2) : womenRFirstRow.createCell(2);
+//		Cell womenResultCell = (womenRFirstRow.getCell(3) != null) ? womenRFirstRow.getCell(3) : womenRFirstRow.createCell(3);
+//		
+//		if (womenRIDCell.getStringCellValue() != "ID")
+//			womenRIDCell.setCellValue("ID");
+//		
+//		if (womenRFirstNameCell.getStringCellValue() != "Firstname")
+//			womenRFirstNameCell.setCellValue("Firstname");
+//		
+//		if (womenRLastNameCell.getStringCellValue() != "Lastname")
+//			womenRLastNameCell.setCellValue("Lastname");
+//		
+//		if (womenResultCell.getStringCellValue() != "Result")
+//			womenResultCell.setCellValue("Result");
+//		
+//		// Men result row
+//		Sheet menRSheet = this.workbook.getSheet("Men Result");
+//		Row menRFirstRow = (menRSheet.getRow(0) != null) ? menRSheet.getRow(0) : menRSheet.createRow(0);
+//		Cell menRIDCell = (menRFirstRow.getCell(0) != null) ? menRFirstRow.getCell(0) : menRFirstRow.createCell(0);
+//		Cell menRFirstNameCell = (menRFirstRow.getCell(1) != null) ? menRFirstRow.getCell(1) : menRFirstRow.createCell(1);
+//		Cell menRLastNameCell = (menRFirstRow.getCell(2) != null) ? menRFirstRow.getCell(2) : menRFirstRow.createCell(2);
+//		Cell menResultCell = (menRFirstRow.getCell(3) != null) ? menRFirstRow.getCell(3) : menRFirstRow.createCell(3);
+//		
+//		if (menRIDCell.getStringCellValue() != "ID")
+//			womenRIDCell.setCellValue("ID");
+//		
+//		if (menRFirstNameCell.getStringCellValue() != "Firstname")
+//			menRFirstNameCell.setCellValue("Firstname");
+//		
+//		if (menRLastNameCell.getStringCellValue() != "Lastname")
+//			menRLastNameCell.setCellValue("Lastname");
+//		
+//		if (menResultCell.getStringCellValue() != "Result")
+//			menResultCell.setCellValue("Result");
 		
 		this.save();
 	}

@@ -10,6 +10,8 @@ import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 
 import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.awt.event.ActionEvent;
 
 public class LoginSignupWindow {
@@ -103,7 +105,15 @@ public class LoginSignupWindow {
 				System.out.println("pressed sign up from lsw class");
 				frmSportyStuff.setVisible(false);
 				windowHandler = new WindowHandler();
-				windowHandler.runSignupWindow();
+				try {
+					windowHandler.runSignupWindow();
+				} catch (FileNotFoundException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 		panel.add(signupBtn);

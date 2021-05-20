@@ -12,12 +12,16 @@ import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.RowSpec;
 
 import ourCode.Athlete;
+import ourCode.ExcelService;
+import ourCode.Man;
 import ourCode.Woman;
 
 import com.jgoodies.forms.layout.FormSpecs;
 import javax.swing.JLabel;
 import java.awt.Font;
 import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.awt.event.ActionEvent;
 
 public class UserAddedWindow {
@@ -26,6 +30,7 @@ public class UserAddedWindow {
 
 	WindowHandler windowHandler;
 	Athlete lastAthlete;
+	ExcelService se;
 
 	/**
 	 * Launch the application.
@@ -91,6 +96,16 @@ public class UserAddedWindow {
 						FormSpecs.DEFAULT_ROWSPEC, FormSpecs.RELATED_GAP_ROWSPEC, FormSpecs.DEFAULT_ROWSPEC,
 						FormSpecs.RELATED_GAP_ROWSPEC, FormSpecs.DEFAULT_ROWSPEC, }));
 
+		
+		try {
+			se = new ExcelService("test.xlsx");
+		} catch (FileNotFoundException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
 		JLabel newUserAddedLbl = new JLabel("New user registered!");
 		newUserAddedLbl.setFont(new Font("Tahoma", Font.BOLD, 12));
 		panel.add(newUserAddedLbl, "2, 2");
@@ -98,7 +113,7 @@ public class UserAddedWindow {
 		JLabel yourInfoLbl = new JLabel("Your information: ");
 		panel.add(yourInfoLbl, "2, 4");
 
-		lastAthlete = new Woman("anna", "svensson", 5);
+		lastAthlete = se.getRecentAthlete();
 
 		JLabel firstNameLbl = new JLabel(lastAthlete.firstName);
 		panel.add(firstNameLbl, "4, 4");
@@ -120,9 +135,15 @@ public class UserAddedWindow {
 				windowHandler = new WindowHandler();
 				frmSportyStuff.setVisible(false);
 
-				windowHandler.runDecathlonWindow();
-				windowHandler.runHeptathlonWindow();
-
+				
+				
+				if(se.getRecentAthlete().getClass() == Woman.class) {
+					windowHandler.runHeptathlonWindow();
+				}
+				if(se.getRecentAthlete().getClass() == Man.class) {
+					windowHandler.runDecathlonWindow();
+				}
+				
 			}
 		});
 		registerResultBtn.setPreferredSize(new Dimension(125, 23));

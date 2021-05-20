@@ -18,9 +18,12 @@ import javax.swing.JTextField;
 import ourCode.Athlete;
 import ourCode.ExcelService;
 import ourCode.Man;
+import ourCode.ReadExcel;
 import ourCode.Woman;
 
 import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.awt.event.ActionEvent;
 
 public class SignupWindow {
@@ -31,6 +34,8 @@ public class SignupWindow {
 	public JButton nextBtn;
 	public JButton CancelBtn;
 	WindowHandler windowHandler;
+	ReadExcel re;
+	ExcelService se;
 
 	/**
 	 * Launch the application.
@@ -50,11 +55,14 @@ public class SignupWindow {
 
 	/**
 	 * Create the application.
+	 * 
+	 * @throws IOException
+	 * @throws FileNotFoundException
 	 */
-	public SignupWindow() {
+	public SignupWindow() throws FileNotFoundException, IOException {
 		windowHandler = new WindowHandler();
 		initialize();
-
+		this.se = new ExcelService("test.xlsx");
 	}
 
 	public void startWindow() {
@@ -63,6 +71,7 @@ public class SignupWindow {
 				try {
 					// windowHandler = wh;
 					SignupWindow window = new SignupWindow();
+
 					window.frmSportyStuff.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -135,7 +144,8 @@ public class SignupWindow {
 			public void actionPerformed(ActionEvent e) {
 				windowHandler = new WindowHandler();
 				windowHandler.initialize();
-
+				// se = new ExcelService("C:\\Users\\Kam\\git\\Testdesign tekniker och
+				// exekvering av test\\ProjectSportyStuff\\src\\test.xlsx");
 				Athlete athlete = new Athlete();
 				boolean athleteMan = true;
 				boolean athleteWoman = true;
@@ -176,7 +186,9 @@ public class SignupWindow {
 					}
 
 					if (athleteMan == true) {
-						athlete = new Man(inputFirstNameMan, inputLastNameMan, windowHandler.currID);
+						athlete = new Man(firstNameTextField.getText(), lastNameTextField.getText(),
+								se.getRecentAthleteID() + 1);
+						se.addManAthlete(athlete);
 
 						// windowHandler.addAthlete(new Man(firstNameTextField.getText(),
 						// lastNameTextField.getText(), windowHandler.currID));
@@ -220,16 +232,16 @@ public class SignupWindow {
 						}
 					}
 					if (athleteWoman == true) {
-					athlete = new Woman(inputFirstNameWoman, inputLastNameWoman, windowHandler.currID);
+						athlete = new Woman(inputFirstNameWoman, inputLastNameWoman, se.getRecentAthleteID() + 1);
+						se.addWomanAthlete(athlete);
 
-					{
-						// windowHandler.addAthlete(new Woman(firstNameTextField.getText(),
-						// lastNameTextField.getText(), windowHandler.currID));
-						JOptionPane.showMessageDialog(null, "You are now registered!\nEvent: Heptathlon", "Success!",
-								JOptionPane.INFORMATION_MESSAGE);
-						
+						{
+							// windowHandler.addAthlete(new Woman(firstNameTextField.getText(),
+							// lastNameTextField.getText(), windowHandler.currID));
+							JOptionPane.showMessageDialog(null, "You are now registered!\nEvent: Heptathlon",
+									"Success!", JOptionPane.INFORMATION_MESSAGE);
 
-					}
+						}
 					}
 
 				} else {
@@ -244,7 +256,6 @@ public class SignupWindow {
 					frmSportyStuff.setVisible(false);
 					windowHandler.runUserAddedWindow();
 				}
-			
 
 			}
 

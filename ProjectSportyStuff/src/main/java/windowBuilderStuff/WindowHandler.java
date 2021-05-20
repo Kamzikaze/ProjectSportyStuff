@@ -1,5 +1,7 @@
 package windowBuilderStuff;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 
 import ourCode.*;
@@ -46,7 +48,7 @@ public class WindowHandler {
 		lsw.startWindow();
 	}
 
-	public void runSignupWindow() {
+	public void runSignupWindow() throws FileNotFoundException, IOException {
 		System.out.println("Opening SIGN UP window...");
 		// lsw.closeWindow();
 		sw = new SignupWindow();
