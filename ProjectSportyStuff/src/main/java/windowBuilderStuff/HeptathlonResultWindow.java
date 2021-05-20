@@ -107,6 +107,37 @@ public class HeptathlonResultWindow {
 						RowSpec.decode("20px"), FormSpecs.RELATED_GAP_ROWSPEC, RowSpec.decode("20px"),
 						FormSpecs.RELATED_GAP_ROWSPEC, RowSpec.decode("20px"), }));
 
+		panel_1.setLayout(new FormLayout(new ColumnSpec[] {
+				FormSpecs.RELATED_GAP_COLSPEC,
+				ColumnSpec.decode("149px"),
+				FormSpecs.UNRELATED_GAP_COLSPEC,
+				ColumnSpec.decode("86px"),
+				FormSpecs.RELATED_GAP_COLSPEC,
+				ColumnSpec.decode("max(30dlu;default)"),
+				FormSpecs.RELATED_GAP_COLSPEC,
+				ColumnSpec.decode("max(77dlu;default)"),},
+			new RowSpec[] {
+				FormSpecs.RELATED_GAP_ROWSPEC,
+				RowSpec.decode("15px"),
+				FormSpecs.RELATED_GAP_ROWSPEC,
+				RowSpec.decode("14px"),
+				FormSpecs.RELATED_GAP_ROWSPEC,
+				RowSpec.decode("20px"),
+				FormSpecs.RELATED_GAP_ROWSPEC,
+				RowSpec.decode("20px"),
+				FormSpecs.RELATED_GAP_ROWSPEC,
+				RowSpec.decode("20px"),
+				FormSpecs.RELATED_GAP_ROWSPEC,
+				RowSpec.decode("20px"),
+				RowSpec.decode("31px"),
+				RowSpec.decode("14px"),
+				FormSpecs.RELATED_GAP_ROWSPEC,
+				RowSpec.decode("20px"),
+				FormSpecs.RELATED_GAP_ROWSPEC,
+				RowSpec.decode("20px"),
+				FormSpecs.RELATED_GAP_ROWSPEC,
+				RowSpec.decode("20px"),}));
+		
 		JLabel eventLbl = new JLabel("Event");
 		eventLbl.setHorizontalAlignment(SwingConstants.CENTER);
 		eventLbl.setFont(new Font("Tahoma", Font.BOLD, 12));
@@ -122,6 +153,8 @@ public class HeptathlonResultWindow {
 		JLabel onehundredMHurdlesLbl = new JLabel("100 metres hurdles");
 		panel_1.add(onehundredMHurdlesLbl, "2, 6, right, center");
 
+		panel_1.add(onehundredMHurdlesLbl, "2, 6, left, center");
+		
 		onehundredMHurdlesTextField = new JTextField();
 		onehundredMHurdlesTextField.setText("0.0");
 		panel_1.add(onehundredMHurdlesTextField, "4, 6, left, top");
@@ -133,6 +166,8 @@ public class HeptathlonResultWindow {
 		JLabel highJumpLbl = new JLabel("High jump");
 		panel_1.add(highJumpLbl, "2, 8, right, center");
 
+		panel_1.add(highJumpLbl, "2, 8, left, center");
+		
 		highJumpTextField = new JTextField();
 		highJumpTextField.setText("0.0");
 		panel_1.add(highJumpTextField, "4, 8, left, top");
@@ -144,6 +179,8 @@ public class HeptathlonResultWindow {
 		JLabel shotPutLbl = new JLabel("Shot put");
 		panel_1.add(shotPutLbl, "2, 10, right, center");
 
+		panel_1.add(shotPutLbl, "2, 10, left, center");
+		
 		shotPutTextField = new JTextField();
 		shotPutTextField.setText("0.0");
 		panel_1.add(shotPutTextField, "4, 10, left, top");
@@ -155,6 +192,8 @@ public class HeptathlonResultWindow {
 		JLabel twohundredMLbl = new JLabel("200 metres");
 		panel_1.add(twohundredMLbl, "2, 12, right, center");
 
+		panel_1.add(twohundredMLbl, "2, 12, left, center");
+		
 		twohundredMTextField = new JTextField();
 		twohundredMTextField.setText("0.0");
 		panel_1.add(twohundredMTextField, "4, 12, left, top");
@@ -169,6 +208,8 @@ public class HeptathlonResultWindow {
 		JLabel longJumpLbl = new JLabel("Long jump");
 		panel_1.add(longJumpLbl, "2, 16, right, center");
 
+		panel_1.add(longJumpLbl, "2, 16, left, center");
+		
 		longJumpTextField = new JTextField();
 		longJumpTextField.setText("0.0");
 		panel_1.add(longJumpTextField, "4, 16, left, top");
@@ -180,6 +221,8 @@ public class HeptathlonResultWindow {
 		JLabel javelinThrowLbl = new JLabel("Javelin throw");
 		panel_1.add(javelinThrowLbl, "2, 18, right, center");
 
+		panel_1.add(javelinThrowLbl, "2, 18, left, center");
+		
 		javelinThrowTextField = new JTextField();
 		javelinThrowTextField.setText("0.0");
 		panel_1.add(javelinThrowTextField, "4, 18, left, top");
@@ -191,6 +234,8 @@ public class HeptathlonResultWindow {
 		JLabel eighthundredMLbl = new JLabel("800 metres");
 		panel_1.add(eighthundredMLbl, "2, 20, right, center");
 
+		panel_1.add(eighthundredMLbl, "2, 20, left, center");
+		
 		eighthundredMTextField = new JTextField();
 		eighthundredMTextField.setText("0.0");
 		panel_1.add(eighthundredMTextField, "4, 20, left, top");

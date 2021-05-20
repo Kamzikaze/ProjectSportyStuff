@@ -100,7 +100,7 @@ public class DecathlonResultWindow {
 		panel.add(infoLbl);
 
 		JPanel panel_1 = new JPanel();
-		panel_1.setBounds(10, 52, 414, 409);
+		panel_1.setBounds(10, 53, 414, 334);
 		frmSportyStuff.getContentPane().add(panel_1);
 		panel_1.setLayout(new FormLayout(
 				new ColumnSpec[] { FormSpecs.RELATED_GAP_COLSPEC, ColumnSpec.decode("92px"),
@@ -115,6 +115,45 @@ public class DecathlonResultWindow {
 						FormSpecs.RELATED_GAP_ROWSPEC, RowSpec.decode("20px"), FormSpecs.RELATED_GAP_ROWSPEC,
 						RowSpec.decode("20px"), FormSpecs.RELATED_GAP_ROWSPEC, RowSpec.decode("20px"),
 						FormSpecs.RELATED_GAP_ROWSPEC, RowSpec.decode("20px"), }));
+
+		panel_1.setLayout(new FormLayout(new ColumnSpec[] {
+				FormSpecs.RELATED_GAP_COLSPEC,
+				ColumnSpec.decode("right:149px"),
+				FormSpecs.UNRELATED_GAP_COLSPEC,
+				ColumnSpec.decode("86px"),
+				FormSpecs.RELATED_GAP_COLSPEC,
+				ColumnSpec.decode("max(30dlu;default)"),
+				FormSpecs.RELATED_GAP_COLSPEC,
+				ColumnSpec.decode("max(77dlu;default)"),
+				FormSpecs.RELATED_GAP_COLSPEC,
+				FormSpecs.DEFAULT_COLSPEC,},
+			new RowSpec[] {
+				FormSpecs.RELATED_GAP_ROWSPEC,
+				RowSpec.decode("15px"),
+				FormSpecs.RELATED_GAP_ROWSPEC,
+				RowSpec.decode("14px"),
+				FormSpecs.RELATED_GAP_ROWSPEC,
+				RowSpec.decode("20px"),
+				FormSpecs.RELATED_GAP_ROWSPEC,
+				RowSpec.decode("20px"),
+				FormSpecs.RELATED_GAP_ROWSPEC,
+				RowSpec.decode("20px"),
+				FormSpecs.RELATED_GAP_ROWSPEC,
+				RowSpec.decode("20px"),
+				FormSpecs.RELATED_GAP_ROWSPEC,
+				RowSpec.decode("20px"),
+				RowSpec.decode("31px"),
+				RowSpec.decode("14px"),
+				FormSpecs.RELATED_GAP_ROWSPEC,
+				RowSpec.decode("20px"),
+				FormSpecs.RELATED_GAP_ROWSPEC,
+				RowSpec.decode("20px"),
+				FormSpecs.RELATED_GAP_ROWSPEC,
+				RowSpec.decode("20px"),
+				FormSpecs.RELATED_GAP_ROWSPEC,
+				RowSpec.decode("20px"),
+				FormSpecs.RELATED_GAP_ROWSPEC,
+				RowSpec.decode("20px"),}));
 
 		JLabel eventTitleLbl = new JLabel("Event");
 		eventTitleLbl.setFont(new Font("Tahoma", Font.BOLD, 12));
@@ -131,6 +170,8 @@ public class DecathlonResultWindow {
 		JLabel onehundredMLbl = new JLabel("100 metres");
 		panel_1.add(onehundredMLbl, "2, 6, right, center");
 
+		panel_1.add(onehundredMLbl, "2, 6, left, center");
+		
 		onehundredMTextField = new JTextField();
 		onehundredMTextField.setText("0.0");
 		panel_1.add(onehundredMTextField, "4, 6, left, top");
@@ -139,8 +180,13 @@ public class DecathlonResultWindow {
 		JLabel onehundredMResultLbl = new JLabel("Result");
 		panel_1.add(onehundredMResultLbl, "8, 6");
 
+		panel_1.add(onehundredMResultLbl, "8, 6, 3, 1");
+		
 		JLabel longJumpLbl = new JLabel("Long jump");
+
 		panel_1.add(longJumpLbl, "2, 8, right, center");
+
+		panel_1.add(longJumpLbl, "2, 8, left, center");
 
 		longJumpTextField = new JTextField();
 		longJumpTextField.setText("0.0");
@@ -151,8 +197,12 @@ public class DecathlonResultWindow {
 		panel_1.add(longJumpResultLbl, "8, 8");
 
 		JLabel shotPutLbl = new JLabel("Shot put ");
+
 		panel_1.add(shotPutLbl, "2, 10, right, center");
 
+
+		panel_1.add(shotPutLbl, "2, 10, left, center");
+		
 		shotPutTextField = new JTextField();
 		shotPutTextField.setText("0.0");
 		panel_1.add(shotPutTextField, "4, 10, left, top");
@@ -164,6 +214,8 @@ public class DecathlonResultWindow {
 		JLabel highJumpLbl = new JLabel("High jump");
 		panel_1.add(highJumpLbl, "2, 12, right, center");
 
+		panel_1.add(highJumpLbl, "2, 12, left, center");
+		
 		highJumpTextField = new JTextField();
 		highJumpTextField.setText("0.0");
 		panel_1.add(highJumpTextField, "4, 12, left, top");
@@ -173,8 +225,11 @@ public class DecathlonResultWindow {
 		panel_1.add(highJumpResultLbl, "8, 12");
 
 		JLabel fourhundredMLbl = new JLabel("400 metres");
+
 		panel_1.add(fourhundredMLbl, "2, 14, right, center");
 
+		panel_1.add(fourhundredMLbl, "2, 14, left, center");
+		
 		fourhundredMTextField = new JTextField();
 		fourhundredMTextField.setText("0.0");
 		panel_1.add(fourhundredMTextField, "4, 14, left, top");
@@ -189,6 +244,8 @@ public class DecathlonResultWindow {
 		JLabel onehundredtenMHurdlesLbl = new JLabel("110 metres hurdles");
 		panel_1.add(onehundredtenMHurdlesLbl, "2, 18, right, center");
 
+		panel_1.add(onehundredtenMHurdlesLbl, "2, 18, left, center");
+		
 		onehundredtenMHurdlesTextField = new JTextField();
 		onehundredtenMHurdlesTextField.setText("0.0");
 		panel_1.add(onehundredtenMHurdlesTextField, "4, 18, left, top");
@@ -200,6 +257,8 @@ public class DecathlonResultWindow {
 		JLabel discusThrowLbl = new JLabel("Discus throw");
 		panel_1.add(discusThrowLbl, "2, 20, right, center");
 
+		panel_1.add(discusThrowLbl, "2, 20, left, center");
+		
 		discusThrowTextField = new JTextField();
 		discusThrowTextField.setText("0.0");
 		panel_1.add(discusThrowTextField, "4, 20, left, top");
@@ -211,6 +270,8 @@ public class DecathlonResultWindow {
 		JLabel poleVaultLbl = new JLabel("Pole vault");
 		panel_1.add(poleVaultLbl, "2, 22, right, center");
 
+		panel_1.add(poleVaultLbl, "2, 22, left, center");
+		
 		poleVaultTextField = new JTextField();
 		poleVaultTextField.setText("0.0");
 		panel_1.add(poleVaultTextField, "4, 22, left, top");
@@ -222,6 +283,8 @@ public class DecathlonResultWindow {
 		JLabel javelinThrowLbl = new JLabel("Javelin throw");
 		panel_1.add(javelinThrowLbl, "2, 24, right, center");
 
+		panel_1.add(javelinThrowLbl, "2, 24, left, center");
+		
 		javelinThrowTextField = new JTextField();
 		javelinThrowTextField.setText("0.0");
 		panel_1.add(javelinThrowTextField, "4, 24, left, top");
@@ -233,6 +296,8 @@ public class DecathlonResultWindow {
 		JLabel thousandfivehundredMLbl = new JLabel("1500 metres");
 		panel_1.add(thousandfivehundredMLbl, "2, 26, right, center");
 
+		panel_1.add(thousandfivehundredMLbl, "2, 26, left, center");
+		
 		thousandfivehundredMTextField = new JTextField();
 		thousandfivehundredMTextField.setText("0.0");
 		panel_1.add(thousandfivehundredMTextField, "4, 26, left, top");
