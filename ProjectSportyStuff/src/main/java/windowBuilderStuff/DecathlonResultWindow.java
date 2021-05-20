@@ -13,6 +13,10 @@ import javax.swing.JOptionPane;
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.RowSpec;
+
+import ourCode.Calculation;
+import ourCode.Man;
+
 import com.jgoodies.forms.layout.FormSpecs;
 import javax.swing.SwingConstants;
 import java.awt.Font;
@@ -23,11 +27,13 @@ import java.awt.event.ActionEvent;
 public class DecathlonResultWindow {
 
 	private JFrame frmSportyStuff;
+	
 	private JTextField onehundredMTextField;
 	private JTextField longJumpTextField;
 	private JTextField shotPutTextField;
 	private JTextField highJumpTextField;
 	private JTextField fourhundredMTextField;
+	
 	private JTextField onehundredtenMHurdlesTextField;
 	private JTextField discusThrowTextField;
 	private JTextField poleVaultTextField;
@@ -329,9 +335,35 @@ public class DecathlonResultWindow {
 		JButton saveBtn = new JButton("Save");
 		saveBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				Man man = new Man();
+				Calculation calc = new Calculation();
 				if(checkNumbers()) {
 					// save it all to excel file here
+					man.ID = DirtyGlobalVariables.stAthlete.ID;
+					man.firstName = DirtyGlobalVariables.stAthlete.firstName;
+					man.lastName = DirtyGlobalVariables.stAthlete.lastName;
+					
+					man.setOnethousandfivehundredM(calc.CalculateDecathlonResult(Double.parseDouble
+							(thousandfivehundredMTextField.getText()), "1500m"));
+					man.setDiscusThrow(calc.CalculateDecathlonResult(Double.parseDouble
+							(discusThrowTextField.getText()), "discus throw"));
+					man.setFourhundredM(calc.CalculateDecathlonResult(Double.parseDouble
+							(fourhundredMTextField.getText()), "400m"));
+					man.setHighJump(calc.CalculateDecathlonResult(Double.parseDouble
+							(highJumpTextField.getText()), "high jump"));
+					man.setJavelinThrow(calc.CalculateDecathlonResult(Double.parseDouble
+							(javelinThrowTextField.getText()), "javelin throw"));
+					
+					man.setLongJump(calc.CalculateDecathlonResult(Double.parseDouble
+							(longJumpTextField.getText()), "long jump"));
+					man.setOnehundredM(calc.CalculateDecathlonResult(Double.parseDouble
+							(onehundredMTextField.getText()), "100m"));
+					man.setOnehundredtenMHurdles(calc.CalculateDecathlonResult(Double.parseDouble
+							(onehundredtenMHurdlesTextField.getText()), "110m hurdles"));
+					man.setPoleVault(calc.CalculateDecathlonResult(Double.parseDouble
+							(poleVaultTextField.getText()), "pole vault"));
+					man.setShotPut(calc.CalculateDecathlonResult(Double.parseDouble
+							(shotPutTextField.getText()), "shot put"));
 					
 					saveConfirmLbl.setText("Saved to excel file");
 				}
