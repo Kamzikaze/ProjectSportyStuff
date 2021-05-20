@@ -190,16 +190,15 @@ public class ExcelService {
 		{
 			row = manSheet.getRow(i);
 			temp = new Man(row.getCell(1).getStringCellValue(), 
-					row.getCell(2).getStringCellValue(), (int) 
-					row.getCell(0).getNumericCellValue());
+					row.getCell(2).getStringCellValue(), 
+					(int) row.getCell(0).getNumericCellValue());
 		}
 		else 
 		{
 			row = womanSheet.getRow(j);
 			temp = new Woman(row.getCell(1).getStringCellValue(), 
-					row.getCell(2).getStringCellValue(), (int) 
-					row.getCell(0).getNumericCellValue());
-			
+					row.getCell(2).getStringCellValue(), 
+					(int) row.getCell(0).getNumericCellValue());
 			
 		}
 		
