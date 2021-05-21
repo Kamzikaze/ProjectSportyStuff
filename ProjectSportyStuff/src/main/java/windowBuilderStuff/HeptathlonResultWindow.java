@@ -7,6 +7,12 @@ import javax.swing.JPanel;
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.RowSpec;
+
+import ourCode.Calculation;
+import ourCode.ExcelService;
+import ourCode.Man;
+import ourCode.Woman;
+
 import com.jgoodies.forms.layout.FormSpecs;
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -16,6 +22,8 @@ import java.awt.FlowLayout;
 import javax.swing.JButton;
 import java.awt.Dimension;
 import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.awt.event.ActionEvent;
 
 public class HeptathlonResultWindow {
@@ -29,6 +37,7 @@ public class HeptathlonResultWindow {
 	private JTextField javelinThrowTextField;
 	private JTextField eighthundredMTextField;
 
+	ExcelService se;
 	WindowHandler windowHandler;
 
 	/**
@@ -53,6 +62,15 @@ public class HeptathlonResultWindow {
 	public HeptathlonResultWindow() {
 		windowHandler = new WindowHandler();
 		initialize();
+		try {
+			this.se = new ExcelService("test.xlsx");
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	public void startWindow() {
@@ -156,7 +174,7 @@ public class HeptathlonResultWindow {
 		panel_1.add(onehundredMHurdlesLbl, "2, 6, left, center");
 		
 		onehundredMHurdlesTextField = new JTextField();
-		onehundredMHurdlesTextField.setText("0.0");
+		onehundredMHurdlesTextField.setText("16.2");
 		panel_1.add(onehundredMHurdlesTextField, "4, 6, left, top");
 		onehundredMHurdlesTextField.setColumns(10);
 
@@ -169,7 +187,7 @@ public class HeptathlonResultWindow {
 		panel_1.add(highJumpLbl, "2, 8, left, center");
 		
 		highJumpTextField = new JTextField();
-		highJumpTextField.setText("0.0");
+		highJumpTextField.setText("213.4");
 		panel_1.add(highJumpTextField, "4, 8, left, top");
 		highJumpTextField.setColumns(10);
 
@@ -182,7 +200,7 @@ public class HeptathlonResultWindow {
 		panel_1.add(shotPutLbl, "2, 10, left, center");
 		
 		shotPutTextField = new JTextField();
-		shotPutTextField.setText("0.0");
+		shotPutTextField.setText("17");
 		panel_1.add(shotPutTextField, "4, 10, left, top");
 		shotPutTextField.setColumns(10);
 
@@ -195,7 +213,7 @@ public class HeptathlonResultWindow {
 		panel_1.add(twohundredMLbl, "2, 12, left, center");
 		
 		twohundredMTextField = new JTextField();
-		twohundredMTextField.setText("0.0");
+		twohundredMTextField.setText("28.6");
 		panel_1.add(twohundredMTextField, "4, 12, left, top");
 		twohundredMTextField.setColumns(10);
 
@@ -211,7 +229,7 @@ public class HeptathlonResultWindow {
 		panel_1.add(longJumpLbl, "2, 16, left, center");
 		
 		longJumpTextField = new JTextField();
-		longJumpTextField.setText("0.0");
+		longJumpTextField.setText("673");
 		panel_1.add(longJumpTextField, "4, 16, left, top");
 		longJumpTextField.setColumns(10);
 
@@ -224,7 +242,7 @@ public class HeptathlonResultWindow {
 		panel_1.add(javelinThrowLbl, "2, 18, left, center");
 		
 		javelinThrowTextField = new JTextField();
-		javelinThrowTextField.setText("0.0");
+		javelinThrowTextField.setText("62");
 		panel_1.add(javelinThrowTextField, "4, 18, left, top");
 		javelinThrowTextField.setColumns(10);
 
@@ -237,7 +255,7 @@ public class HeptathlonResultWindow {
 		panel_1.add(eighthundredMLbl, "2, 20, left, center");
 		
 		eighthundredMTextField = new JTextField();
-		eighthundredMTextField.setText("0.0");
+		eighthundredMTextField.setText("112.7");
 		panel_1.add(eighthundredMTextField, "4, 20, left, top");
 		eighthundredMTextField.setColumns(10);
 
@@ -269,10 +287,66 @@ public class HeptathlonResultWindow {
 		JButton saveBtn = new JButton("Save");
 		saveBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				Woman woman = new Woman();
+				Calculation calc = new Calculation();
 				if(checkNumbers()) {
 					// save it all to excel file here
-					saveConfirmLbl.setText("Saved to excel file");
+					
+
+						// save it all to excel file here
+					woman.ID = DirtyGlobalVariables.stAthlete.ID;
+					woman.firstName = DirtyGlobalVariables.stAthlete.firstName;
+					woman.lastName = DirtyGlobalVariables.stAthlete.lastName;
+						
+						double dub = 0;
+						
+						dub = Double.parseDouble(twohundredMTextField.getText());
+						
+						if(dub > 21)
+							woman.setTwohundredM(calc.CalculateHeptathlonResult(Double.parseDouble
+								(twohundredMTextField.getText()), "200m"));
+						
+						dub = Double.parseDouble(eighthundredMTextField.getText());
+						
+						if(dub > 100)
+							woman.setEighthundredM(calc.CalculateHeptathlonResult(Double.parseDouble
+								(eighthundredMTextField.getText()), "800m"));
+						
+						dub = Double.parseDouble(onehundredMHurdlesTextField.getText());
+						
+						if(dub > 12)
+							woman.setOnehundredMHurdles(calc.CalculateHeptathlonResult(Double.parseDouble
+								(onehundredMHurdlesTextField.getText()), "100m hurdles"));
+						
+						dub = Double.parseDouble(highJumpTextField.getText());
+						
+						if(dub < 245)
+							woman.setHighJump(calc.CalculateHeptathlonResult(Double.parseDouble
+								(highJumpTextField.getText()), "high jump"));
+						
+						dub = Double.parseDouble(longJumpTextField.getText());
+						
+						if(dub < 895)
+							woman.setLongJump(calc.CalculateHeptathlonResult(Double.parseDouble
+								(longJumpTextField.getText()), "long jump"));
+						
+						dub = Double.parseDouble(shotPutTextField.getText());
+						
+						if(dub < 22)
+							woman.setShotPut(calc.CalculateHeptathlonResult(Double.parseDouble
+								(shotPutTextField.getText()), "shot put"));
+						
+						dub = Double.parseDouble(javelinThrowTextField.getText());
+						
+						if(dub < 95)
+							woman.setJavelinThrow(calc.CalculateHeptathlonResult(Double.parseDouble
+								(javelinThrowTextField.getText()), "javelin throw"));
+						
+						
+						
+						
+						saveConfirmLbl.setText("Saved to excel file");
+						se.updateWomanResults(woman);
 				}
 				else {
 					saveConfirmLbl.setText("Error, check text fields");

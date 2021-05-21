@@ -16,6 +16,10 @@ public class Woman extends Athlete {
 		this.ID = id;
 	}
 
+	public Woman() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public int getTwohundredM() {
 		return twohundredM;
 	}

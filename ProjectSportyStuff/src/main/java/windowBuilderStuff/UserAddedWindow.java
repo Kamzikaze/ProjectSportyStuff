@@ -135,8 +135,6 @@ public class UserAddedWindow {
 			public void actionPerformed(ActionEvent e) {
 				windowHandler = new WindowHandler();
 				frmSportyStuff.setVisible(false);
-
-				
 				
 				if(se.getRecentAthlete().getClass() == Woman.class) {
 					windowHandler.runHeptathlonWindow();

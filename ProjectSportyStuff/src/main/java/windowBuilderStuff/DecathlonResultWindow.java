@@ -15,6 +15,7 @@ import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.RowSpec;
 
 import ourCode.Calculation;
+import ourCode.ExcelService;
 import ourCode.Man;
 
 import com.jgoodies.forms.layout.FormSpecs;
@@ -22,6 +23,8 @@ import javax.swing.SwingConstants;
 import java.awt.Font;
 import javax.swing.JTextField;
 import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.awt.event.ActionEvent;
 
 public class DecathlonResultWindow {
@@ -39,6 +42,8 @@ public class DecathlonResultWindow {
 	private JTextField poleVaultTextField;
 	private JTextField javelinThrowTextField;
 	private JTextField thousandfivehundredMTextField;
+	
+	ExcelService se;
 
 	WindowHandler windowHandler;
 
@@ -66,6 +71,15 @@ public class DecathlonResultWindow {
 	public DecathlonResultWindow() {
 		windowHandler = new WindowHandler();
 		initialize();
+		try {
+			this.se = new ExcelService("test.xlsx");
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	public void startWindow() {
@@ -179,7 +193,7 @@ public class DecathlonResultWindow {
 		panel_1.add(onehundredMLbl, "2, 6, left, center");
 		
 		onehundredMTextField = new JTextField();
-		onehundredMTextField.setText("0.0");
+		onehundredMTextField.setText("10.70");
 		panel_1.add(onehundredMTextField, "4, 6, left, top");
 		onehundredMTextField.setColumns(10);
 
@@ -195,7 +209,7 @@ public class DecathlonResultWindow {
 		panel_1.add(longJumpLbl, "2, 8, left, center");
 
 		longJumpTextField = new JTextField();
-		longJumpTextField.setText("0.0");
+		longJumpTextField.setText("540.2");
 		panel_1.add(longJumpTextField, "4, 8, left, top");
 		longJumpTextField.setColumns(10);
 
@@ -210,7 +224,7 @@ public class DecathlonResultWindow {
 		panel_1.add(shotPutLbl, "2, 10, left, center");
 		
 		shotPutTextField = new JTextField();
-		shotPutTextField.setText("0.0");
+		shotPutTextField.setText("21.3");
 		panel_1.add(shotPutTextField, "4, 10, left, top");
 		shotPutTextField.setColumns(10);
 
@@ -223,7 +237,7 @@ public class DecathlonResultWindow {
 		panel_1.add(highJumpLbl, "2, 12, left, center");
 		
 		highJumpTextField = new JTextField();
-		highJumpTextField.setText("0.0");
+		highJumpTextField.setText("210.5");
 		panel_1.add(highJumpTextField, "4, 12, left, top");
 		highJumpTextField.setColumns(10);
 
@@ -237,7 +251,7 @@ public class DecathlonResultWindow {
 		panel_1.add(fourhundredMLbl, "2, 14, left, center");
 		
 		fourhundredMTextField = new JTextField();
-		fourhundredMTextField.setText("0.0");
+		fourhundredMTextField.setText("51.4");
 		panel_1.add(fourhundredMTextField, "4, 14, left, top");
 		fourhundredMTextField.setColumns(10);
 
@@ -253,7 +267,7 @@ public class DecathlonResultWindow {
 		panel_1.add(onehundredtenMHurdlesLbl, "2, 18, left, center");
 		
 		onehundredtenMHurdlesTextField = new JTextField();
-		onehundredtenMHurdlesTextField.setText("0.0");
+		onehundredtenMHurdlesTextField.setText("15.2");
 		panel_1.add(onehundredtenMHurdlesTextField, "4, 18, left, top");
 		onehundredtenMHurdlesTextField.setColumns(10);
 
@@ -266,7 +280,7 @@ public class DecathlonResultWindow {
 		panel_1.add(discusThrowLbl, "2, 20, left, center");
 		
 		discusThrowTextField = new JTextField();
-		discusThrowTextField.setText("0.0");
+		discusThrowTextField.setText("71.2");
 		panel_1.add(discusThrowTextField, "4, 20, left, top");
 		discusThrowTextField.setColumns(10);
 
@@ -279,7 +293,7 @@ public class DecathlonResultWindow {
 		panel_1.add(poleVaultLbl, "2, 22, left, center");
 		
 		poleVaultTextField = new JTextField();
-		poleVaultTextField.setText("0.0");
+		poleVaultTextField.setText("360.1");
 		panel_1.add(poleVaultTextField, "4, 22, left, top");
 		poleVaultTextField.setColumns(10);
 
@@ -292,7 +306,7 @@ public class DecathlonResultWindow {
 		panel_1.add(javelinThrowLbl, "2, 24, left, center");
 		
 		javelinThrowTextField = new JTextField();
-		javelinThrowTextField.setText("0.0");
+		javelinThrowTextField.setText("75.4");
 		panel_1.add(javelinThrowTextField, "4, 24, left, top");
 		javelinThrowTextField.setColumns(10);
 
@@ -305,7 +319,7 @@ public class DecathlonResultWindow {
 		panel_1.add(thousandfivehundredMLbl, "2, 26, left, center");
 		
 		thousandfivehundredMTextField = new JTextField();
-		thousandfivehundredMTextField.setText("0.0");
+		thousandfivehundredMTextField.setText("360.1");
 		panel_1.add(thousandfivehundredMTextField, "4, 26, left, top");
 		thousandfivehundredMTextField.setColumns(10);
 
@@ -343,29 +357,73 @@ public class DecathlonResultWindow {
 					man.firstName = DirtyGlobalVariables.stAthlete.firstName;
 					man.lastName = DirtyGlobalVariables.stAthlete.lastName;
 					
-					man.setOnethousandfivehundredM(calc.CalculateDecathlonResult(Double.parseDouble
+					double dub = 0;
+					dub = Double.parseDouble(thousandfivehundredMTextField.getText());
+					
+					if(dub > 230)
+						man.setOnethousandfivehundredM(calc.CalculateDecathlonResult(Double.parseDouble
 							(thousandfivehundredMTextField.getText()), "1500m"));
-					man.setDiscusThrow(calc.CalculateDecathlonResult(Double.parseDouble
+					
+					dub = Double.parseDouble(discusThrowTextField.getText());
+					
+					if(dub < 74000)
+						man.setDiscusThrow(calc.CalculateDecathlonResult(Double.parseDouble
 							(discusThrowTextField.getText()), "discus throw"));
-					man.setFourhundredM(calc.CalculateDecathlonResult(Double.parseDouble
+					
+					dub = Double.parseDouble(fourhundredMTextField.getText());
+					
+					if(dub > 43)
+						man.setFourhundredM(calc.CalculateDecathlonResult(Double.parseDouble
 							(fourhundredMTextField.getText()), "400m"));
-					man.setHighJump(calc.CalculateDecathlonResult(Double.parseDouble
+					
+					dub = Double.parseDouble(highJumpTextField.getText());
+					
+					if(dub < 245)
+						man.setHighJump(calc.CalculateDecathlonResult(Double.parseDouble
 							(highJumpTextField.getText()), "high jump"));
-					man.setJavelinThrow(calc.CalculateDecathlonResult(Double.parseDouble
+					
+					
+					dub = Double.parseDouble(javelinThrowTextField.getText());
+					
+					if(dub < 98000)
+						man.setJavelinThrow(calc.CalculateDecathlonResult(Double.parseDouble
 							(javelinThrowTextField.getText()), "javelin throw"));
 					
-					man.setLongJump(calc.CalculateDecathlonResult(Double.parseDouble
+					dub = Double.parseDouble(longJumpTextField.getText());
+					
+					if(dub < 895)
+						man.setLongJump(calc.CalculateDecathlonResult(Double.parseDouble
 							(longJumpTextField.getText()), "long jump"));
-					man.setOnehundredM(calc.CalculateDecathlonResult(Double.parseDouble
+					
+					dub = Double.parseDouble(onehundredMTextField.getText());
+					
+					if(dub > 9.8)
+						man.setOnehundredM(calc.CalculateDecathlonResult(Double.parseDouble
 							(onehundredMTextField.getText()), "100m"));
-					man.setOnehundredtenMHurdles(calc.CalculateDecathlonResult(Double.parseDouble
+					
+					dub = Double.parseDouble(onehundredtenMHurdlesTextField.getText());
+					
+					if(dub > 12)
+						man.setOnehundredtenMHurdles(calc.CalculateDecathlonResult(Double.parseDouble
 							(onehundredtenMHurdlesTextField.getText()), "110m hurdles"));
-					man.setPoleVault(calc.CalculateDecathlonResult(Double.parseDouble
+					
+					dub = Double.parseDouble(poleVaultTextField.getText());
+					
+					if(dub < 618)
+						man.setPoleVault(calc.CalculateDecathlonResult(Double.parseDouble
 							(poleVaultTextField.getText()), "pole vault"));
-					man.setShotPut(calc.CalculateDecathlonResult(Double.parseDouble
+					
+					dub = Double.parseDouble(shotPutTextField.getText());
+					
+					if(dub < 23000)
+						man.setShotPut(calc.CalculateDecathlonResult(Double.parseDouble
 							(shotPutTextField.getText()), "shot put"));
 					
+					
+					
+					
 					saveConfirmLbl.setText("Saved to excel file");
+					se.updateManResults(man);
 				}
 				else {
 					saveConfirmLbl.setText("Error, check text fields");
