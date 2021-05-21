@@ -116,11 +116,14 @@ public class DecathlonResultWindow {
 		frmSportyStuff.getContentPane().add(panel);
 		panel.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 
-		JLabel infoLbl = new JLabel("info goes here");
+		JLabel infoLbl = new JLabel(DirtyGlobalVariables.stAthlete.ID + " - "+ 
+				DirtyGlobalVariables.stAthlete.firstName + " " + 
+				DirtyGlobalVariables.stAthlete.lastName);//("info goes here");
+		
 		panel.add(infoLbl);
 
 		JPanel panel_1 = new JPanel();
-		panel_1.setBounds(10, 53, 414, 334);
+		panel_1.setBounds(10, 53, 414, 360);
 		frmSportyStuff.getContentPane().add(panel_1);
 		panel_1.setLayout(new FormLayout(
 				new ColumnSpec[] { FormSpecs.RELATED_GAP_COLSPEC, ColumnSpec.decode("92px"),
@@ -197,7 +200,7 @@ public class DecathlonResultWindow {
 		panel_1.add(onehundredMTextField, "4, 6, left, top");
 		onehundredMTextField.setColumns(10);
 
-		JLabel onehundredMResultLbl = new JLabel("Result");
+		final JLabel onehundredMResultLbl = new JLabel("Result");
 		panel_1.add(onehundredMResultLbl, "8, 6");
 
 		panel_1.add(onehundredMResultLbl, "8, 6, 3, 1");
@@ -213,7 +216,7 @@ public class DecathlonResultWindow {
 		panel_1.add(longJumpTextField, "4, 8, left, top");
 		longJumpTextField.setColumns(10);
 
-		JLabel longJumpResultLbl = new JLabel("Result");
+		final JLabel longJumpResultLbl = new JLabel("Result");
 		panel_1.add(longJumpResultLbl, "8, 8");
 
 		JLabel shotPutLbl = new JLabel("Shot put ");
@@ -228,7 +231,7 @@ public class DecathlonResultWindow {
 		panel_1.add(shotPutTextField, "4, 10, left, top");
 		shotPutTextField.setColumns(10);
 
-		JLabel shotPutResultLbl = new JLabel("Result");
+		final JLabel shotPutResultLbl = new JLabel("Result");
 		panel_1.add(shotPutResultLbl, "8, 10");
 
 		JLabel highJumpLbl = new JLabel("High jump");
@@ -241,7 +244,7 @@ public class DecathlonResultWindow {
 		panel_1.add(highJumpTextField, "4, 12, left, top");
 		highJumpTextField.setColumns(10);
 
-		JLabel highJumpResultLbl = new JLabel("Result");
+		final JLabel highJumpResultLbl = new JLabel("Result");
 		panel_1.add(highJumpResultLbl, "8, 12");
 
 		JLabel fourhundredMLbl = new JLabel("400 metres");
@@ -255,7 +258,7 @@ public class DecathlonResultWindow {
 		panel_1.add(fourhundredMTextField, "4, 14, left, top");
 		fourhundredMTextField.setColumns(10);
 
-		JLabel fourhundredMResultLbl = new JLabel("Result");
+		final JLabel fourhundredMResultLbl = new JLabel("Result");
 		panel_1.add(fourhundredMResultLbl, "8, 14");
 
 		JLabel day2Lbl = new JLabel("Day 2");
@@ -271,7 +274,7 @@ public class DecathlonResultWindow {
 		panel_1.add(onehundredtenMHurdlesTextField, "4, 18, left, top");
 		onehundredtenMHurdlesTextField.setColumns(10);
 
-		JLabel onehundredtenMHurdlesResultLbl = new JLabel("Result");
+		final JLabel onehundredtenMHurdlesResultLbl = new JLabel("Result");
 		panel_1.add(onehundredtenMHurdlesResultLbl, "8, 18");
 
 		JLabel discusThrowLbl = new JLabel("Discus throw");
@@ -284,7 +287,7 @@ public class DecathlonResultWindow {
 		panel_1.add(discusThrowTextField, "4, 20, left, top");
 		discusThrowTextField.setColumns(10);
 
-		JLabel discusThrowResultLbl = new JLabel("Result");
+		final JLabel discusThrowResultLbl = new JLabel("Result");
 		panel_1.add(discusThrowResultLbl, "8, 20");
 
 		JLabel poleVaultLbl = new JLabel("Pole vault");
@@ -297,7 +300,7 @@ public class DecathlonResultWindow {
 		panel_1.add(poleVaultTextField, "4, 22, left, top");
 		poleVaultTextField.setColumns(10);
 
-		JLabel poleVaultResultLbl = new JLabel("Result");
+		final JLabel poleVaultResultLbl = new JLabel("Result");
 		panel_1.add(poleVaultResultLbl, "8, 22");
 
 		JLabel javelinThrowLbl = new JLabel("Javelin throw");
@@ -310,7 +313,7 @@ public class DecathlonResultWindow {
 		panel_1.add(javelinThrowTextField, "4, 24, left, top");
 		javelinThrowTextField.setColumns(10);
 
-		JLabel javelinThrowResultLbl = new JLabel("Result");
+		final JLabel javelinThrowResultLbl = new JLabel("Result");
 		panel_1.add(javelinThrowResultLbl, "8, 24");
 
 		JLabel thousandfivehundredMLbl = new JLabel("1500 metres");
@@ -323,7 +326,7 @@ public class DecathlonResultWindow {
 		panel_1.add(thousandfivehundredMTextField, "4, 26, left, top");
 		thousandfivehundredMTextField.setColumns(10);
 
-		JLabel thousandfivehundredMResultLbl = new JLabel("Result");
+		final JLabel thousandfivehundredMResultLbl = new JLabel("Result");
 		panel_1.add(thousandfivehundredMResultLbl, "8, 26");
 
 		JPanel panel_2 = new JPanel();
@@ -342,7 +345,7 @@ public class DecathlonResultWindow {
 		panel_5.setBounds(220, 472, 204, 30);
 		frmSportyStuff.getContentPane().add(panel_5);
 
-		JLabel totalResultLbl = new JLabel("totalResult");
+		final JLabel totalResultLbl = new JLabel("totalResult");
 		panel_5.add(totalResultLbl);
 		
 
@@ -360,68 +363,79 @@ public class DecathlonResultWindow {
 					double dub = 0;
 					dub = Double.parseDouble(thousandfivehundredMTextField.getText());
 					
-					if(dub > 230)
+					if(dub > 230) {
 						man.setOnethousandfivehundredM(calc.CalculateDecathlonResult(Double.parseDouble
 							(thousandfivehundredMTextField.getText()), "1500m"));
-					
+						
+						thousandfivehundredMResultLbl.setText(String.valueOf(man.getOnethousandfivehundredM()));
+					}
 					dub = Double.parseDouble(discusThrowTextField.getText());
 					
-					if(dub < 74000)
+					if(dub < 74) {
 						man.setDiscusThrow(calc.CalculateDecathlonResult(Double.parseDouble
 							(discusThrowTextField.getText()), "discus throw"));
-					
+						discusThrowResultLbl.setText(String.valueOf(man.getDiscusThrow()));
+					}
 					dub = Double.parseDouble(fourhundredMTextField.getText());
 					
-					if(dub > 43)
+					if(dub > 43) {
 						man.setFourhundredM(calc.CalculateDecathlonResult(Double.parseDouble
 							(fourhundredMTextField.getText()), "400m"));
-					
+						fourhundredMResultLbl.setText(String.valueOf(man.getFourhundredM()));
+					}
 					dub = Double.parseDouble(highJumpTextField.getText());
 					
-					if(dub < 245)
+					if(dub < 245) {
 						man.setHighJump(calc.CalculateDecathlonResult(Double.parseDouble
 							(highJumpTextField.getText()), "high jump"));
-					
+						highJumpResultLbl.setText(String.valueOf(man.getHighJump()));
+					}
 					
 					dub = Double.parseDouble(javelinThrowTextField.getText());
 					
-					if(dub < 98000)
+					if(dub < 98) {
 						man.setJavelinThrow(calc.CalculateDecathlonResult(Double.parseDouble
 							(javelinThrowTextField.getText()), "javelin throw"));
-					
+						javelinThrowResultLbl.setText(String.valueOf(man.getJavelinThrow()));
+					}
 					dub = Double.parseDouble(longJumpTextField.getText());
 					
-					if(dub < 895)
+					if(dub < 895) {
 						man.setLongJump(calc.CalculateDecathlonResult(Double.parseDouble
 							(longJumpTextField.getText()), "long jump"));
-					
+						longJumpResultLbl.setText(String.valueOf(man.getLongJump()));
+					}
 					dub = Double.parseDouble(onehundredMTextField.getText());
 					
-					if(dub > 9.8)
+					if(dub > 9.8) {
 						man.setOnehundredM(calc.CalculateDecathlonResult(Double.parseDouble
 							(onehundredMTextField.getText()), "100m"));
-					
+						onehundredMResultLbl.setText(String.valueOf(man.getOnehundredM()));
+					}
 					dub = Double.parseDouble(onehundredtenMHurdlesTextField.getText());
 					
-					if(dub > 12)
+					if(dub > 12) {
 						man.setOnehundredtenMHurdles(calc.CalculateDecathlonResult(Double.parseDouble
 							(onehundredtenMHurdlesTextField.getText()), "110m hurdles"));
-					
+						onehundredtenMHurdlesResultLbl.setText(String.valueOf(man.getOnehundredtenMHurdles()));
+					}
 					dub = Double.parseDouble(poleVaultTextField.getText());
 					
-					if(dub < 618)
+					if(dub < 618) {
 						man.setPoleVault(calc.CalculateDecathlonResult(Double.parseDouble
 							(poleVaultTextField.getText()), "pole vault"));
-					
+						poleVaultResultLbl.setText(String.valueOf(man.getPoleVault()));
+					}
 					dub = Double.parseDouble(shotPutTextField.getText());
 					
-					if(dub < 23000)
+					if(dub < 23) {
 						man.setShotPut(calc.CalculateDecathlonResult(Double.parseDouble
 							(shotPutTextField.getText()), "shot put"));
+						shotPutResultLbl.setText(String.valueOf(man.getShotPut()));
+					}
 					
 					
-					
-					
+					totalResultLbl.setText("Total points: " + String.valueOf(man.getTotalResult()));
 					saveConfirmLbl.setText("Saved to excel file");
 					se.updateManResults(man);
 				}

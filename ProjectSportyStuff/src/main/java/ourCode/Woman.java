@@ -28,7 +28,7 @@ public class Woman extends Athlete {
 		this.twohundredM = twohundredM;
 	}
 
-	public double getEighthundredM() {
+	public int getEighthundredM() {
 		return eighthundredM;
 	}
 
