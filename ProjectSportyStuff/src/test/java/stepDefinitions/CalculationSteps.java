@@ -1,22 +1,34 @@
-package stepDefinitions;
+	package stepDefinitions;
 
-import io.cucumber.java.en.Given;
-import io.cucumber.java.en.Then;
-import io.cucumber.java.en.When;
+	import static org.junit.Assert.assertEquals;
+	import io.cucumber.java.en.Given;
+	import io.cucumber.java.en.Then;
+	import io.cucumber.java.en.When;
+	import ourCode.Calculation;
+	public class CalculationSteps {
+		
+		private Calculation calc;
+		
+		@Given("I have chosen {string} as an event")
+		public void i_have_chosen_as_an_event(String event) {
+			calc = new Calculation();
+			calc.CalculateDecathlonResult(0, event);
+			calc.CalculateHeptathlonResult(0, event);
+		}
+		
+		@When("I enter the (.*) as a result")
+		public void i_enter_the_as_a_result(double result) {
+			calc.CalculateDecathlonResult(result, null);
+			calc.CalculateHeptathlonResult(result, null);
 
-public class CalculationSteps {
-	
-	@Given("I have chosen {string}")
-	public void i_have_chosen_event() {
-		// TODO
-	}
-	@When("I enter the {double}")
-	public void i_enter_the_result() {
-		// TODO
+		}
+
+		@Then("I get the (.*) for (.*) and {string}")
+		public void i_get_the_score_for_result_and_event(String score) {
+			assertEquals(score, calc.CalculateDecathlonResult(0, score));
+			assertEquals(score, calc.CalculateHeptathlonResult(0, score));
+		}
 	}
 
-	@Then("I get the {int} for {double} and {string}")
-	public void i_get_the_score_for_result_and_event(String message) {
-		// TODO
-	}
-}
+
+

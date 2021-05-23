@@ -7,11 +7,6 @@ public class Calculation {
 	double C;
 	double BP;
 	double PB;
-
-	public Calculation() {
-
-	}
-
 	
 	//�Points =INT(A(B�P)^C)for track events 
 	//�Points =INT(A(P�B)^C)for field events 
@@ -325,5 +320,5 @@ public class Calculation {
 		
 			return result;
 	}
-
+	
 }
