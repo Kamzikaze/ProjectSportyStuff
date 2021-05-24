@@ -2,13 +2,13 @@ package ourCode;
 
 public class Woman extends Athlete {
 
-	int twohundredM;
-	int eighthundredM;
-	int onehundredMHurdles;
-	int highJump;
-	int longJump;
-	int shotPut;
-	int javelinThrow;
+	double twohundredM;
+	double eighthundredM;
+	double onehundredMHurdles;
+	double highJump;
+	double longJump;
+	double shotPut;
+	double javelinThrow;
 
 	public Woman(String firstName, String lastName, int id) {
 		this.firstName = firstName;
@@ -16,7 +16,7 @@ public class Woman extends Athlete {
 		this.ID = id;
 	}
 
-	public int getTwohundredM() {
+	public double getTwohundredM() {
 		return twohundredM;
 	}
 
@@ -32,7 +32,7 @@ public class Woman extends Athlete {
 		this.eighthundredM = eighthundredM;
 	}
 
-	public int getOnehundredMHurdles() {
+	public double getOnehundredMHurdles() {
 		return onehundredMHurdles;
 	}
 
@@ -40,7 +40,7 @@ public class Woman extends Athlete {
 		this.onehundredMHurdles = onehundredMHurdles;
 	}
 
-	public int getHighJump() {
+	public double getHighJump() {
 		return highJump;
 	}
 
@@ -48,7 +48,7 @@ public class Woman extends Athlete {
 		this.highJump = highJump;
 	}
 
-	public int getLongJump() {
+	public double getLongJump() {
 		return longJump;
 	}
 
@@ -56,7 +56,7 @@ public class Woman extends Athlete {
 		this.longJump = longJump;
 	}
 
-	public int getShotPut() {
+	public double getShotPut() {
 		return shotPut;
 	}
 
@@ -64,7 +64,7 @@ public class Woman extends Athlete {
 		this.shotPut = shotPut;
 	}
 
-	public int getJavelinThrow() {
+	public double getJavelinThrow() {
 		return javelinThrow;
 	}
 
@@ -72,7 +72,7 @@ public class Woman extends Athlete {
 		this.javelinThrow = javelinThrow;
 	}
 
-	public int getTotalResult() {
+	public double getTotalResult() {
 		return twohundredM + eighthundredM + onehundredMHurdles + highJump + longJump + shotPut + javelinThrow;
 	}
 

@@ -55,7 +55,7 @@ public class WindowHandler {
 		sw.startWindow();
 	}
 
-	public void runLoginWindow() {
+	public void runLoginWindow() throws FileNotFoundException, IOException {
 		System.out.println("Opening LOGIN window...");
 		// lsw.closeWindow();
 		lw = new LoginWindow();

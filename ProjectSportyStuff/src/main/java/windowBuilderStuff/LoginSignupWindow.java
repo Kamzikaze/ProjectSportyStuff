@@ -93,7 +93,16 @@ public class LoginSignupWindow {
 				System.out.println("pressed login from lsw class");
 				frmSportyStuff.setVisible(false);
 				windowHandler = new WindowHandler();
-				windowHandler.runLoginWindow();
+
+				try {
+					windowHandler.runLoginWindow();
+				} catch (FileNotFoundException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			}
 		});
 		panel.add(loginBtn);

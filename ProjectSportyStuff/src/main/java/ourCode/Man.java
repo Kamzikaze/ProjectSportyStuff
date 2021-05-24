@@ -2,16 +2,16 @@ package ourCode;
 
 public class Man extends Athlete {
 
-	int onehundredM;
-	int longJump;
-	int shotPut;
-	int highJump;
-	int fourhundredM;
-	int onehundredtenMHurdles;
-	int discusThrow;
-	int poleVault;
-	int javelinThrow;
-	int onethousandfivehundredM;
+	double onehundredM;
+	double longJump;
+	double shotPut;
+	double highJump;
+	double fourhundredM;
+	double onehundredtenMHurdles;
+	double discusThrow;
+	double poleVault;
+	double javelinThrow;
+	double onethousandfivehundredM;
 
 	public Man(String firstName, String lastName, int id) {
 		this.firstName = firstName;
@@ -19,7 +19,7 @@ public class Man extends Athlete {
 		this.ID = id;
 	}
 
-	public int getOnehundredM() {
+	public double getOnehundredM() {
 		return onehundredM;
 	}
 
@@ -27,7 +27,7 @@ public class Man extends Athlete {
 		this.onehundredM = onehundredM;
 	}
 
-	public int getLongJump() {
+	public double getLongJump() {
 		return longJump;
 	}
 
@@ -35,7 +35,7 @@ public class Man extends Athlete {
 		this.longJump = longJump;
 	}
 
-	public int getShotPut() {
+	public double getShotPut() {
 		return shotPut;
 	}
 
@@ -43,7 +43,7 @@ public class Man extends Athlete {
 		this.shotPut = shotPut;
 	}
 
-	public int getHighJump() {
+	public double getHighJump() {
 		return highJump;
 	}
 
@@ -51,7 +51,7 @@ public class Man extends Athlete {
 		this.highJump = highJump;
 	}
 
-	public int getFourhundredM() {
+	public double getFourhundredM() {
 		return fourhundredM;
 	}
 
@@ -59,7 +59,7 @@ public class Man extends Athlete {
 		this.fourhundredM = fourhundredM;
 	}
 
-	public int getOnehundredtenMHurdles() {
+	public double getOnehundredtenMHurdles() {
 		return onehundredtenMHurdles;
 	}
 
@@ -67,7 +67,7 @@ public class Man extends Athlete {
 		this.onehundredtenMHurdles = onehundredtenMHurdles;
 	}
 
-	public int getDiscusThrow() {
+	public double getDiscusThrow() {
 		return discusThrow;
 	}
 
@@ -75,7 +75,7 @@ public class Man extends Athlete {
 		this.discusThrow = discusThrow;
 	}
 
-	public int getPoleVault() {
+	public double getPoleVault() {
 		return poleVault;
 	}
 
@@ -83,7 +83,7 @@ public class Man extends Athlete {
 		this.poleVault = poleVault;
 	}
 
-	public int getJavelinThrow() {
+	public double getJavelinThrow() {
 		return javelinThrow;
 	}
 
@@ -91,7 +91,7 @@ public class Man extends Athlete {
 		this.javelinThrow = javelinThrow;
 	}
 
-	public int getOnethousandfivehundredM() {
+	public double getOnethousandfivehundredM() {
 		return onethousandfivehundredM;
 	}
 
@@ -99,7 +99,7 @@ public class Man extends Athlete {
 		this.onethousandfivehundredM = onethousandfivehundredM;
 	}
 
-	public int getTotalResult() {
+	public double getTotalResult() {
 		return onehundredM + longJump + shotPut + highJump + fourhundredM + onehundredtenMHurdles + discusThrow
 				+ poleVault + javelinThrow + onethousandfivehundredM;
 	}

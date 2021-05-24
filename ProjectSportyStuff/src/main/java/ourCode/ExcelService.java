@@ -205,6 +205,89 @@ public class ExcelService {
 		return temp;
 	}
 	
+	public Athlete getAthlete(int athleteId) {	
+		Sheet manSheet = workbook.getSheet("Men");
+		Sheet womenSheet = workbook.getSheet("Women");
+
+		for (Row row : womenSheet) {
+			if (row.getRowNum() == 0)
+				continue;
+			
+			if (String.valueOf((int) row.getCell(0).getNumericCellValue()).equals(String.valueOf(athleteId))) {
+				Woman woman = new Woman(row.getCell(1).getStringCellValue(), row.getCell(2).getStringCellValue(), athleteId);
+				
+				if (row.getCell(3) != null)
+					woman.onehundredMHurdles = row.getCell(3).getNumericCellValue();
+				
+				if (row.getCell(4) != null)
+					woman.highJump = row.getCell(4).getNumericCellValue();
+				
+				if (row.getCell(5) != null)
+					woman.shotPut = row.getCell(5).getNumericCellValue();
+				
+				if (row.getCell(6) != null)
+					woman.twohundredM = row.getCell(6).getNumericCellValue();
+				
+				if (row.getCell(7) != null)
+					woman.longJump = row.getCell(7).getNumericCellValue();
+				
+				if (row.getCell(8) != null)
+					woman.javelinThrow = row.getCell(8).getNumericCellValue();
+				
+				if (row.getCell(9) != null)
+					woman.eighthundredM = row.getCell(9).getNumericCellValue();
+				
+				return woman;
+			}
+		}
+		
+		System.out.println("Chgecking man");
+		
+		for (Row row : manSheet) {
+			if (row.getRowNum() == 0)
+				continue;
+			
+			
+			if (String.valueOf((int) row.getCell(0).getNumericCellValue()).equals(String.valueOf(athleteId))) {
+				Man man = new Man(row.getCell(1).getStringCellValue(), row.getCell(2).getStringCellValue(), athleteId);
+				
+				if (row.getCell(3) != null)
+					man.onehundredM = Integer.parseInt(row.getCell(3).getStringCellValue());
+				
+				if (row.getCell(4) != null)
+					man.longJump = Integer.parseInt(row.getCell(4).getStringCellValue());
+				
+				if (row.getCell(5) != null)
+					man.shotPut = Integer.parseInt(row.getCell(5).getStringCellValue());
+				
+				if (row.getCell(6) != null)
+					man.highJump = Integer.parseInt(row.getCell(6).getStringCellValue());
+				
+				if (row.getCell(7) != null)
+					man.fourhundredM = Integer.parseInt(row.getCell(7).getStringCellValue());
+				
+				if (row.getCell(8) != null)
+					man.onehundredtenMHurdles = Integer.parseInt(row.getCell(8).getStringCellValue());
+				
+				if (row.getCell(9) != null)
+					man.discusThrow = Integer.parseInt(row.getCell(9).getStringCellValue());
+				
+				if (row.getCell(10) != null)
+					man.poleVault = Integer.parseInt(row.getCell(10).getStringCellValue());
+				
+				if (row.getCell(11) != null)
+					man.javelinThrow = Integer.parseInt(row.getCell(11).getStringCellValue());
+				
+				if (row.getCell(12) != null)
+					man.onethousandfivehundredM = Integer.parseInt(row.getCell(12).getStringCellValue());
+				
+				return man;
+			}
+		}
+		
+		throw new Error("No athlete found with this ID:" + athleteId);
+	}
+
 	
 
 	/**
