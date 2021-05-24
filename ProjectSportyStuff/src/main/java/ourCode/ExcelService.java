@@ -205,7 +205,7 @@ public class ExcelService {
 		return temp;
 	}
 	
-	public Athlete getAthlete(int athleteId) {	
+	public Athlete getAthlete(int athleteId) throws Exception {	
 		Sheet manSheet = workbook.getSheet("Men");
 		Sheet womenSheet = workbook.getSheet("Women");
 
@@ -240,8 +240,6 @@ public class ExcelService {
 				return woman;
 			}
 		}
-		
-		System.out.println("Chgecking man");
 		
 		for (Row row : manSheet) {
 			if (row.getRowNum() == 0)
@@ -285,7 +283,7 @@ public class ExcelService {
 			}
 		}
 		
-		throw new Error("No athlete found with this ID:" + athleteId);
+		throw new Exception("No athlete found with this ID:" + athleteId);
 	}
 
 	
