@@ -122,7 +122,7 @@ public class LoginWindow {
 				frmSportystuff.setVisible(false);
 				windowHandler = new WindowHandler();
 
-				if (windowHandler.isParticipantMale(Integer.parseInt(idTextField.getText()))) {
+				if (se.getGender(athlete.ID) == "man") {
 					windowHandler.runDecathlonWindow();
 				} else {
 					windowHandler.runHeptathlonWindow();

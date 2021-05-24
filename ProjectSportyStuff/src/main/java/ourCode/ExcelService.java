@@ -286,7 +286,30 @@ public class ExcelService {
 		throw new Exception("No athlete found with this ID:" + athleteId);
 	}
 
-	
+	public String getGender(int athleteId) {
+		Sheet manSheet = workbook.getSheet("Men");
+		Sheet womenSheet = workbook.getSheet("Women");
+
+		for (Row row : womenSheet) {
+			if (row.getRowNum() == 0)
+				continue;
+			
+			if (String.valueOf((int) row.getCell(0).getNumericCellValue()).equals(String.valueOf(athleteId))) {
+				return "women";
+			}
+		}
+		
+		for (Row row : manSheet) {
+			if (row.getRowNum() == 0)
+				continue;
+			
+			if (String.valueOf((int) row.getCell(0).getNumericCellValue()).equals(String.valueOf(athleteId))) {
+				return "man";
+			}
+		}
+		
+		return "";
+	}
 
 	/**
 	 * Checks if default sheets are present in excel file.
