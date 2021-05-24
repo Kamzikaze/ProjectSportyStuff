@@ -7,6 +7,11 @@ import javax.swing.JPanel;
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.RowSpec;
+
+import ourCode.ExcelService;
+import ourCode.Man;
+import ourCode.Woman;
+
 import com.jgoodies.forms.layout.FormSpecs;
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -16,6 +21,8 @@ import java.awt.FlowLayout;
 import javax.swing.JButton;
 import java.awt.Dimension;
 import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.awt.event.ActionEvent;
 
 public class HeptathlonResultWindow {
@@ -28,8 +35,10 @@ public class HeptathlonResultWindow {
 	private JTextField longJumpTextField;
 	private JTextField javelinThrowTextField;
 	private JTextField eighthundredMTextField;
+	private Woman athlete;
 
 	WindowHandler windowHandler;
+	ExcelService se;
 
 	/**
 	 * Launch the application.
@@ -49,9 +58,14 @@ public class HeptathlonResultWindow {
 
 	/**
 	 * Create the application.
+	 * @throws Exception 
 	 */
-	public HeptathlonResultWindow() {
+	public HeptathlonResultWindow(int athleteId) throws Exception {
 		windowHandler = new WindowHandler();
+		
+		this.se = new ExcelService("test.xlsx");
+		this.athlete = (Woman) se.getAthlete(athleteId);
+		
 		initialize();
 	}
 
@@ -60,7 +74,7 @@ public class HeptathlonResultWindow {
 			public void run() {
 				try {
 					// windowHandler = wh;
-					HeptathlonResultWindow window = new HeptathlonResultWindow();
+					HeptathlonResultWindow window = new HeptathlonResultWindow(athlete.ID);
 					window.frmSportyStuff.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -156,7 +170,13 @@ public class HeptathlonResultWindow {
 		panel_1.add(onehundredMHurdlesLbl, "2, 6, left, center");
 		
 		onehundredMHurdlesTextField = new JTextField();
-		onehundredMHurdlesTextField.setText("0.0");
+		
+		if (athlete.getOnehundredMHurdles() != 0.0) {
+			onehundredMHurdlesTextField.setText(String.valueOf(athlete.getOnehundredMHurdles()));
+		} else {
+			onehundredMHurdlesTextField.setText("0.0");
+		}
+		
 		panel_1.add(onehundredMHurdlesTextField, "4, 6, left, top");
 		onehundredMHurdlesTextField.setColumns(10);
 
@@ -169,7 +189,13 @@ public class HeptathlonResultWindow {
 		panel_1.add(highJumpLbl, "2, 8, left, center");
 		
 		highJumpTextField = new JTextField();
-		highJumpTextField.setText("0.0");
+		
+		if (athlete.getHighJump() != 0.0) {
+			highJumpTextField.setText(String.valueOf(athlete.getHighJump()));
+		} else {
+			highJumpTextField.setText("0.0");
+		}
+		
 		panel_1.add(highJumpTextField, "4, 8, left, top");
 		highJumpTextField.setColumns(10);
 
@@ -182,7 +208,13 @@ public class HeptathlonResultWindow {
 		panel_1.add(shotPutLbl, "2, 10, left, center");
 		
 		shotPutTextField = new JTextField();
-		shotPutTextField.setText("0.0");
+		
+		if (athlete.getShotPut() != 0.0) {
+			shotPutTextField.setText(String.valueOf(athlete.getShotPut()));
+		} else {
+			shotPutTextField.setText("0.0");
+		}
+		
 		panel_1.add(shotPutTextField, "4, 10, left, top");
 		shotPutTextField.setColumns(10);
 
@@ -195,7 +227,13 @@ public class HeptathlonResultWindow {
 		panel_1.add(twohundredMLbl, "2, 12, left, center");
 		
 		twohundredMTextField = new JTextField();
-		twohundredMTextField.setText("0.0");
+		
+		if (athlete.getTwohundredM() != 0.0) {
+			twohundredMTextField.setText(String.valueOf(athlete.getTwohundredM()));
+		} else {
+			twohundredMTextField.setText("0.0");
+		}
+		
 		panel_1.add(twohundredMTextField, "4, 12, left, top");
 		twohundredMTextField.setColumns(10);
 
@@ -211,7 +249,13 @@ public class HeptathlonResultWindow {
 		panel_1.add(longJumpLbl, "2, 16, left, center");
 		
 		longJumpTextField = new JTextField();
-		longJumpTextField.setText("0.0");
+		
+		if (athlete.getLongJump() != 0.0) {
+			longJumpTextField.setText(String.valueOf(athlete.getLongJump()));
+		} else {
+			longJumpTextField.setText("0.0");
+		}
+		
 		panel_1.add(longJumpTextField, "4, 16, left, top");
 		longJumpTextField.setColumns(10);
 
@@ -224,7 +268,13 @@ public class HeptathlonResultWindow {
 		panel_1.add(javelinThrowLbl, "2, 18, left, center");
 		
 		javelinThrowTextField = new JTextField();
-		javelinThrowTextField.setText("0.0");
+		
+		if (athlete.getJavelinThrow() != 0.0) {
+			javelinThrowTextField.setText(String.valueOf(athlete.getJavelinThrow()));
+		} else {
+			javelinThrowTextField.setText("0.0");
+		}
+		
 		panel_1.add(javelinThrowTextField, "4, 18, left, top");
 		javelinThrowTextField.setColumns(10);
 
@@ -237,7 +287,13 @@ public class HeptathlonResultWindow {
 		panel_1.add(eighthundredMLbl, "2, 20, left, center");
 		
 		eighthundredMTextField = new JTextField();
-		eighthundredMTextField.setText("0.0");
+		
+		if (athlete.getEighthundredM() != 0.0) {
+			eighthundredMTextField.setText(String.valueOf(athlete.getEighthundredM()));
+		} else {
+			eighthundredMTextField.setText("0.0");
+		}
+		
 		panel_1.add(eighthundredMTextField, "4, 20, left, top");
 		eighthundredMTextField.setColumns(10);
 

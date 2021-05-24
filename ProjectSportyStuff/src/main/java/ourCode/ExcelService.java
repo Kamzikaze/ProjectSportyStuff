@@ -245,39 +245,38 @@ public class ExcelService {
 			if (row.getRowNum() == 0)
 				continue;
 			
-			
 			if (String.valueOf((int) row.getCell(0).getNumericCellValue()).equals(String.valueOf(athleteId))) {
 				Man man = new Man(row.getCell(1).getStringCellValue(), row.getCell(2).getStringCellValue(), athleteId);
 				
 				if (row.getCell(3) != null)
-					man.onehundredM = Integer.parseInt(row.getCell(3).getStringCellValue());
+					man.onehundredM = row.getCell(3).getNumericCellValue();
 				
 				if (row.getCell(4) != null)
-					man.longJump = Integer.parseInt(row.getCell(4).getStringCellValue());
+					man.longJump = row.getCell(4).getNumericCellValue();
 				
 				if (row.getCell(5) != null)
-					man.shotPut = Integer.parseInt(row.getCell(5).getStringCellValue());
+					man.shotPut = row.getCell(5).getNumericCellValue();
 				
 				if (row.getCell(6) != null)
-					man.highJump = Integer.parseInt(row.getCell(6).getStringCellValue());
+					man.highJump = row.getCell(6).getNumericCellValue();
 				
 				if (row.getCell(7) != null)
-					man.fourhundredM = Integer.parseInt(row.getCell(7).getStringCellValue());
+					man.fourhundredM = row.getCell(7).getNumericCellValue();
 				
 				if (row.getCell(8) != null)
-					man.onehundredtenMHurdles = Integer.parseInt(row.getCell(8).getStringCellValue());
+					man.onehundredtenMHurdles = row.getCell(8).getNumericCellValue();
 				
 				if (row.getCell(9) != null)
-					man.discusThrow = Integer.parseInt(row.getCell(9).getStringCellValue());
+					man.discusThrow = row.getCell(9).getNumericCellValue();
 				
 				if (row.getCell(10) != null)
-					man.poleVault = Integer.parseInt(row.getCell(10).getStringCellValue());
+					man.poleVault = row.getCell(10).getNumericCellValue();
 				
 				if (row.getCell(11) != null)
-					man.javelinThrow = Integer.parseInt(row.getCell(11).getStringCellValue());
+					man.javelinThrow = row.getCell(11).getNumericCellValue();
 				
 				if (row.getCell(12) != null)
-					man.onethousandfivehundredM = Integer.parseInt(row.getCell(12).getStringCellValue());
+					man.onethousandfivehundredM = row.getCell(12).getNumericCellValue();
 				
 				return man;
 			}

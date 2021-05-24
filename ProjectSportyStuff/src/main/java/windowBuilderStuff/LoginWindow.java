@@ -123,9 +123,17 @@ public class LoginWindow {
 				windowHandler = new WindowHandler();
 
 				if (se.getGender(athlete.ID) == "man") {
-					windowHandler.runDecathlonWindow();
+					try {
+						windowHandler.runDecathlonWindow(athlete.ID);
+					} catch (Exception e1) {
+						e1.printStackTrace();
+					}
 				} else {
-					windowHandler.runHeptathlonWindow();
+					try {
+						windowHandler.runHeptathlonWindow(athlete.ID);
+					} catch (Exception e1) {
+						e1.printStackTrace();
+					}
 				}
 			}
 		});
