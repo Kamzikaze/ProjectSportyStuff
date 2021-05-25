@@ -16,7 +16,7 @@ Examples:
 | "discus throw" | 71 | 1317 |
 | "pole vault" | 4.90 | 880 |
 | "javelin throw" | 90 | 1198 |
-| "1500m" | 3:58 | 968 |
+| "1500m" | 3.58 | 968 |
 
 @test
 Scenario Outline: Calculation Heptathlon
