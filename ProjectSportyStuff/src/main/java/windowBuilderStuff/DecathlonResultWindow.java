@@ -13,11 +13,17 @@ import javax.swing.JOptionPane;
 import com.jgoodies.forms.layout.FormLayout;
 import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.RowSpec;
+
+import ourCode.ExcelService;
+import ourCode.Man;
+
 import com.jgoodies.forms.layout.FormSpecs;
 import javax.swing.SwingConstants;
 import java.awt.Font;
 import javax.swing.JTextField;
 import java.awt.event.ActionListener;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.awt.event.ActionEvent;
 
 public class DecathlonResultWindow {
@@ -34,8 +40,11 @@ public class DecathlonResultWindow {
 	private JTextField javelinThrowTextField;
 	private JTextField thousandfivehundredMTextField;
 
-	WindowHandler windowHandler;
+	private Man athlete;
 
+	WindowHandler windowHandler;
+	ExcelService se;
+	
 	/**
 	 * Launch the application.
 	 */
@@ -56,9 +65,14 @@ public class DecathlonResultWindow {
 	 * Create the application.
 	 * 
 	 * @param wh
+	 * @throws Exception 
 	 */
-	public DecathlonResultWindow() {
+	public DecathlonResultWindow(int athleteId) throws Exception {
 		windowHandler = new WindowHandler();
+		
+		this.se = new ExcelService("test.xlsx");
+		this.athlete = (Man) se.getAthlete(athleteId);
+		
 		initialize();
 	}
 
@@ -67,7 +81,7 @@ public class DecathlonResultWindow {
 			public void run() {
 				try {
 					// windowHandler = wh;
-					DecathlonResultWindow window = new DecathlonResultWindow();
+					DecathlonResultWindow window = new DecathlonResultWindow(athlete.ID);
 					window.frmSportyStuff.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -173,7 +187,13 @@ public class DecathlonResultWindow {
 		panel_1.add(onehundredMLbl, "2, 6, left, center");
 		
 		onehundredMTextField = new JTextField();
-		onehundredMTextField.setText("0.0");
+		
+		if (athlete.getOnehundredM() != 0.0) {
+			onehundredMTextField.setText(String.valueOf(athlete.getOnehundredM()));
+		} else {
+			onehundredMTextField.setText("0.0");
+		}
+		
 		panel_1.add(onehundredMTextField, "4, 6, left, top");
 		onehundredMTextField.setColumns(10);
 
@@ -189,7 +209,13 @@ public class DecathlonResultWindow {
 		panel_1.add(longJumpLbl, "2, 8, left, center");
 
 		longJumpTextField = new JTextField();
-		longJumpTextField.setText("0.0");
+
+		if (athlete.getLongJump() != 0.0) {
+			longJumpTextField.setText(String.valueOf(athlete.getLongJump()));
+		} else {
+			longJumpTextField.setText("0.0");
+		}
+		
 		panel_1.add(longJumpTextField, "4, 8, left, top");
 		longJumpTextField.setColumns(10);
 
@@ -204,7 +230,13 @@ public class DecathlonResultWindow {
 		panel_1.add(shotPutLbl, "2, 10, left, center");
 		
 		shotPutTextField = new JTextField();
-		shotPutTextField.setText("0.0");
+		
+		if (athlete.getShotPut() != 0.0) {
+			shotPutTextField.setText(String.valueOf(athlete.getShotPut()));
+		} else {
+			shotPutTextField.setText("0.0");
+		}
+		
 		panel_1.add(shotPutTextField, "4, 10, left, top");
 		shotPutTextField.setColumns(10);
 
@@ -217,7 +249,13 @@ public class DecathlonResultWindow {
 		panel_1.add(highJumpLbl, "2, 12, left, center");
 		
 		highJumpTextField = new JTextField();
-		highJumpTextField.setText("0.0");
+		
+		if (athlete.getHighJump() != 0.0) {
+			highJumpTextField.setText(String.valueOf(athlete.getHighJump()));
+		} else {
+			highJumpTextField.setText("0.0");
+		}
+		
 		panel_1.add(highJumpTextField, "4, 12, left, top");
 		highJumpTextField.setColumns(10);
 
@@ -231,7 +269,13 @@ public class DecathlonResultWindow {
 		panel_1.add(fourhundredMLbl, "2, 14, left, center");
 		
 		fourhundredMTextField = new JTextField();
-		fourhundredMTextField.setText("0.0");
+		
+		if (athlete.getFourhundredM() != 0.0) {
+			fourhundredMTextField.setText(String.valueOf(athlete.getFourhundredM()));
+		} else {
+			fourhundredMTextField.setText("0.0");
+		}
+		
 		panel_1.add(fourhundredMTextField, "4, 14, left, top");
 		fourhundredMTextField.setColumns(10);
 
@@ -247,7 +291,13 @@ public class DecathlonResultWindow {
 		panel_1.add(onehundredtenMHurdlesLbl, "2, 18, left, center");
 		
 		onehundredtenMHurdlesTextField = new JTextField();
-		onehundredtenMHurdlesTextField.setText("0.0");
+		
+		if (athlete.getFourhundredM() != 0.0) {
+			onehundredtenMHurdlesTextField.setText(String.valueOf(athlete.getOnehundredtenMHurdles()));
+		} else {
+			onehundredtenMHurdlesTextField.setText("0.0");
+		}
+		
 		panel_1.add(onehundredtenMHurdlesTextField, "4, 18, left, top");
 		onehundredtenMHurdlesTextField.setColumns(10);
 
@@ -260,7 +310,13 @@ public class DecathlonResultWindow {
 		panel_1.add(discusThrowLbl, "2, 20, left, center");
 		
 		discusThrowTextField = new JTextField();
-		discusThrowTextField.setText("0.0");
+		
+		if (athlete.getDiscusThrow() != 0.0) {
+			discusThrowTextField.setText(String.valueOf(athlete.getDiscusThrow()));
+		} else {
+			discusThrowTextField.setText("0.0");
+		}
+		
 		panel_1.add(discusThrowTextField, "4, 20, left, top");
 		discusThrowTextField.setColumns(10);
 
@@ -273,7 +329,13 @@ public class DecathlonResultWindow {
 		panel_1.add(poleVaultLbl, "2, 22, left, center");
 		
 		poleVaultTextField = new JTextField();
-		poleVaultTextField.setText("0.0");
+
+		if (athlete.getPoleVault() != 0.0) {
+			poleVaultTextField.setText(String.valueOf(athlete.getPoleVault()));
+		} else {
+			poleVaultTextField.setText("0.0");
+		}
+		
 		panel_1.add(poleVaultTextField, "4, 22, left, top");
 		poleVaultTextField.setColumns(10);
 
@@ -286,7 +348,13 @@ public class DecathlonResultWindow {
 		panel_1.add(javelinThrowLbl, "2, 24, left, center");
 		
 		javelinThrowTextField = new JTextField();
-		javelinThrowTextField.setText("0.0");
+		
+		if (athlete.getJavelinThrow() != 0.0) {
+			javelinThrowTextField.setText(String.valueOf(athlete.getJavelinThrow()));
+		} else {
+			javelinThrowTextField.setText("0.0");
+		}
+		
 		panel_1.add(javelinThrowTextField, "4, 24, left, top");
 		javelinThrowTextField.setColumns(10);
 
@@ -299,7 +367,13 @@ public class DecathlonResultWindow {
 		panel_1.add(thousandfivehundredMLbl, "2, 26, left, center");
 		
 		thousandfivehundredMTextField = new JTextField();
-		thousandfivehundredMTextField.setText("0.0");
+		
+		if (athlete.getOnethousandfivehundredM() != 0.0) {
+			thousandfivehundredMTextField.setText(String.valueOf(athlete.getOnethousandfivehundredM()));
+		} else {
+			thousandfivehundredMTextField.setText("0.0");
+		}
+		
 		panel_1.add(thousandfivehundredMTextField, "4, 26, left, top");
 		thousandfivehundredMTextField.setColumns(10);
 
@@ -310,7 +384,7 @@ public class DecathlonResultWindow {
 		panel_2.setBounds(220, 513, 204, 37);
 		frmSportyStuff.getContentPane().add(panel_2);
 		panel_2.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
-		
+
 		JPanel panel_3 = new JPanel();
 		panel_3.setBounds(10, 513, 204, 37);
 		frmSportyStuff.getContentPane().add(panel_3);

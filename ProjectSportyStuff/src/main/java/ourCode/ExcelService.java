@@ -190,23 +190,125 @@ public class ExcelService {
 		{
 			row = manSheet.getRow(i);
 			temp = new Man(row.getCell(1).getStringCellValue(), 
-					row.getCell(2).getStringCellValue(), (int) 
-					row.getCell(0).getNumericCellValue());
+					row.getCell(2).getStringCellValue(), 
+					(int) row.getCell(0).getNumericCellValue());
 		}
 		else 
 		{
 			row = womanSheet.getRow(j);
 			temp = new Woman(row.getCell(1).getStringCellValue(), 
-					row.getCell(2).getStringCellValue(), (int) 
-					row.getCell(0).getNumericCellValue());
-			
+					row.getCell(2).getStringCellValue(), 
+					(int) row.getCell(0).getNumericCellValue());
 			
 		}
 		
 		return temp;
 	}
 	
-	
+	public Athlete getAthlete(int athleteId) throws Exception {	
+		Sheet manSheet = workbook.getSheet("Men");
+		Sheet womenSheet = workbook.getSheet("Women");
+
+		for (Row row : womenSheet) {
+			if (row.getRowNum() == 0)
+				continue;
+			
+			if (String.valueOf((int) row.getCell(0).getNumericCellValue()).equals(String.valueOf(athleteId))) {
+				Woman woman = new Woman(row.getCell(1).getStringCellValue(), row.getCell(2).getStringCellValue(), athleteId);
+				
+				if (row.getCell(3) != null)
+					woman.onehundredMHurdles = row.getCell(3).getNumericCellValue();
+				
+				if (row.getCell(4) != null)
+					woman.highJump = row.getCell(4).getNumericCellValue();
+				
+				if (row.getCell(5) != null)
+					woman.shotPut = row.getCell(5).getNumericCellValue();
+				
+				if (row.getCell(6) != null)
+					woman.twohundredM = row.getCell(6).getNumericCellValue();
+				
+				if (row.getCell(7) != null)
+					woman.longJump = row.getCell(7).getNumericCellValue();
+				
+				if (row.getCell(8) != null)
+					woman.javelinThrow = row.getCell(8).getNumericCellValue();
+				
+				if (row.getCell(9) != null)
+					woman.eighthundredM = row.getCell(9).getNumericCellValue();
+				
+				return woman;
+			}
+		}
+		
+		for (Row row : manSheet) {
+			if (row.getRowNum() == 0)
+				continue;
+			
+			if (String.valueOf((int) row.getCell(0).getNumericCellValue()).equals(String.valueOf(athleteId))) {
+				Man man = new Man(row.getCell(1).getStringCellValue(), row.getCell(2).getStringCellValue(), athleteId);
+				
+				if (row.getCell(3) != null)
+					man.onehundredM = row.getCell(3).getNumericCellValue();
+				
+				if (row.getCell(4) != null)
+					man.longJump = row.getCell(4).getNumericCellValue();
+				
+				if (row.getCell(5) != null)
+					man.shotPut = row.getCell(5).getNumericCellValue();
+				
+				if (row.getCell(6) != null)
+					man.highJump = row.getCell(6).getNumericCellValue();
+				
+				if (row.getCell(7) != null)
+					man.fourhundredM = row.getCell(7).getNumericCellValue();
+				
+				if (row.getCell(8) != null)
+					man.onehundredtenMHurdles = row.getCell(8).getNumericCellValue();
+				
+				if (row.getCell(9) != null)
+					man.discusThrow = row.getCell(9).getNumericCellValue();
+				
+				if (row.getCell(10) != null)
+					man.poleVault = row.getCell(10).getNumericCellValue();
+				
+				if (row.getCell(11) != null)
+					man.javelinThrow = row.getCell(11).getNumericCellValue();
+				
+				if (row.getCell(12) != null)
+					man.onethousandfivehundredM = row.getCell(12).getNumericCellValue();
+				
+				return man;
+			}
+		}
+		
+		throw new Exception("No athlete found with this ID:" + athleteId);
+	}
+
+	public String getGender(int athleteId) {
+		Sheet manSheet = workbook.getSheet("Men");
+		Sheet womenSheet = workbook.getSheet("Women");
+
+		for (Row row : womenSheet) {
+			if (row.getRowNum() == 0)
+				continue;
+			
+			if (String.valueOf((int) row.getCell(0).getNumericCellValue()).equals(String.valueOf(athleteId))) {
+				return "women";
+			}
+		}
+		
+		for (Row row : manSheet) {
+			if (row.getRowNum() == 0)
+				continue;
+			
+			if (String.valueOf((int) row.getCell(0).getNumericCellValue()).equals(String.valueOf(athleteId))) {
+				return "man";
+			}
+		}
+		
+		return "";
+	}
 
 	/**
 	 * Checks if default sheets are present in excel file.
