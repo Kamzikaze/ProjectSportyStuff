@@ -101,6 +101,7 @@ public class LoginWindow {
 					if (inputID >= 1 && inputID <= 40) {
 						try {
 							athlete = se.getAthlete(inputID);
+							DirtyGlobalVariables.stAthlete = athlete;
 						} catch (Exception n) {
 							JOptionPane.showMessageDialog(null, "No athlete found with that ID. Try again.", "Invalid",
 									JOptionPane.ERROR_MESSAGE);
@@ -124,6 +125,7 @@ public class LoginWindow {
 
 				if (se.getGender(athlete.ID) == "man") {
 					try {
+						
 						windowHandler.runDecathlonWindow(athlete.ID);
 					} catch (Exception e1) {
 						e1.printStackTrace();

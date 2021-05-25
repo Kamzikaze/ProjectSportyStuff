@@ -114,6 +114,7 @@ public class UserAddedWindow {
 		panel.add(yourInfoLbl, "2, 4");
 
 		lastAthlete = se.getRecentAthlete();
+		DirtyGlobalVariables.stAthlete = lastAthlete;
 
 		JLabel firstNameLbl = new JLabel(lastAthlete.firstName);
 		panel.add(firstNameLbl, "4, 4");

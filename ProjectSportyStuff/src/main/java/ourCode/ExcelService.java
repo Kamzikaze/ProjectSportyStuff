@@ -1,9 +1,11 @@
 package ourCode;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.sql.ClientInfoStatus;
 import java.util.Iterator;
 
 import org.apache.poi.EncryptedDocumentException;
@@ -72,6 +74,104 @@ public class ExcelService {
 		this.save();
 	}
 
+	public void updateManResults(Man man)
+	{
+		
+		Sheet sheet = workbook.getSheet("Men");
+		FileOutputStream fos = null;
+		try {
+			//FileInputStream fis = new FileInputStream("test.xlsx");
+			fos = new FileOutputStream("test.xlsx");
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		for (int i = 1; i < sheet.getLastRowNum()+1; i++) {
+			Row row = sheet.getRow(i);
+			
+			System.out.println(i + "id: " + man.ID);
+			
+			if(row.getCell(0).getNumericCellValue() == man.ID) {
+
+				row.getCell(3).setCellValue(man.getOnehundredM());
+				row.getCell(4).setCellValue(man.getLongJump());
+				row.getCell(5).setCellValue(man.getShotPut());
+				row.getCell(6).setCellValue(man.getHighJump());
+				row.getCell(7).setCellValue(man.getFourhundredM());
+				
+				row.getCell(8).setCellValue(man.getOnehundredtenMHurdles());
+				row.getCell(9).setCellValue(man.getDiscusThrow());
+				row.getCell(10).setCellValue(man.getPoleVault());
+				row.getCell(11).setCellValue(man.getJavelinThrow());
+				row.getCell(12).setCellValue(man.getOnethousandfivehundredM());
+				
+				try {
+					workbook.write(fos);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+				
+		}
+		try {
+			fos.close();
+			
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public void updateWomanResults(Woman woman)
+	{
+		
+		Sheet sheet = workbook.getSheet("Women");
+		FileOutputStream fos = null;
+		try {
+			//FileInputStream fis = new FileInputStream("test.xlsx");
+			fos = new FileOutputStream("test.xlsx");
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
+		for (int i = 1; i < sheet.getLastRowNum()+1; i++) {
+			Row row = sheet.getRow(i);
+			
+			System.out.println(i + "id: " + woman.ID);
+			
+			if(row.getCell(0).getNumericCellValue() == woman.ID) {
+				row.getCell(3).setCellValue(woman.getOnehundredMHurdles());
+				row.getCell(4).setCellValue(woman.getHighJump());
+				row.getCell(5).setCellValue(woman.getShotPut());
+				row.getCell(6).setCellValue(woman.getTwohundredM());
+				row.getCell(7).setCellValue(woman.getLongJump());
+				
+				row.getCell(8).setCellValue(woman.getJavelinThrow());
+				row.getCell(9).setCellValue(woman.getEighthundredM());
+
+				try {
+					workbook.write(fos);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+			}
+				
+		}
+		try {
+			fos.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 	/*
 	public void getIndividualWomanResults(int athleteID) {
 		// TODO:
@@ -116,6 +216,14 @@ public class ExcelService {
 		firstNameCell.setCellValue(woman.firstName);
 		lastNameCell.setCellValue(woman.lastName);
 		
+		row.createCell(3).setCellValue(0);
+		row.createCell(4).setCellValue(0);
+		row.createCell(5).setCellValue(0);
+		row.createCell(6).setCellValue(0);
+		row.createCell(7).setCellValue(0);
+		row.createCell(8).setCellValue(0);
+		row.createCell(9).setCellValue(0);
+		
 		//recentAthlete = woman;
 
 		this.save();
@@ -133,6 +241,17 @@ public class ExcelService {
 		idCell.setCellValue(man.ID);
 		firstNameCell.setCellValue(man.firstName);
 		lastNameCell.setCellValue(man.lastName);
+		
+		row.createCell(3).setCellValue(0);
+		row.createCell(4).setCellValue(0);
+		row.createCell(5).setCellValue(0);
+		row.createCell(6).setCellValue(0);
+		row.createCell(7).setCellValue(0);
+		row.createCell(8).setCellValue(0);
+		row.createCell(9).setCellValue(0);
+		row.createCell(10).setCellValue(0);
+		row.createCell(11).setCellValue(0);
+		row.createCell(12).setCellValue(0);
 		
 		//recentAthlete = man;
 		
@@ -172,8 +291,8 @@ public class ExcelService {
 		Sheet manSheet = workbook.getSheet("Men");
 		Sheet womanSheet = workbook.getSheet("Women");
 		
-		int manID = 1;
-		int womanID = 1;
+		int manID = 0;
+		int womanID = 0;
 		
 		int i = manSheet.getLastRowNum();
 		int j = womanSheet.getLastRowNum();
@@ -185,6 +304,23 @@ public class ExcelService {
 		row = womanSheet.getRow(j);
 		if(row.getCell(0).getCellType() != CellType.STRING)
 			womanID = (int) row.getCell(0).getNumericCellValue();
+		
+//		if(manID == 1)
+//		{
+//			row = manSheet.getRow(i);
+//			return new Man(row.getCell(1).getStringCellValue(), 
+//					row.getCell(2).getStringCellValue(), 
+//					(int) row.getCell(0).getNumericCellValue());
+//		}
+//		
+//		if(womanID == 1)
+//		{
+//			row = womanSheet.getRow(j);
+//			return new Woman(row.getCell(1).getStringCellValue(), 
+//					row.getCell(2).getStringCellValue(), 
+//					(int) row.getCell(0).getNumericCellValue());
+//		}
+		
 		
 		if(manID > womanID)
 		{
@@ -208,6 +344,7 @@ public class ExcelService {
 	public Athlete getAthlete(int athleteId) throws Exception {	
 		Sheet manSheet = workbook.getSheet("Men");
 		Sheet womenSheet = workbook.getSheet("Women");
+		
 
 		for (Row row : womenSheet) {
 			if (row.getRowNum() == 0)
@@ -216,26 +353,28 @@ public class ExcelService {
 			if (String.valueOf((int) row.getCell(0).getNumericCellValue()).equals(String.valueOf(athleteId))) {
 				Woman woman = new Woman(row.getCell(1).getStringCellValue(), row.getCell(2).getStringCellValue(), athleteId);
 				
+				System.out.println("found a woman" + woman.ID);
+				
 				if (row.getCell(3) != null)
-					woman.onehundredMHurdles = row.getCell(3).getNumericCellValue();
+					woman.onehundredMHurdles = (int) row.getCell(3).getNumericCellValue();
 				
 				if (row.getCell(4) != null)
-					woman.highJump = row.getCell(4).getNumericCellValue();
+					woman.highJump = (int) row.getCell(4).getNumericCellValue();
 				
 				if (row.getCell(5) != null)
-					woman.shotPut = row.getCell(5).getNumericCellValue();
+					woman.shotPut = (int) row.getCell(5).getNumericCellValue();
 				
 				if (row.getCell(6) != null)
-					woman.twohundredM = row.getCell(6).getNumericCellValue();
+					woman.twohundredM = (int) row.getCell(6).getNumericCellValue();
 				
 				if (row.getCell(7) != null)
-					woman.longJump = row.getCell(7).getNumericCellValue();
+					woman.longJump = (int) row.getCell(7).getNumericCellValue();
 				
 				if (row.getCell(8) != null)
-					woman.javelinThrow = row.getCell(8).getNumericCellValue();
+					woman.javelinThrow = (int) row.getCell(8).getNumericCellValue();
 				
 				if (row.getCell(9) != null)
-					woman.eighthundredM = row.getCell(9).getNumericCellValue();
+					woman.eighthundredM = (int) row.getCell(9).getNumericCellValue();
 				
 				return woman;
 			}
@@ -248,35 +387,37 @@ public class ExcelService {
 			if (String.valueOf((int) row.getCell(0).getNumericCellValue()).equals(String.valueOf(athleteId))) {
 				Man man = new Man(row.getCell(1).getStringCellValue(), row.getCell(2).getStringCellValue(), athleteId);
 				
+				System.out.println("found a man" + man.ID);
+				
 				if (row.getCell(3) != null)
-					man.onehundredM = row.getCell(3).getNumericCellValue();
+					man.onehundredM = (int) row.getCell(3).getNumericCellValue();
 				
 				if (row.getCell(4) != null)
-					man.longJump = row.getCell(4).getNumericCellValue();
+					man.longJump = (int) row.getCell(4).getNumericCellValue();
 				
 				if (row.getCell(5) != null)
-					man.shotPut = row.getCell(5).getNumericCellValue();
+					man.shotPut = (int) row.getCell(5).getNumericCellValue();
 				
 				if (row.getCell(6) != null)
-					man.highJump = row.getCell(6).getNumericCellValue();
+					man.highJump = (int) row.getCell(6).getNumericCellValue();
 				
 				if (row.getCell(7) != null)
-					man.fourhundredM = row.getCell(7).getNumericCellValue();
+					man.fourhundredM = (int) row.getCell(7).getNumericCellValue();
 				
 				if (row.getCell(8) != null)
-					man.onehundredtenMHurdles = row.getCell(8).getNumericCellValue();
+					man.onehundredtenMHurdles = (int) row.getCell(8).getNumericCellValue();
 				
 				if (row.getCell(9) != null)
-					man.discusThrow = row.getCell(9).getNumericCellValue();
+					man.discusThrow = (int) row.getCell(9).getNumericCellValue();
 				
 				if (row.getCell(10) != null)
-					man.poleVault = row.getCell(10).getNumericCellValue();
+					man.poleVault = (int) row.getCell(10).getNumericCellValue();
 				
 				if (row.getCell(11) != null)
-					man.javelinThrow = row.getCell(11).getNumericCellValue();
+					man.javelinThrow = (int) row.getCell(11).getNumericCellValue();
 				
 				if (row.getCell(12) != null)
-					man.onethousandfivehundredM = row.getCell(12).getNumericCellValue();
+					man.onethousandfivehundredM = (int) row.getCell(12).getNumericCellValue();
 				
 				return man;
 			}
