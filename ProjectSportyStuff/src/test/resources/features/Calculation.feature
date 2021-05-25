@@ -2,7 +2,7 @@ Feature: Calculation
 @test
 Scenario Outline: Calculation Decathlon
 Given I have chosen <event>
-When I enter the <result>
+When I enter the <result> for decathlon
 Then I get the <score> for <result> and <event>
 
 Examples:
@@ -14,14 +14,14 @@ Examples:
 | "400m" | 50 | 815 |
 | "110m hurdles" | 9 | 1722 |
 | "discus throw" | 71 | 1317 |
-| "pole vault" | 4.90 | 880 |
+| "pole vault" | 490 | 880 |
 | "javelin throw" | 90 | 1198 |
-| "1500m" | 3.58 | 968 |
+| "1500m" | 358 | 968 |
 
 @test
 Scenario Outline: Calculation Heptathlon
 Given I have chosen <event>
-When I enter the <result>
+When I enter the <result> for heptathlon
 Then I get the <score> for <result> and <event>
 
 Examples:
