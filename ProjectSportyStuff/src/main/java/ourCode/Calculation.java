@@ -1,7 +1,6 @@
 package ourCode;
 
 public class Calculation {
-
 	double A;
 	double B;
 	double C;
@@ -11,12 +10,6 @@ public class Calculation {
 	public Calculation() {
 
 	}
-	
-	//�Points =INT(A(B�P)^C)for track events 
-	//�Points =INT(A(P�B)^C)for field events 
-	
-	
-
 
 	// �Points =INT(A(B�P)^C)for track events
 	// �Points =INT(A(P�B)^C)for field events
@@ -25,6 +18,10 @@ public class Calculation {
 
 		int result = 0;
 
+		if(P == 0.0)
+			return 0;
+		
+		
 		if (event.equalsIgnoreCase("100m")) {
 			A = 25.4347;
 			B = 18;
@@ -36,12 +33,14 @@ public class Calculation {
 
 			String precut = Double.toString(r);
 
+			System.out.println(event + precut);
+			
 			String rest = precut.substring(0, precut.indexOf("."));
+			
+			System.out.println(rest);
 
 			result = Integer.parseInt(rest);
 
-			System.out.println(precut);
-			System.out.println(rest);
 
 		}
 		if (event.equalsIgnoreCase("long jump")) {
@@ -54,8 +53,12 @@ public class Calculation {
 			double r = A * Math.pow(PB, C);
 
 			String precut = Double.toString(r);
-
+			
+			System.out.println(event + precut);	
+			
 			String rest = precut.substring(0, precut.indexOf("."));
+			
+			System.out.println(rest);
 
 			result = Integer.parseInt(rest);
 		}
@@ -70,7 +73,11 @@ public class Calculation {
 
 			String precut = Double.toString(r);
 
+			System.out.println(event + precut);	
+						
 			String rest = precut.substring(0, precut.indexOf("."));
+			
+			System.out.println(rest);
 
 			result = Integer.parseInt(rest);
 		}
@@ -85,7 +92,11 @@ public class Calculation {
 
 			String precut = Double.toString(r);
 
+			System.out.println(event + precut);	
+						
 			String rest = precut.substring(0, precut.indexOf("."));
+			
+			System.out.println(rest);
 
 			result = Integer.parseInt(rest);
 		}
@@ -100,12 +111,13 @@ public class Calculation {
 
 			String precut = Double.toString(r);
 
+			System.out.println(event + precut);	
+						
 			String rest = precut.substring(0, precut.indexOf("."));
+			
+			System.out.println(rest);
 
 			result = Integer.parseInt(rest);
-
-			System.out.println(precut);
-			System.out.println(rest);
 		}
 		if (event.equalsIgnoreCase("110m hurdles")) {
 			A = 5.74352;
@@ -118,12 +130,14 @@ public class Calculation {
 
 			String precut = Double.toString(r);
 
+			System.out.println(event + precut);	
+						
 			String rest = precut.substring(0, precut.indexOf("."));
+			
+			System.out.println(rest);
 
 			result = Integer.parseInt(rest);
 
-			System.out.println(precut);
-			System.out.println(rest);
 		}
 		if (event.equalsIgnoreCase("discus throw")) {
 			A = 12.91;
@@ -136,7 +150,11 @@ public class Calculation {
 
 			String precut = Double.toString(r);
 
+			System.out.println(event + precut);	
+						
 			String rest = precut.substring(0, precut.indexOf("."));
+			
+			System.out.println(rest);
 
 			result = Integer.parseInt(rest);
 		}
@@ -151,14 +169,18 @@ public class Calculation {
 
 			String precut = Double.toString(r);
 
+			System.out.println(event + precut);	
+						
 			String rest = precut.substring(0, precut.indexOf("."));
+			
+			System.out.println(rest);
 
 			result = Integer.parseInt(rest);
 		}
 		if (event.equalsIgnoreCase("javelin throw")) {
 			A = 10.14;
 			B = 7;
-			C = 1.85;
+			C = 1.08;
 
 			PB = P - B;
 
@@ -166,7 +188,11 @@ public class Calculation {
 
 			String precut = Double.toString(r);
 
+			System.out.println(event + precut);	
+						
 			String rest = precut.substring(0, precut.indexOf("."));
+			
+			System.out.println(rest);
 
 			result = Integer.parseInt(rest);
 		}
@@ -181,17 +207,20 @@ public class Calculation {
 
 			String precut = Double.toString(r);
 
+			System.out.println(event + precut);	
+						
 			String rest = precut.substring(0, precut.indexOf("."));
-
+			
+			System.out.println(rest);
+			
 			result = Integer.parseInt(rest);
 
-			System.out.println(precut);
-			System.out.println(rest);
+
 		}
-		else {
-			System.out.println("You have to select one of the shown options");
+//		else {
+//			System.out.println(event + " " + P + " failed, You have to select one of the shown options");
 			//???
-		}
+		//}
 
 		return result;
 	}
@@ -199,6 +228,9 @@ public class Calculation {
 	public int CalculateHeptathlonResult(double P, String event) {
 		int result = 0;
 
+		if(P == 0.0)
+			return 0;
+		
 		if (event.equalsIgnoreCase("200m")) {
 			A = 4.99087;
 			B = 42.5;
@@ -238,7 +270,7 @@ public class Calculation {
 
 		}
 		if (event.equalsIgnoreCase("100m hurdles")) {
-			A = 0.23076;
+			A = 9.23076;
 			B = 26.7;
 			C = 1.835;
 
@@ -289,7 +321,7 @@ public class Calculation {
 		if (event.equalsIgnoreCase("shot put")) {
 			A = 56.0211;
 			B = 1.5;
-			C = 1.04;
+			C = 1.05;
 
 			PB = P - B;
 
@@ -317,12 +349,12 @@ public class Calculation {
 			result = Integer.parseInt(rest);
 		}
 
-		else {
-			System.out.println("You have to select one of the shown options");
-			///???
-		}
+//		else {
+//			System.out.println("You have to select one of the shown options");
+//			///???
+//		}
 		
 			return result;
 	}
-	
+
 }

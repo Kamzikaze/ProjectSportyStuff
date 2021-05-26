@@ -2,6 +2,8 @@ package windowBuilderStuff;
 
 import java.io.File;
 
+import ourCode.Athlete;
+
 public class DirtyGlobalVariables {
 
 	public static enum Status {
@@ -9,6 +11,8 @@ public class DirtyGlobalVariables {
 		LOGINlogin, LOGINcancel, RESULTsave, RESULTcancel
 	}
 
+	public static Athlete stAthlete = new Athlete();
+	
 	public static int currID = 0;
 	public static Status currStatus = Status.LOGINSIGNUPlogin;
 

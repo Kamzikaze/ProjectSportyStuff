@@ -134,20 +134,14 @@ public class UserAddedWindow {
 			public void actionPerformed(ActionEvent e) {
 				windowHandler = new WindowHandler();
 				frmSportyStuff.setVisible(false);
+
+				
 				
 				if(se.getRecentAthlete().getClass() == Woman.class) {
-					try {
-						windowHandler.runHeptathlonWindow(lastAthlete.ID);
-					} catch (Exception e1) {
-						e1.printStackTrace();
-					}
+					windowHandler.runHeptathlonWindow();
 				}
 				if(se.getRecentAthlete().getClass() == Man.class) {
-					try {
-						windowHandler.runDecathlonWindow(lastAthlete.ID);
-					} catch (Exception e1) {
-						e1.printStackTrace();
-					}
+					windowHandler.runDecathlonWindow();
 				}
 				
 			}
