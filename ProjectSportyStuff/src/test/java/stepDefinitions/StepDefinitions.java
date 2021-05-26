@@ -25,10 +25,10 @@ public class StepDefinitions {
 	//String h = "h";
 
 
-	@Given("the user enters the program")
+	/*@Given("the user enters the program")
 	public void the_user_enters_the_program() {
 		// this is where gui loads
-	}
+	}*/
 
 	@Given("I run the program")
 	public void i_run_the_program() {
