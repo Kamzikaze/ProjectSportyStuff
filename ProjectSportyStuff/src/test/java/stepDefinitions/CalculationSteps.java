@@ -1,9 +1,6 @@
 	package stepDefinitions;
-
 	import static org.junit.Assert.assertEquals;
-
 import java.util.Scanner;
-
     import io.cucumber.java.en.Given;
 	import io.cucumber.java.en.Then;
 	import io.cucumber.java.en.When;
@@ -18,18 +15,7 @@ import java.util.Scanner;
 		public void i_have_chosen(String event) {
 			calc = new Calculation();
 			chosenEvent = event;
-			
-			//calc.CalculateDecathlonResult(0, event);
-			//calc.CalculateHeptathlonResult(0, event);
-		}
-		
-		@When("I enter the {double}")
-		public void i_enter_the(double result) {
-			calc.CalculateDecathlonResult(result, chosenEvent);
-			calc.CalculateHeptathlonResult(result, null);
-			
-
-		}
+		    }
 		
 		@When("I enter the {double} for decathlon")
 		public void i_enter_the_for_decathlon(double result) {
