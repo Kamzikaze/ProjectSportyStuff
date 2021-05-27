@@ -16,10 +16,7 @@ Examples:
 | "discus throw" | 71 | 1317 |
 | "pole vault" | 490 | 880 |
 | "javelin throw" | 90 | 1198 |
-| "1500m" | 358 | 968 |
-| "pole vault" | 490 | 880 |
-| "javelin throw" | 90 | 1198 |
-| "1500m" | 358 | 968 |
+| "1500m" | 300 | 560 |
 
 @test
 Scenario Outline: Calculation Heptathlon
@@ -34,5 +31,5 @@ Examples:
 | "100m hurdles" |  13.20 | 1094 | 
 | "high jump" | 200 | 1237 |
 | "long jump" | 710 | 1206 |
-| "shot put" | 1730 | 1016 |
+| "shot put" | 17.30 | 1016 |
 | "javelin throw" | 65 | 1152 |
