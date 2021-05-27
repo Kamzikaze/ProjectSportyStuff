@@ -1,8 +1,6 @@
 Feature: Calculation
 @test
 Scenario Outline: Calculation Decathlon
-Given I have chosen <event> as an event
-When I enter the <result> as a result
 Given I have chosen <event>
 When I enter the <result> for decathlon
 Then I get the <score> for <result> and <event>

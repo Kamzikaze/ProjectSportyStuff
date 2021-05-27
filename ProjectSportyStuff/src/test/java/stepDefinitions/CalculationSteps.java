@@ -33,4 +33,5 @@ import static org.junit.Assert.assertEquals;
 		public void i_get_the_for_and(int points, double result, String event) {
 			assertEquals(points, myResult);
 	}
+
 }
