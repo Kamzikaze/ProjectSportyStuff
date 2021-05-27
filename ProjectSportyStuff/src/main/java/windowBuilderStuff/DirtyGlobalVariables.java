@@ -10,6 +10,8 @@ public class DirtyGlobalVariables {
 		LOGINSIGNUPlogin, LOGINSIGNUPsignup, SIGNUPnext, SIGNUPcancel, USERADDEDregisterresult, USERADDEDexit,
 		LOGINlogin, LOGINcancel, RESULTsave, RESULTcancel
 	}
+	
+	public static boolean runFromTestRunner = false;
 
 	public static Athlete stAthlete = new Athlete();
 	

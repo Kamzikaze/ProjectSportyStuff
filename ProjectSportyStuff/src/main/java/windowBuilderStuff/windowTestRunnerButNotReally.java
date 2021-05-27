@@ -16,7 +16,7 @@ public class windowTestRunnerButNotReally {
 
 	public static void main(String[] args) {
 
-
+		DirtyGlobalVariables.runFromTestRunner = false;
 		WindowHandler wh = new WindowHandler();
 		
 		wh.initialize();
