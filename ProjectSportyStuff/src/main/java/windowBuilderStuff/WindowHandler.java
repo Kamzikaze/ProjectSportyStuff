@@ -55,7 +55,7 @@ public class WindowHandler {
 		sw.startWindow();
 	}
 
-	public void runLoginWindow() {
+	public void runLoginWindow() throws FileNotFoundException, IOException {
 		System.out.println("Opening LOGIN window...");
 		// lsw.closeWindow();
 		lw = new LoginWindow();
@@ -69,19 +69,19 @@ public class WindowHandler {
 		uaw.startWindow();
 	}
 
-	public void runDecathlonWindow() {
+	public void runDecathlonWindow(int athleteId) throws Exception {
 		System.out.println("Opening DECATHLON window...");
 		// uaw.closeWindow();
 		// lw.closeWindow();
-		drw = new DecathlonResultWindow();
+		drw = new DecathlonResultWindow(athleteId);
 		drw.startWindow();
 	}
 
-	public void runHeptathlonWindow() {
+	public void runHeptathlonWindow(int athleteId) throws Exception {
 		System.out.println("Opening HEPTATHLON window...");
 		// uaw.closeWindow();
 		// lw.closeWindow();
-		hrw = new HeptathlonResultWindow();
+		hrw = new HeptathlonResultWindow(athleteId);
 		hrw.startWindow();
 	}
 

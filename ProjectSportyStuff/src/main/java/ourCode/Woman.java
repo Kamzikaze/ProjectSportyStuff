@@ -16,7 +16,15 @@ public class Woman extends Athlete {
 		this.ID = id;
 	}
 
+//<<<<<<< HEAD
+//	public double getTwohundredM() {
+//=======
+	public Woman() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public int getTwohundredM() {
+//>>>>>>> refs/heads/kamiliasresultexcelbranch
 		return twohundredM;
 	}
 
@@ -24,7 +32,7 @@ public class Woman extends Athlete {
 		this.twohundredM = twohundredM;
 	}
 
-	public double getEighthundredM() {
+	public int getEighthundredM() {
 		return eighthundredM;
 	}
 

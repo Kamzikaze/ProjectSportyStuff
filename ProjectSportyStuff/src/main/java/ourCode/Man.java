@@ -18,6 +18,8 @@ public class Man extends Athlete {
 		this.lastName = lastName;
 		this.ID = id;
 	}
+	
+	public Man() {};
 
 	public int getOnehundredM() {
 		return onehundredM;
