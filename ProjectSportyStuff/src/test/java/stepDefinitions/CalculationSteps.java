@@ -1,6 +1,5 @@
 	package stepDefinitions;
 	import static org.junit.Assert.assertEquals;
-import java.util.Scanner;
     import io.cucumber.java.en.Given;
 	import io.cucumber.java.en.Then;
 	import io.cucumber.java.en.When;
@@ -15,16 +14,19 @@ import java.util.Scanner;
 		public void i_have_chosen(String event) {
 			calc = new Calculation();
 			chosenEvent = event;
+			System.out.println(chosenEvent);
 		    }
 		
 		@When("I enter the {double} for decathlon")
 		public void i_enter_the_for_decathlon(double result) {
 			myResult = calc.CalculateDecathlonResult(result, chosenEvent);
+			System.out.println(myResult);
 			}
 		
 		@When("I enter the {double} for heptathlon")
 		public void i_enter_the_for_heptathlon(double result) {
 			myResult = calc.CalculateHeptathlonResult(result, chosenEvent);
+			System.out.println(myResult);
 			}
 
 
