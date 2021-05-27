@@ -9,7 +9,6 @@ import com.jgoodies.forms.layout.ColumnSpec;
 import com.jgoodies.forms.layout.RowSpec;
 
 import ourCode.Athlete;
-import ourCode.ExcelService;
 
 import com.jgoodies.forms.layout.FormSpecs;
 import javax.swing.JLabel;
@@ -19,17 +18,15 @@ import javax.swing.JButton;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionListener;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.awt.event.ActionEvent;
 
 public class LoginWindow {
 
 	private JFrame frmSportystuff;
 	private JTextField idTextField;
+
 	WindowHandler windowHandler;
-	ExcelService se;
-	
+
 	/**
 	 * Launch the application.
 	 */
@@ -48,13 +45,11 @@ public class LoginWindow {
 
 	/**
 	 * Create the application.
-	 * @throws IOException 
-	 * @throws FileNotFoundException 
 	 */
-	public LoginWindow() throws FileNotFoundException, IOException {
+	public LoginWindow() {
 		windowHandler = new WindowHandler();
 		initialize();
-		this.se = new ExcelService("test.xlsx");
+		
 	}
 
 	public void startWindow() {
@@ -93,49 +88,33 @@ public class LoginWindow {
 		JButton loginBtn = new JButton("Login");
 		loginBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Athlete athlete;
 				
 				try {
+				
 					int inputID = Integer.parseInt(idTextField.getText());
-
 					if (inputID >= 1 && inputID <= 40) {
-						try {
-							athlete = se.getAthlete(inputID);
-							DirtyGlobalVariables.stAthlete = athlete;
-						} catch (Exception n) {
-							JOptionPane.showMessageDialog(null, "No athlete found with that ID. Try again.", "Invalid",
-									JOptionPane.ERROR_MESSAGE);
-							return;
-						}
-					} else {
-						JOptionPane.showMessageDialog(null, "Number out of range, 1-40", "Invalid",
-								JOptionPane.ERROR_MESSAGE);
-						return;
+						Athlete athlete = new Athlete();
+					athlete.ID = inputID;
+					
+					
 					}
-
-				} catch (NumberFormatException n) {
-					JOptionPane.showMessageDialog(null, "Login with your unique ID", "Invalid",
-							JOptionPane.ERROR_MESSAGE);
-					return;
-
+					else {
+						JOptionPane.showMessageDialog(null, "Number out of range, 1-40", "Invalid", JOptionPane.ERROR_MESSAGE);
+					}
+					
+						
+				}catch (NumberFormatException n) {
+					
+					JOptionPane.showMessageDialog(null, "Login with your unique ID", "Invalid", JOptionPane.ERROR_MESSAGE);
+					
 				}
 				
 				frmSportystuff.setVisible(false);
 				windowHandler = new WindowHandler();
-
-				if (se.getGender(athlete.ID) == "man") {
-					try {
-						
-						windowHandler.runDecathlonWindow(athlete.ID);
-					} catch (Exception e1) {
-						e1.printStackTrace();
-					}
+				if (windowHandler.isParticipantMale(Integer.parseInt(idTextField.getText()))) {
+					windowHandler.runDecathlonWindow();
 				} else {
-					try {
-						windowHandler.runHeptathlonWindow(athlete.ID);
-					} catch (Exception e1) {
-						e1.printStackTrace();
-					}
+					windowHandler.runHeptathlonWindow();
 				}
 			}
 		});
@@ -170,6 +149,8 @@ public class LoginWindow {
 		idTextField = new JTextField();
 		panel.add(idTextField, "4, 4, 3, 1, left, top");
 		idTextField.setColumns(10);
-
+		
+		
+		
 	}
 }

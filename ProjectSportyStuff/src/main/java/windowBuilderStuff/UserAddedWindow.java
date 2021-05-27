@@ -114,7 +114,6 @@ public class UserAddedWindow {
 		panel.add(yourInfoLbl, "2, 4");
 
 		lastAthlete = se.getRecentAthlete();
-		DirtyGlobalVariables.stAthlete = lastAthlete;
 
 		JLabel firstNameLbl = new JLabel(lastAthlete.firstName);
 		panel.add(firstNameLbl, "4, 4");
@@ -135,20 +134,14 @@ public class UserAddedWindow {
 			public void actionPerformed(ActionEvent e) {
 				windowHandler = new WindowHandler();
 				frmSportyStuff.setVisible(false);
+
+				
 				
 				if(se.getRecentAthlete().getClass() == Woman.class) {
-					try {
-						windowHandler.runHeptathlonWindow(lastAthlete.ID);
-					} catch (Exception e1) {
-						e1.printStackTrace();
-					}
+					windowHandler.runHeptathlonWindow();
 				}
 				if(se.getRecentAthlete().getClass() == Man.class) {
-					try {
-						windowHandler.runDecathlonWindow(lastAthlete.ID);
-					} catch (Exception e1) {
-						e1.printStackTrace();
-					}
+					windowHandler.runDecathlonWindow();
 				}
 				
 			}
