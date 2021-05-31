@@ -20,6 +20,8 @@ import javax.swing.SwingConstants;
 import javax.swing.JTextField;
 import java.awt.FlowLayout;
 import javax.swing.JButton;
+
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.event.ActionListener;
 import java.io.FileNotFoundException;
@@ -423,10 +425,12 @@ public class HeptathlonResultWindow {
 						}
 						
 						totalResultLbl.setText("Total points: " + String.valueOf(woman.getTotalResult()));
+						saveConfirmLbl.setForeground(DirtyGlobalVariables.darkGreenColor);
 						saveConfirmLbl.setText("Saved to excel file");
 						se.updateWomanResults(woman);
 				}
 				else {
+					saveConfirmLbl.setForeground(Color.red);
 					saveConfirmLbl.setText("Error, check text fields");
 				}
 				

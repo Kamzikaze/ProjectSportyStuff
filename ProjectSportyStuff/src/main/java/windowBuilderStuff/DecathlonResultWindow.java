@@ -6,6 +6,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import java.awt.FlowLayout;
 import javax.swing.JButton;
+
+import java.awt.Color;
 import java.awt.Dimension;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -533,10 +535,12 @@ public class DecathlonResultWindow {
 					
 					
 					totalResultLbl.setText("Total points: " + String.valueOf(man.getTotalResult()));
+					saveConfirmLbl.setForeground(DirtyGlobalVariables.darkGreenColor);
 					saveConfirmLbl.setText("Saved to excel file");
 					se.updateManResults(man);
 				}
 				else {
+					saveConfirmLbl.setForeground(Color.red);
 					saveConfirmLbl.setText("Error, check text fields");
 				}
 				

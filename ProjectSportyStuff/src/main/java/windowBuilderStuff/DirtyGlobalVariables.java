@@ -1,5 +1,6 @@
 package windowBuilderStuff;
 
+import java.awt.Color;
 import java.io.File;
 
 import ourCode.Athlete;
@@ -14,6 +15,8 @@ public class DirtyGlobalVariables {
 	public static boolean runFromTestRunner = false;
 
 	public static Athlete stAthlete = new Athlete();
+	
+	public static Color darkGreenColor = new Color(34,139,34);
 	
 	public static int currID = 0;
 	public static Status currStatus = Status.LOGINSIGNUPlogin;
