@@ -549,8 +549,9 @@ public class DecathlonResultWindow {
 		JButton exitBtn = new JButton("Exit");
 		exitBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				System.exit(69);
+				windowHandler.runLoginSignupWindow();
+				frmSportyStuff.setVisible(false);
+				//System.exit(69);
 			}
 		});
 		exitBtn.setPreferredSize(new Dimension(85, 23));
